@@ -512,129 +512,71 @@
         ✅ Đăng ký thành công! Bộ phận tuyển dụng sẽ liên hệ với bạn sớm nhất.
     </div>
 
-    <form
-        id="jobForm"
-        action="https://formspree.io/f/xpqogqva"
-        method="POST"
+<form
+    id="jobForm"
+    action="https://formspree.io/f/xpqogqva"
+    method="POST"
+>
+
+    <div class="form-group">
+        <label>Họ và tên *</label>
+        <input
+            type="text"
+            name="Họ và tên"
+            placeholder="Nhập họ và tên"
+            required
+        >
+    </div>
+
+    <div class="form-group">
+        <label>Số điện thoại *</label>
+        <input
+            type="tel"
+            name="Số điện thoại"
+            placeholder="Nhập số điện thoại"
+            pattern="[0-9]{9,11}"
+            required
+        >
+    </div>
+
+    <div class="form-group">
+        <label>Tỉnh/thành hiện tại *</label>
+        <select name="Tỉnh thành hiện tại" required>
+            <option value="">-- Chọn tỉnh/thành --</option>
+            <option>Hà Nội</option>
+            <option>Bắc Ninh</option>
+            <option>Hưng Yên</option>
+            <option>Hải Phòng</option>
+            <option>Thái Nguyên</option>
+            <option>Vĩnh Phúc</option>
+            <option>Hải Dương</option>
+            <option>Nam Định</option>
+            <option>Ninh Bình</option>
+            <option>Phú Thọ</option>
+            <option>Quảng Ninh</option>
+            <option>Lạng Sơn</option>
+            <option>Cao Bằng</option>
+            <option>Bắc Kạn</option>
+            <option>Tuyên Quang</option>
+            <option>Yên Bái</option>
+            <option>Lào Cai</option>
+            <option>Thái Bình</option>
+            <option>Hà Nam</option>
+            <option>Khác</option>
+        </select>
+    </div>
+
+    <input
+        type="hidden"
+        name="_subject"
+        value="🔥 Có ứng viên mới đăng ký việc làm"
     >
 
-        <div class="form-group">
-            <label>Họ và tên *</label>
-            <input
-                type="text"
-                name="Họ và tên"
-                placeholder="Nhập họ và tên"
-                required
-            >
-        </div>
+    <button type="submit" class="btn">
+        📩 GỬI ĐĂNG KÝ
+    </button>
 
-        <div class="form-group">
-            <label>Số điện thoại *</label>
-            <input
-                type="tel"
-                name="Số điện thoại"
-                placeholder="Nhập số điện thoại"
-                pattern="[0-9]{9,11}"
-                required
-            >
-        </div>
-
-        <div class="form-group">
-            <label>Email</label>
-            <input
-                type="email"
-                name="Email ứng viên"
-                placeholder="Nhập email nếu có"
-            >
-        </div>
-
-        <div class="form-group">
-            <label>Tuổi *</label>
-            <input
-                type="number"
-                name="Tuổi"
-                placeholder="Ví dụ: 22"
-                min="18"
-                max="60"
-                required
-            >
-        </div>
-
-        <div class="form-group">
-            <label>Tỉnh/thành hiện tại *</label>
-            <select name="Tỉnh thành hiện tại" required>
-                <option value="">-- Chọn tỉnh/thành --</option>
-                <option>Hà Nội</option>
-                <option>Bắc Ninh</option>
-                <option>Hưng Yên</option>
-                <option>Hải Phòng</option>
-                <option>Thái Nguyên</option>
-                <option>Vĩnh Phúc</option>
-                <option>Hải Dương</option>
-                <option>Nam Định</option>
-                <option>Ninh Bình</option>
-                <option>Phú Thọ</option>
-                <option>Quảng Ninh</option>
-                <option>Lạng Sơn</option>
-                <option>Cao Bằng</option>
-                <option>Bắc Kạn</option>
-                <option>Tuyên Quang</option>
-                <option>Yên Bái</option>
-                <option>Lào Cai</option>
-                <option>Thái Bình</option>
-                <option>Hà Nam</option>
-                <option>Khác</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>Công việc muốn ứng tuyển *</label>
-            <select name="Công việc muốn ứng tuyển" required>
-                <option value="">-- Chọn công việc --</option>
-                <option>Công nhân sản xuất</option>
-                <option>Công nhân điện tử</option>
-                <option>Công nhân lắp ráp</option>
-                <option>Nhân viên kho</option>
-                <option>Nhân viên QC</option>
-                <option>Phục vụ</option>
-                <option>Phụ bếp</option>
-                <option>Khác</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>Khu vực mong muốn làm việc *</label>
-            <select name="Khu vực mong muốn" required>
-                <option value="">-- Chọn khu vực --</option>
-                <option>Hà Nội</option>
-                <option>Bắc Ninh</option>
-                <option>Hưng Yên</option>
-                <option>Hải Phòng</option>
-                <option>Thái Nguyên</option>
-                <option>Vĩnh Phúc</option>
-                <option>Không cố định</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>Ghi chú thêm</label>
-            <textarea
-                name="Ghi chú"
-                placeholder="Ví dụ: Có thể đi làm ngay, muốn làm ca ngày..."
-            ></textarea>
-        </div>
-
-        <input
-            type="hidden"
-            name="_subject"
-            value="🔥 Có ứng viên mới đăng ký việc làm"
-        >
-
-        <button type="submit" class="btn">
-            📩 GỬI ĐĂNG KÝ
-        </button>
-
-    </form>
+</form>
 
 </section>
 
