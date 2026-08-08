@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Việc Làm Miền Bắc - Tuyển Dụng Mới Nhất</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #d60000, #ff4b2b);
+            color: white;
+            padding: 20px 15px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            font-size: 16px;
+        }
+
+        /* MENU */
+        nav {
+            background: white;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            margin: 0 12px;
+        }
+
+        nav a:hover {
+            color: #d60000;
+        }
+
+        /* BANNER */
+        .banner {
+            max-width: 1100px;
+            margin: 25px auto;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #fff1f1, #ffffff);
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .banner h2 {
+            color: #d60000;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .banner p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #d60000;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #a80000;
+        }
+
+        /* SEARCH */
+        .search-box {
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 0 15px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-box input,
+        .search-box select {
+            flex: 1;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        /* SECTION */
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 15px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .section-title h2 {
+            color: #d60000;
+            font-size: 27px;
+        }
+
+        /* JOBS */
+        .jobs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .job {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            transition: 0.2s;
+        }
+
+        .job:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        }
+
+        .job h3 {
+            color: #d60000;
+            margin-bottom: 12px;
+        }
+
+        .job p {
+            margin: 7px 0;
+        }
+
+        .salary {
+            color: #008000;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .location {
+            color: #555;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #ffe4e4;
+            color: #d60000;
+            padding: 5px 9px;
+            border-radius: 5px;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        /* BENEFITS */
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .benefit {
+            background: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .benefit strong {
+            display: block;
+            color: #d60000;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        /* REGISTER */
+        .register {
+            background: #fff;
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .register h2 {
+            text-align: center;
+            color: #d60000;
+            margin-bottom: 20px;
+        }
+
+        .register input,
+        .register textarea,
+        .register select {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 12px;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        .register textarea {
+            min-height: 100px;
+        }
+
+        .register button {
+            width: 100%;
+        }
+
+        /* CONTACT */
+        .contact {
+            background: #d60000;
+            color: white;
+            text-align: center;
+            padding: 35px 15px;
+            margin-top: 40px;
+        }
+
+        .contact h2 {
+            margin-bottom: 10px;
+        }
+
+        .contact a {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #222;
+            color: #aaa;
+            text-align: center;
+            padding: 18px;
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            .banner h2 {
+                font-size: 25px;
+            }
+
+            .jobs {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            nav a {
+                margin: 0 5px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .benefits {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>VIỆC LÀM MIỀN BẮC</h1>
+    <p>Tìm việc nhanh - Việc thật - Thu nhập ổn định</p>
+</header>
+
+<nav>
+    <a href="#viec-lam">Việc làm</a>
+    <a href="#quyen-loi">Quyền lợi</a>
+    <a href="#dang-ky">Đăng ký</a>
+    <a href="#lien-he">Liên hệ</a>
+</nav>
+
+<section class="banner">
+    <h2>🔥 TUYỂN DỤNG VIỆC LÀM MIỀN BẮC</h2>
+    <p>Nhiều vị trí đang tuyển dụng tại các khu công nghiệp</p>
+    <a href="#dang-ky" class="btn">ĐĂNG KÝ TÌM VIỆC</a>
+</section>
+
+<div class="search-box">
+    <input
+        type="text"
+        id="search"
+        placeholder="🔎 Tìm việc: công nhân, kho, QC..."
+        onkeyup="searchJobs()"
+    >
+
+    <select id="location" onchange="searchJobs()">
+        <option value="">Tất cả khu vực</option>
+        <option value="Bắc Ninh">Bắc Ninh</option>
+        <option value="Hà Nội">Hà Nội</option>
+        <option value="Hưng Yên">Hưng Yên</option>
+        <option value="Hải Phòng">Hải Phòng</option>
+        <option value="Thái Nguyên">Thái Nguyên</option>
+        <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+    </select>
+</div>
+
+<section id="viec-lam" class="container">
+
+    <div class="section-title">
+        <h2>🔥 VIỆC LÀM ĐANG TUYỂN</h2>
+        <p>Cập nhật những đơn tuyển dụng mới nhất</p>
+    </div>
+
+    <div class="jobs">
+
+        <div class="job">
+            <span class="tag">TUYỂN GẤP</span>
+            <h3>Công nhân sản xuất</h3>
+            <p class="salary">💰 10 - 15 triệu/tháng</p>
+            <p class="location">📍 Bắc Ninh</p>
+            <p>🏭 Làm việc tại khu công nghiệp</p>
+            <p>🎁 Có phụ cấp, thưởng và chế độ đầy đủ</p>
+            <a href="#dang-ky" class="btn">ỨNG TUYỂN</a>
+        </div>
+
+        <div class="job">
+            <span class="tag">LƯƠNG CAO</span>
+            <h3>Công nhân điện tử</h3>
+            <p class="salary">💰 11 - 16 triệu/tháng</p>
+            <p class="location">📍 Thái Nguyên</p>
+            <p>🏭 Nhà máy điện tử</p>
+            <p>🎁 Có hỗ trợ và phụ cấp</p>
+            <a href="#dang-ky" class="btn">ỨNG TUYỂN</a>
+        </div>
+
+        <div class="job">
+            <span class="tag">ĐANG TUYỂN</span>
+            <h3>Công nhân lắp ráp</h3>
+            <p class="salary">💰 10 - 14 triệu/tháng</p>
+            <p class="location">📍 Hưng Yên</p>
+            <p>🏭 Công việc ổn định</p>
+            <p>🎁 Chế độ theo quy định</p>
+            <a href="#dang-ky" class="btn">ỨNG TUYỂN</a>
+        </div>
+
+        <div class="job">
+            <span class="tag">TUYỂN GẤP</span>
+            <h3>Nhân viên kho</h3>
+            <p class="salary">💰 9 - 14 triệu/tháng</p>
+            <p class="location">📍 Hà Nội</p>
+            <p>📦 Công việc kho hàng</p>
+            <p>🎁 Có phụ cấp</p>
+            <a href="#dang-ky" class="btn">ỨNG TUYỂN</a>
+        </div>
+
+        <div class="job">
+            <span class="tag">MỚI</span>
+            <h3>Công nhân sản xuất</h3>
+            <p class="salary">💰 10 - 15 triệu/tháng</p>
+            <p class="location">📍 Hải Phòng</p>
+            <p>🏭 Làm việc tại khu công nghiệp</p>
+            <p>🎁 Thu nhập ổn định</p>
+            <a href="#dang-ky" class="btn">ỨNG TUYỂN</a>
+        </div>
+
+        <div class="job">
+            <span class="tag">ĐANG NHẬN HỒ SƠ</span>
+            <h3>Nhân viên QC</h3>
+            <p class="salary">💰 11 - 17 triệu/tháng</p>
+            <p class="location">📍 Vĩnh Phúc</p>
+            <p>🔎 Kiểm tra chất lượng sản phẩm</p>
+            <p>🎁 Chế độ đầy đủ</p>
+            <a href="#dang-ky" class="btn">ỨNG TUYỂN</a>
+        </div>
+
+    </div>
+</section>
+
+<section id="quyen-loi" class="container">
+
+    <div class="section-title">
+        <h2>⭐ QUYỀN LỢI</h2>
+    </div>
+
+    <div class="benefits">
+
+        <div class="benefit">
+            <strong>💰 Thu nhập tốt</strong>
+            Lương + phụ cấp + thưởng
+        </div>
+
+        <div class="benefit">
+            <strong>🏠 Hỗ trợ</strong>
+            Tùy từng đơn tuyển dụng
+        </div>
+
+        <div class="benefit">
+            <strong>📋 Công việc ổn định</strong>
+            Nhiều vị trí tại KCN
+        </div>
+
+        <div class="benefit">
+            <strong>📞 Tư vấn miễn phí</strong>
+            Hỗ trợ tìm việc phù hợp
+        </div>
+
+    </div>
+
+</section>
+
+<section id="dang-ky" class="register">
+
+    <h2>📝 ĐĂNG KÝ TÌM VIỆC</h2>
+
+    <form onsubmit="submitForm(event)">
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Họ và tên"
+            required
+        >
+
+        <input
+            type="tel"
+            id="phone"
+            placeholder="Số điện thoại"
+            required
+        >
+
+        <select id="job">
+            <option value="">Bạn muốn tìm công việc nào?</option>
+            <option>Công nhân sản xuất</option>
+            <option>Công nhân điện tử</option>
+            <option>Nhân viên kho</option>
+            <option>Nhân viên QC</option>
+            <option>Khác</option>
+        </select>
+
+        <select id="area">
+            <option value="">Khu vực mong muốn</option>
+            <option>Bắc Ninh</option>
+            <option>Hà Nội</option>
+            <option>Hưng Yên</option>
+            <option>Hải Phòng</option>
+            <option>Thái Nguyên</option>
+            <option>Vĩnh Phúc</option>
+        </select>
+
+        <textarea
+            id="note"
+            placeholder="Ghi chú thêm (nếu có)"
+        ></textarea>
+
+        <button type="submit" class="btn">
+            GỬI ĐĂNG KÝ
+        </button>
+
+    </form>
+
+</section>
+
+<section id="lien-he" class="contact">
+
+    <h2>📞 LIÊN HỆ TUYỂN DỤNG</h2>
+
+    <p>Đức HR - Tư vấn việc làm miền Bắc</p>
+
+    <p>
+        ☎️ Hotline:
+        <a href="tel:0369759879">0369 759 879</a>
+    </p>
+
+    <p>
+        💬 Zalo:
+        <a href="https://zalo.me/0369759879">
+            0369 759 879
+        </a>
+    </p>
+
+</section>
+
+<footer>
+    © 2026 Việc Làm Miền Bắc - Thông tin tuyển dụng
+</footer>
+
+<script>
+
+function searchJobs() {
+
+    const keyword =
+        document.getElementById("search").value.toLowerCase();
+
+    const location =
+        document.getElementById("location").value;
+
+    const jobs =
+        document.querySelectorAll(".job");
+
+    jobs.forEach(function(job) {
+
+        const text =
+            job.innerText.toLowerCase();
+
+        const locationMatch =
+            location === "" ||
+            text.includes(location.toLowerCase());
+
+        const keywordMatch =
+            keyword === "" ||
+            text.includes(keyword);
+
+        if (locationMatch && keywordMatch) {
+            job.style.display = "block";
+        } else {
+            job.style.display = "none";
+        }
+
+    });
+}
+
+function submitForm(event) {
+
+    event.preventDefault();
+
+    const name =
+        document.getElementById("name").value;
+
+    const phone =
+        document.getElementById("phone").value;
+
+    alert(
+        "Cảm ơn " + name +
+        "! Hồ sơ của bạn đã được ghi nhận. " +
+        "Bộ phận tuyển dụng sẽ liên hệ với bạn qua số " +
+        phone + "."
+    );
+}
+
+</script>
+
+</body>
+</html>
