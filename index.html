@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -305,9 +306,7 @@
             font-size: 25px;
         }
 
-        /* =====================================================
-           THÔNG BÁO ĐĂNG KÝ MẪU
-           ===================================================== */
+        /* ================= THÔNG BÁO ================= */
 
         .registration-toast {
             position: fixed;
@@ -320,7 +319,6 @@
 
             background: white;
             border-radius: 14px;
-
             padding: 14px 16px;
 
             box-shadow: 0 8px 30px rgba(0,0,0,0.22);
@@ -367,17 +365,6 @@
         .registration-toast-time {
             color: #777;
             font-size: 13px;
-        }
-
-        .sample-label {
-            display: inline-block;
-            margin-top: 5px;
-            padding: 2px 6px;
-            border-radius: 4px;
-            background: #fff1f1;
-            color: #d60000;
-            font-size: 10px;
-            font-weight: bold;
         }
 
         @keyframes registrationToastIn {
@@ -922,7 +909,7 @@
 
 
 <!-- =====================================================
-     POPUP THÔNG BÁO MẪU
+     POPUP THÔNG BÁO
      ===================================================== -->
 
 <div
@@ -968,11 +955,6 @@
         >
             ⏱️ Vừa xong
         </div>
-
-
-        <span class="sample-label">
-            THÔNG BÁO MẪU
-        </span>
 
     </div>
 
@@ -1408,9 +1390,10 @@ setInterval(
 
 
 /* =====================================================
-   THÔNG BÁO
+   THÔNG BÁO ĐĂNG KÝ
    ===================================================== */
 
+const sampleRegistrations = [
 
     {
         name: "Nguyễn Văn A",
@@ -1469,9 +1452,7 @@ let sampleIndex = 0;
 function showSampleRegistration() {
 
     const data =
-        sampleRegistrations[
-            sampleIndex
-        ];
+        sampleRegistrations[sampleIndex];
 
 
     document.getElementById(
@@ -1564,3 +1545,4 @@ setInterval(
 
 </body>
 </html>
+```
