@@ -269,7 +269,7 @@
             font-weight: bold;
         }
 
-        /* ===== ỨNG VIÊN ĐANG QUAN TÂM ===== */
+        /* ===== SỐ ỨNG VIÊN ĐANG QUAN TÂM ===== */
 
         .registration-counter {
             max-width: 700px;
@@ -287,14 +287,14 @@
             font-size: 25px;
         }
 
-        /* ===== POPUP ===== */
+        /* ===== POPUP ĐĂNG KÝ ===== */
 
         .registration-toast {
             position: fixed;
             left: 20px;
             bottom: 20px;
             z-index: 99999;
-            width: 350px;
+            width: 370px;
             max-width: calc(100vw - 40px);
             background: white;
             border-radius: 14px;
@@ -312,18 +312,31 @@
         }
 
         .registration-toast-icon {
-            font-size: 25px;
+            width: 45px;
+            height: 45px;
+            background: #fff1f1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
         }
 
         .registration-toast-title {
             font-weight: bold;
-            color: #111;
+            color: #d60000;
             margin-bottom: 4px;
         }
 
         .registration-toast-text {
             font-size: 14px;
             color: #666;
+            line-height: 1.5;
+        }
+
+        .registration-toast-text strong {
+            color: #222;
         }
 
         @keyframes registrationToastIn {
@@ -596,11 +609,11 @@
     <div>
 
         <div class="registration-toast-title">
-            🔥 Đang có nhiều người quan tâm
+            🔥 Thông báo đăng ký mẫu
         </div>
 
         <div id="registrationToastText" class="registration-toast-text">
-            Nhiều ứng viên đang tìm hiểu các đơn tuyển dụng.
+            Đang có ứng viên quan tâm tìm việc.
         </div>
 
     </div>
@@ -825,16 +838,38 @@ form.addEventListener("submit", async function(event) {
 
         if (response.ok) {
 
-            /* Đăng ký thật đã được gửi thành công */
+            /*
+             * Đăng ký thật đã được gửi thành công
+             */
 
             const nameInput =
                 form.querySelector(
                     '[name="Họ và tên"]'
                 );
 
+            const phoneInput =
+                form.querySelector(
+                    '[name="Số điện thoại"]'
+                );
+
+            const locationInput =
+                form.querySelector(
+                    '[name="Tỉnh thành hiện tại"]'
+                );
+
             const name =
                 nameInput
                     ? nameInput.value.trim()
+                    : "";
+
+            const phone =
+                phoneInput
+                    ? phoneInput.value.trim()
+                    : "";
+
+            const userLocation =
+                locationInput
+                    ? locationInput.value
                     : "";
 
             const toast =
@@ -847,19 +882,38 @@ form.addEventListener("submit", async function(event) {
                     "registrationToastText"
                 );
 
-            if (name) {
+            /*
+             * Che bớt số điện thoại
+             */
 
-                toastText.innerText =
-                    "Cảm ơn " +
-                    name +
-                    "! Hồ sơ của bạn đã được tiếp nhận.";
+            let maskedPhone = "";
+
+            if (phone.length >= 7) {
+
+                maskedPhone =
+                    phone.substring(0, 3) +
+                    "***" +
+                    phone.substring(phone.length - 3);
 
             } else {
 
-                toastText.innerText =
-                    "Hồ sơ của bạn đã được tiếp nhận thành công.";
+                maskedPhone = phone;
 
             }
+
+
+            /*
+             * Hiện thông báo người vừa đăng ký thật
+             */
+
+            toastText.innerHTML =
+                "<strong>" +
+                name +
+                "</strong> vừa đăng ký tìm việc<br>" +
+                "📱 " +
+                maskedPhone +
+                " · 📍 " +
+                userLocation;
 
             toast.classList.add("show");
 
@@ -867,10 +921,12 @@ form.addEventListener("submit", async function(event) {
 
                 toast.classList.remove("show");
 
-            }, 5000);
+            }, 6000);
 
 
-            /* Reset form */
+            /*
+             * Reset form
+             */
 
             form.reset();
 
@@ -970,35 +1026,41 @@ setInterval(function() {
 
 
 /* =====================================================
-   POPUP THÔNG BÁO
+   THÔNG BÁO MẪU
    ===================================================== */
 
-const popupMessages = [
+/*
+   Các thông báo dưới đây chỉ dùng để xem trước
+   giao diện popup, không phải hồ sơ đăng ký thật.
+*/
 
-    "Nhiều ứng viên đang tìm hiểu các đơn tuyển dụng.",
+const demoMessages = [
 
-    "Các vị trí công nhân tại miền Bắc đang được quan tâm.",
+    "Nguyễn Văn A đang quan tâm tìm việc tại Bắc Ninh.",
 
-    "Nhiều ứng viên đang xem thông tin tuyển dụng hôm nay.",
+    "Trần Thị Hương đang tìm việc công nhân tại Hải Dương.",
 
-    "Các đơn tuyển dụng mới đang nhận được nhiều sự quan tâm.",
+    "Lê Văn Nam đang quan tâm vị trí nhân viên kho tại Hà Nội.",
 
-    "Ứng viên đang tìm kiếm việc làm tại Bắc Ninh, Hải Dương và các tỉnh miền Bắc."
+    "Phạm Thị Lan đang tìm hiểu việc làm tại Thái Nguyên.",
+
+    "Đỗ Văn Thành đang quan tâm các đơn tuyển dụng tại Hưng Yên.",
+
+    "Nguyễn Thị Mai đang tìm việc tại Hải Phòng.",
+
+    "Hoàng Văn Đức đang quan tâm vị trí QC tại Vĩnh Phúc.",
+
+    "Vũ Thị Hạnh đang tìm hiểu đơn công nhân tại Bắc Ninh."
 
 ];
 
 
-function showRegistrationToast() {
+function showDemoToast() {
 
     const randomIndex =
         Math.floor(
             Math.random() *
-            popupMessages.length
-        );
-
-    const toastText =
-        document.getElementById(
-            "registrationToastText"
+            demoMessages.length
         );
 
     const toast =
@@ -1006,8 +1068,14 @@ function showRegistrationToast() {
             "registrationToast"
         );
 
-    toastText.innerText =
-        popupMessages[randomIndex];
+    const toastText =
+        document.getElementById(
+            "registrationToastText"
+        );
+
+    toastText.innerHTML =
+        demoMessages[randomIndex] +
+        "<br><small>🔔 Thông báo mẫu</small>";
 
     toast.classList.add("show");
 
@@ -1020,20 +1088,24 @@ function showRegistrationToast() {
 }
 
 
-/* Popup đầu tiên sau 8 giây */
+/*
+   Popup mẫu đầu tiên sau 8 giây
+*/
 
 setTimeout(function() {
 
-    showRegistrationToast();
+    showDemoToast();
 
 }, 8000);
 
 
-/* Sau đó hiện lại mỗi 25 giây */
+/*
+   Sau đó hiện lại mỗi 25 giây
+*/
 
 setInterval(function() {
 
-    showRegistrationToast();
+    showDemoToast();
 
 }, 25000);
 
