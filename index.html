@@ -25,6 +25,10 @@
             line-height: 1.6;
         }
 
+        /* =========================
+           HEADER
+        ========================= */
+
         header {
             background: linear-gradient(135deg, #d60000, #ff4b2b);
             color: white;
@@ -41,325 +45,20 @@
             font-size: 16px;
         }
 
-        nav {
-            background: white;
-            padding: 12px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
 
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-            margin: 0 12px;
-        }
-
-        nav a:hover {
-            color: #d60000;
-        }
-
-        .banner {
-            max-width: 1100px;
-            margin: 25px auto;
-            padding: 45px 20px;
-            background: linear-gradient(135deg, #fff1f1, #ffffff);
-            border-radius: 15px;
-            text-align: center;
-        }
-
-        .banner h2 {
-            color: #d60000;
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-
-        .banner p {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            background: #d60000;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background: #a80000;
-        }
-
-        .search-box {
-            max-width: 1100px;
-            margin: 20px auto;
-            padding: 0 15px;
-            display: flex;
-            gap: 10px;
-        }
-
-        .search-box input,
-        .search-box select {
-            flex: 1;
-            padding: 13px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 15px;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 15px;
-        }
-
-        .section-title {
-            text-align: center;
-            margin: 30px 0 25px;
-        }
-
-        .section-title h2 {
-            color: #d60000;
-            font-size: 27px;
-        }
-
-        .jobs {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .job {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-            transition: 0.2s;
-        }
-
-        .job:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-        }
-
-        .job h3 {
-            color: #d60000;
-            margin-bottom: 12px;
-        }
-
-        .job p {
-            margin: 7px 0;
-        }
-
-        .salary {
-            color: #008000;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .location {
-            color: #555;
-        }
-
-        .tag {
-            display: inline-block;
-            background: #ffe4e4;
-            color: #d60000;
-            padding: 5px 9px;
-            border-radius: 5px;
-            font-size: 12px;
-            margin-bottom: 10px;
-        }
-
-        .benefits {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .benefit {
-            background: white;
-            padding: 20px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        }
-
-        .benefit strong {
-            display: block;
-            color: #d60000;
-            font-size: 18px;
-            margin-bottom: 5px;
-        }
-
-        .register {
-            background: white;
-            max-width: 700px;
-            margin: 40px auto;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-        }
-
-        .register h2 {
-            text-align: center;
-            color: #d60000;
-            margin-bottom: 10px;
-        }
-
-        .register .subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 25px;
-        }
-
-        .form-group {
-            margin-bottom: 14px;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .register input,
-        .register textarea,
-        .register select {
-            width: 100%;
-            padding: 13px;
-            border: 1px solid #ddd;
-            border-radius: 7px;
-            font-size: 15px;
-            outline: none;
-        }
-
-        .register input:focus,
-        .register textarea:focus,
-        .register select:focus {
-            border-color: #d60000;
-        }
-
-        .register textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        .register button {
-            width: 100%;
-            margin-top: 5px;
-            font-size: 16px;
-        }
-
-        .success-message {
-            display: none;
-            background: #e8f8ee;
-            color: #16753a;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        /* ===== SỐ ỨNG VIÊN ĐANG QUAN TÂM ===== */
-
-        .registration-counter {
-            max-width: 700px;
-            margin: 25px auto 0;
-            padding: 15px 20px;
-            background: #fff7ed;
-            border: 1px solid #fed7aa;
-            border-radius: 12px;
-            text-align: center;
-            font-size: 16px;
-        }
-
-        .registration-counter strong {
-            color: #ea580c;
-            font-size: 25px;
-        }
-
-        /* ===== POPUP ĐĂNG KÝ ===== */
-
-        .registration-toast {
-            position: fixed;
-            left: 20px;
-            bottom: 20px;
-            z-index: 99999;
-            width: 360px;
-            max-width: calc(100vw - 40px);
-            background: white;
-            border-radius: 14px;
-            padding: 15px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.18);
-            display: none;
-            align-items: flex-start;
-            gap: 12px;
-            border: 1px solid #eee;
-        }
-
-        .registration-toast.show {
-            display: flex;
-            animation: registrationToastIn 0.35s ease;
-        }
-
-        .registration-toast-icon {
-            font-size: 27px;
-            line-height: 1;
-        }
-
-        .registration-toast-title {
-            font-weight: bold;
-            color: #111;
-            margin-bottom: 4px;
-            font-size: 15px;
-        }
-
-        .registration-toast-text {
-            font-size: 14px;
-            color: #666;
-            line-height: 1.5;
-        }
-
-        .registration-toast-demo {
-            font-size: 11px;
-            color: #999;
-            margin-top: 4px;
-        }
-
-        @keyframes registrationToastIn {
-
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-        }
+        /* =========================
+           LIÊN HỆ - ĐƯA LÊN ĐẦU
+        ========================= */
 
         .contact {
             background: #d60000;
             color: white;
             text-align: center;
-            padding: 35px 15px;
-            margin-top: 40px;
+            padding: 30px 15px;
         }
 
         .contact h2 {
+            font-size: 25px;
             margin-bottom: 10px;
         }
 
@@ -384,15 +83,531 @@
             padding: 10px 18px;
             border-radius: 8px;
             margin: 5px;
+            transition: 0.2s;
         }
 
-        footer {
-            background: #222;
-            color: #aaa;
+        .contact-buttons a:hover {
+            background: #f3f3f3;
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           MENU
+        ========================= */
+
+        nav {
+            background: white;
+            padding: 12px;
             text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            margin: 0 12px;
+        }
+
+        nav a:hover {
+            color: #d60000;
+        }
+
+
+        /* =========================
+           BANNER
+        ========================= */
+
+        .banner {
+            max-width: 1100px;
+            margin: 25px auto;
+            padding: 45px 20px;
+
+            background: linear-gradient(135deg, #fff1f1, #ffffff);
+
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .banner h2 {
+            color: #d60000;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .banner p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .btn {
+            display: inline-block;
+
+            background: #d60000;
+            color: white;
+
+            padding: 12px 25px;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+            font-weight: bold;
+
+            border: none;
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background: #a80000;
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        .search-box {
+            max-width: 1100px;
+            margin: 20px auto;
+
+            padding: 0 15px;
+
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-box input,
+        .search-box select {
+
+            flex: 1;
+
+            padding: 13px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 8px;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .container {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 15px;
+        }
+
+
+        /* =========================
+           SECTION TITLE
+        ========================= */
+
+        .section-title {
+            text-align: center;
+
+            margin: 30px 0 25px;
+        }
+
+        .section-title h2 {
+            color: #d60000;
+
+            font-size: 27px;
+        }
+
+
+        /* =========================
+           JOBS
+        ========================= */
+
+        .jobs {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .job {
+
+            background: white;
+
+            border-radius: 12px;
+
+            padding: 20px;
+
+            box-shadow:
+                0 3px 12px rgba(0,0,0,0.08);
+
+            transition: 0.2s;
+        }
+
+        .job:hover {
+
+            transform:
+                translateY(-4px);
+
+            box-shadow:
+                0 6px 18px rgba(0,0,0,0.12);
+        }
+
+        .job h3 {
+
+            color: #d60000;
+
+            margin-bottom: 12px;
+        }
+
+        .job p {
+
+            margin: 7px 0;
+        }
+
+        .salary {
+
+            color: #008000;
+
+            font-size: 18px;
+
+            font-weight: bold;
+        }
+
+        .location {
+
+            color: #555;
+        }
+
+        .tag {
+
+            display: inline-block;
+
+            background: #ffe4e4;
+
+            color: #d60000;
+
+            padding: 5px 9px;
+
+            border-radius: 5px;
+
+            font-size: 12px;
+
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================
+           BENEFITS
+        ========================= */
+
+        .benefits {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 15px;
+
+            margin-top: 20px;
+        }
+
+        .benefit {
+
+            background: white;
+
+            padding: 20px;
+
+            text-align: center;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .benefit strong {
+
+            display: block;
+
+            color: #d60000;
+
+            font-size: 18px;
+
+            margin-bottom: 5px;
+        }
+
+
+        /* =========================
+           COUNTER
+        ========================= */
+
+        .registration-counter {
+
+            max-width: 700px;
+
+            margin: 25px auto 0;
+
+            padding: 15px 20px;
+
+            background: #fff7ed;
+
+            border: 1px solid #fed7aa;
+
+            border-radius: 12px;
+
+            text-align: center;
+
+            font-size: 16px;
+        }
+
+        .registration-counter strong {
+
+            color: #ea580c;
+
+            font-size: 25px;
+        }
+
+
+        /* =========================
+           POPUP
+        ========================= */
+
+        .registration-toast {
+
+            position: fixed;
+
+            left: 20px;
+            bottom: 20px;
+
+            z-index: 99999;
+
+            width: 350px;
+
+            max-width:
+                calc(100vw - 40px);
+
+            background: white;
+
+            border-radius: 14px;
+
+            padding: 15px;
+
+            box-shadow:
+                0 8px 30px rgba(0,0,0,0.18);
+
+            display: none;
+
+            align-items: center;
+
+            gap: 12px;
+
+            border: 1px solid #eee;
+        }
+
+        .registration-toast.show {
+
+            display: flex;
+
+            animation:
+                registrationToastIn
+                0.35s ease;
+        }
+
+        .registration-toast-icon {
+
+            font-size: 25px;
+        }
+
+        .registration-toast-title {
+
+            font-weight: bold;
+
+            color: #111;
+
+            margin-bottom: 4px;
+        }
+
+        .registration-toast-text {
+
+            font-size: 14px;
+
+            color: #666;
+        }
+
+        @keyframes registrationToastIn {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(20px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* =========================
+           FORM
+        ========================= */
+
+        .register {
+
+            background: white;
+
+            max-width: 700px;
+
+            margin: 40px auto;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .register h2 {
+
+            text-align: center;
+
+            color: #d60000;
+
+            margin-bottom: 10px;
+        }
+
+        .register .subtitle {
+
+            text-align: center;
+
+            color: #666;
+
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+
+            margin-bottom: 14px;
+        }
+
+        .form-group label {
+
+            display: block;
+
+            font-weight: bold;
+
+            margin-bottom: 5px;
+        }
+
+        .register input,
+        .register textarea,
+        .register select {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 7px;
+
+            font-size: 15px;
+
+            outline: none;
+        }
+
+        .register input:focus,
+        .register textarea:focus,
+        .register select:focus {
+
+            border-color:
+                #d60000;
+        }
+
+        .register textarea {
+
+            min-height: 100px;
+
+            resize: vertical;
+        }
+
+        .register button {
+
+            width: 100%;
+
+            margin-top: 5px;
+
+            font-size: 16px;
+        }
+
+        .success-message {
+
+            display: none;
+
+            background: #e8f8ee;
+
+            color: #16753a;
+
+            padding: 15px;
+
+            border-radius: 8px;
+
+            text-align: center;
+
+            margin-bottom: 15px;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            background: #222;
+
+            color: #aaa;
+
+            text-align: center;
+
             padding: 18px;
+
             font-size: 14px;
         }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
 
         @media (max-width: 800px) {
 
@@ -409,7 +624,8 @@
             }
 
             .benefits {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns:
+                    repeat(2, 1fr);
             }
 
             .search-box {
@@ -420,8 +636,8 @@
                 margin: 0 5px;
                 font-size: 14px;
             }
-
         }
+
 
         @media (max-width: 450px) {
 
@@ -430,27 +646,49 @@
             }
 
             .register {
-                margin: 25px 12px;
+
+                margin:
+                    25px 12px;
+
                 padding: 20px;
             }
 
             .registration-toast {
+
                 left: 12px;
+
                 bottom: 12px;
-                width: calc(100vw - 24px);
+
+                width:
+                    calc(100vw - 24px);
             }
 
+            .contact h2 {
+                font-size: 22px;
+            }
+
+            .contact-buttons a {
+                padding: 10px 15px;
+            }
         }
 
     </style>
 
 </head>
 
+
 <body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
-    <h1>VIỆC LÀM MIỀN BẮC</h1>
+    <h1>
+        VIỆC LÀM MIỀN BẮC
+    </h1>
 
     <p>
         Tìm việc nhanh - Việc thật - Thu nhập ổn định
@@ -459,22 +697,85 @@
 </header>
 
 
+<!-- =========================
+     LIÊN HỆ ĐƯA LÊN ĐẦU
+========================= -->
+
+<section id="lien-he" class="contact">
+
+    <h2>
+        📞 LIÊN HỆ TUYỂN DỤNG
+    </h2>
+
+    <p>
+        Đức HR - Tư vấn việc làm miền Bắc
+    </p>
+
+    <p>
+        ☎️ Hotline:
+
+        <a href="tel:0369759879">
+            0369 759 879
+        </a>
+    </p>
+
+    <p>
+        💬 Zalo:
+
+        <a href="https://zalo.me/0369759879">
+            0369 759 879
+        </a>
+    </p>
+
+    <div class="contact-buttons">
+
+        <a href="tel:0369759879">
+            ☎️ GỌI NGAY
+        </a>
+
+        <a href="https://zalo.me/0369759879">
+            💬 NHẮN ZALO
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MENU
+========================= -->
+
 <nav>
 
-    <a href="#viec-lam">Việc làm</a>
+    <a href="#viec-lam">
+        Việc làm
+    </a>
 
-    <a href="#quyen-loi">Quyền lợi</a>
+    <a href="#quyen-loi">
+        Quyền lợi
+    </a>
 
-    <a href="#dang-ky">Đăng ký</a>
+    <a href="#dang-ky">
+        Đăng ký
+    </a>
 
-    <a href="#lien-he">Liên hệ</a>
+    <a href="#lien-he">
+        Liên hệ
+    </a>
 
 </nav>
 
 
+<!-- =========================
+     BANNER
+========================= -->
+
 <section class="banner">
 
-    <h2>🔥 TUYỂN DỤNG VIỆC LÀM MIỀN BẮC</h2>
+    <h2>
+        🔥 TUYỂN DỤNG VIỆC LÀM MIỀN BẮC
+    </h2>
 
     <p>
         Nhiều vị trí đang tuyển dụng tại các khu công nghiệp
@@ -487,6 +788,10 @@
 </section>
 
 
+<!-- =========================
+     SEARCH
+========================= -->
+
 <div class="search-box">
 
     <input
@@ -496,31 +801,63 @@
         onkeyup="searchJobs()"
     >
 
-    <select id="location" onchange="searchJobs()">
+    <select
+        id="location"
+        onchange="searchJobs()"
+    >
 
         <option value="">
             Tất cả khu vực
         </option>
 
-        <option value="Bắc Ninh">Bắc Ninh</option>
-        <option value="Bắc Giang">Bắc Giang</option>
-        <option value="Hải Dương">Hải Dương</option>
-        <option value="Hà Nội">Hà Nội</option>
-        <option value="Hưng Yên">Hưng Yên</option>
-        <option value="Hải Phòng">Hải Phòng</option>
-        <option value="Thái Nguyên">Thái Nguyên</option>
-        <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+        <option value="Bắc Ninh">
+            Bắc Ninh
+        </option>
+
+        <option value="Bắc Giang">
+            Bắc Giang
+        </option>
+
+        <option value="Hải Dương">
+            Hải Dương
+        </option>
+
+        <option value="Hà Nội">
+            Hà Nội
+        </option>
+
+        <option value="Hưng Yên">
+            Hưng Yên
+        </option>
+
+        <option value="Hải Phòng">
+            Hải Phòng
+        </option>
+
+        <option value="Thái Nguyên">
+            Thái Nguyên
+        </option>
+
+        <option value="Vĩnh Phúc">
+            Vĩnh Phúc
+        </option>
 
     </select>
 
 </div>
 
 
+<!-- =========================
+     VIỆC LÀM
+========================= -->
+
 <section id="viec-lam" class="container">
 
     <div class="section-title">
 
-        <h2>🔥 VIỆC LÀM ĐANG TUYỂN</h2>
+        <h2>
+            🔥 VIỆC LÀM ĐANG TUYỂN
+        </h2>
 
         <p>
             Cập nhật những đơn tuyển dụng mới nhất
@@ -735,6 +1072,10 @@
 </section>
 
 
+<!-- =========================
+     QUYỀN LỢI
+========================= -->
+
 <section id="quyen-loi" class="container">
 
     <div class="section-title">
@@ -798,7 +1139,9 @@
 </section>
 
 
-<!-- ===== SỐ ỨNG VIÊN ĐANG QUAN TÂM ===== -->
+<!-- =========================
+     SỐ ỨNG VIÊN QUAN TÂM
+========================= -->
 
 <div class="registration-counter">
 
@@ -813,7 +1156,9 @@
 </div>
 
 
-<!-- ===== POPUP THÔNG BÁO ĐĂNG KÝ ===== -->
+<!-- =========================
+     POPUP
+========================= -->
 
 <div
     id="registrationToast"
@@ -825,27 +1170,17 @@
         🔔
     </div>
 
-
     <div>
 
-        <div
-            id="registrationToastTitle"
-            class="registration-toast-title"
-        >
-            🔥 Nguyễn Văn A vừa đăng ký tìm việc
+        <div class="registration-toast-title">
+            🔥 Đang có nhiều người quan tâm
         </div>
-
 
         <div
             id="registrationToastText"
             class="registration-toast-text"
         >
-            📱 098****123 · 📍 Bắc Ninh · ⏱ Vừa xong
-        </div>
-
-
-        <div class="registration-toast-demo">
-            Thông báo mô phỏng
+            Nhiều ứng viên đang tìm hiểu các đơn tuyển dụng.
         </div>
 
     </div>
@@ -853,12 +1188,15 @@
 </div>
 
 
+<!-- =========================
+     ĐĂNG KÝ
+========================= -->
+
 <section id="dang-ky" class="register">
 
     <h2>
         📝 ĐĂNG KÝ TÌM VIỆC
     </h2>
-
 
     <p class="subtitle">
 
@@ -925,7 +1263,6 @@
                 Tỉnh/thành hiện tại *
             </label>
 
-
             <select
                 name="Tỉnh thành hiện tại"
                 required
@@ -983,55 +1320,9 @@
 </section>
 
 
-<section id="lien-he" class="contact">
-
-    <h2>
-        📞 LIÊN HỆ TUYỂN DỤNG
-    </h2>
-
-
-    <p>
-        Đức HR - Tư vấn việc làm miền Bắc
-    </p>
-
-
-    <p>
-
-        ☎️ Hotline:
-
-        <a href="tel:0369759879">
-            0369 759 879
-        </a>
-
-    </p>
-
-
-    <p>
-
-        💬 Zalo:
-
-        <a href="https://zalo.me/0369759879">
-            0369 759 879
-        </a>
-
-    </p>
-
-
-    <div class="contact-buttons">
-
-        <a href="tel:0369759879">
-            ☎️ GỌI NGAY
-        </a>
-
-
-        <a href="https://zalo.me/0369759879">
-            💬 NHẮN ZALO
-        </a>
-
-    </div>
-
-</section>
-
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -1040,6 +1331,10 @@
 
 </footer>
 
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 
 <script>
 
@@ -1087,11 +1382,13 @@ function searchJobs() {
             keywordMatch
         ) {
 
-            job.style.display = "block";
+            job.style.display =
+                "block";
 
         } else {
 
-            job.style.display = "none";
+            job.style.display =
+                "none";
 
         }
 
@@ -1143,6 +1440,7 @@ form.addEventListener(
                     {
                         method: "POST",
                         body: formData,
+
                         headers: {
                             "Accept":
                                 "application/json"
@@ -1153,6 +1451,8 @@ form.addEventListener(
 
             if (response.ok) {
 
+
+                /* Lấy tên ứng viên */
 
                 const nameInput =
                     form.querySelector(
@@ -1172,12 +1472,6 @@ form.addEventListener(
                     );
 
 
-                const toastTitle =
-                    document.getElementById(
-                        "registrationToastTitle"
-                    );
-
-
                 const toastText =
                     document.getElementById(
                         "registrationToastText"
@@ -1186,23 +1480,15 @@ form.addEventListener(
 
                 if (name) {
 
-                    toastTitle.innerText =
-                        "✅ " +
-                        name +
-                        " vừa đăng ký tìm việc";
-
-
                     toastText.innerText =
-                        "📱 Hồ sơ của bạn đã được tiếp nhận thành công.";
+                        "Cảm ơn " +
+                        name +
+                        "! Hồ sơ của bạn đã được tiếp nhận.";
 
                 } else {
 
-                    toastTitle.innerText =
-                        "✅ Đăng ký tìm việc thành công";
-
-
                     toastText.innerText =
-                        "📱 Hồ sơ của bạn đã được tiếp nhận.";
+                        "Hồ sơ của bạn đã được tiếp nhận thành công.";
 
                 }
 
@@ -1210,17 +1496,16 @@ form.addEventListener(
                 toast.classList.add("show");
 
 
-                setTimeout(
-                    function() {
+                setTimeout(function() {
 
-                        toast.classList.remove(
-                            "show"
-                        );
+                    toast.classList.remove(
+                        "show"
+                    );
 
-                    },
-                    5000
-                );
+                }, 5000);
 
+
+                /* Reset form */
 
                 form.reset();
 
@@ -1238,8 +1523,11 @@ form.addEventListener(
 
 
                 successMessage.scrollIntoView({
+
                     behavior: "smooth",
+
                     block: "center"
+
                 });
 
 
@@ -1293,8 +1581,8 @@ const registrationCount =
 
 
 /*
-    Đây là số lượng mô phỏng để tạo hiệu ứng
-    hiển thị mức độ quan tâm trên website.
+   Đây là chỉ số mô phỏng mức độ quan tâm,
+   không phải số hồ sơ đăng ký thực tế.
 */
 
 let interestCount =
@@ -1303,147 +1591,75 @@ let interestCount =
     ) + 85;
 
 
+/* Hiển thị số ban đầu */
+
 registrationCount.innerText =
-    interestCount.toLocaleString("vi-VN");
+    interestCount.toLocaleString(
+        "vi-VN"
+    );
 
 
-setInterval(
-    function() {
+/* Thay đổi nhẹ sau mỗi 30 giây */
 
-        const change =
-            Math.floor(
-                Math.random() * 7
-            ) - 3;
+setInterval(function() {
 
-
-        interestCount += change;
+    const change =
+        Math.floor(
+            Math.random() * 7
+        ) - 3;
 
 
-        if (interestCount < 85) {
-            interestCount = 85;
-        }
+    interestCount += change;
 
 
-        if (interestCount > 150) {
-            interestCount = 150;
-        }
+    if (interestCount < 85) {
+
+        interestCount = 85;
+
+    }
 
 
-        registrationCount.innerText =
-            interestCount.toLocaleString("vi-VN");
+    if (interestCount > 150) {
+
+        interestCount = 150;
+
+    }
 
 
-    },
-    30000
-);
+    registrationCount.innerText =
+        interestCount.toLocaleString(
+            "vi-VN"
+        );
+
+}, 30000);
 
 
 /* =====================================================
-   DANH SÁCH THÔNG BÁO MÔ PHỎNG
+   POPUP THÔNG BÁO
 ===================================================== */
 
-const registrationNotifications = [
+const popupMessages = [
 
-    {
-        name: "Nguyễn Văn A",
-        phone: "098****123",
-        location: "Bắc Ninh"
-    },
+    "Nhiều ứng viên đang tìm hiểu các đơn tuyển dụng.",
 
-    {
-        name: "Trần Thị Hương",
-        phone: "097****456",
-        location: "Hải Dương"
-    },
+    "Các vị trí công nhân tại miền Bắc đang được quan tâm.",
 
-    {
-        name: "Lê Văn Thành",
-        phone: "096****789",
-        location: "Hưng Yên"
-    },
+    "Nhiều ứng viên đang xem thông tin tuyển dụng hôm nay.",
 
-    {
-        name: "Phạm Văn Nam",
-        phone: "091****234",
-        location: "Hà Nội"
-    },
+    "Các đơn tuyển dụng mới đang nhận được nhiều sự quan tâm.",
 
-    {
-        name: "Hoàng Thị Mai",
-        phone: "098****567",
-        location: "Thái Nguyên"
-    },
-
-    {
-        name: "Đỗ Văn Hùng",
-        phone: "097****890",
-        location: "Hải Phòng"
-    },
-
-    {
-        name: "Vũ Thị Lan",
-        phone: "096****345",
-        location: "Vĩnh Phúc"
-    },
-
-    {
-        name: "Nguyễn Văn Đức",
-        phone: "098****678",
-        location: "Bắc Ninh"
-    },
-
-    {
-        name: "Bùi Văn Long",
-        phone: "091****901",
-        location: "Hải Dương"
-    },
-
-    {
-        name: "Phan Thị Ngọc",
-        phone: "097****123",
-        location: "Hà Nội"
-    },
-
-    {
-        name: "Đặng Văn Minh",
-        phone: "098****456",
-        location: "Hưng Yên"
-    },
-
-    {
-        name: "Nguyễn Thị Hoa",
-        phone: "096****789",
-        location: "Thái Nguyên"
-    }
+    "Ứng viên đang tìm kiếm việc làm tại Bắc Ninh, Hải Dương và các tỉnh miền Bắc."
 
 ];
 
 
-let notificationIndex = 0;
-
-
-/* =====================================================
-   HIỂN THỊ POPUP ĐĂNG KÝ
-===================================================== */
-
 function showRegistrationToast() {
 
 
-    const data =
-        registrationNotifications[
-            notificationIndex
-        ];
-
-
-    const toast =
-        document.getElementById(
-            "registrationToast"
-        );
-
-
-    const toastTitle =
-        document.getElementById(
-            "registrationToastTitle"
+    const randomIndex =
+        Math.floor(
+            Math.random() *
+            popupMessages.length
         );
 
 
@@ -1453,82 +1669,46 @@ function showRegistrationToast() {
         );
 
 
-    toastTitle.innerText =
-        "🔥 " +
-        data.name +
-        " vừa đăng ký tìm việc";
+    const toast =
+        document.getElementById(
+            "registrationToast"
+        );
 
 
     toastText.innerText =
-        "📱 " +
-        data.phone +
-        "  ·  📍 " +
-        data.location +
-        "  ·  ⏱ Vừa xong";
-
-
-    toast.classList.remove("show");
-
-
-    void toast.offsetWidth;
+        popupMessages[randomIndex];
 
 
     toast.classList.add("show");
 
 
-    setTimeout(
-        function() {
+    setTimeout(function() {
 
-            toast.classList.remove(
-                "show"
-            );
+        toast.classList.remove(
+            "show"
+        );
 
-        },
-        5000
-    );
-
-
-    notificationIndex++;
-
-
-    if (
-        notificationIndex >=
-        registrationNotifications.length
-    ) {
-
-        notificationIndex = 0;
-
-    }
+    }, 5000);
 
 }
 
 
-/* =====================================================
-   POPUP ĐẦU TIÊN
-===================================================== */
+/* Popup đầu tiên sau 8 giây */
 
-setTimeout(
-    function() {
+setTimeout(function() {
 
-        showRegistrationToast();
+    showRegistrationToast();
 
-    },
-    8000
-);
+}, 8000);
 
 
-/* =====================================================
-   SAU ĐÓ HIỆN LẠI MỖI 25 GIÂY
-===================================================== */
+/* Sau đó hiện lại mỗi 25 giây */
 
-setInterval(
-    function() {
+setInterval(function() {
 
-        showRegistrationToast();
+    showRegistrationToast();
 
-    },
-    25000
-);
+}, 25000);
 
 
 </script>
