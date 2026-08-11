@@ -25,7 +25,9 @@
             line-height: 1.6;
         }
 
-        /* ================= HEADER ================= */
+        /* =========================
+           HEADER
+        ========================= */
 
         header {
             background: linear-gradient(135deg, #d60000, #ff4b2b);
@@ -43,46 +45,55 @@
             font-size: 16px;
         }
 
-        /* ================= LIÊN HỆ ĐƯA LÊN ĐẦU ================= */
+        /* =========================
+           CONTACT TOP
+        ========================= */
 
         .top-contact {
-            background: #d60000;
+            background: #e60000;
             color: white;
             text-align: center;
-            padding: 25px 15px;
+            padding: 28px 15px;
         }
 
         .top-contact h2 {
-            margin-bottom: 10px;
             font-size: 24px;
+            margin-bottom: 8px;
         }
 
         .top-contact p {
-            margin: 6px 0;
+            margin: 5px 0;
+            font-size: 16px;
         }
 
         .top-contact a {
             color: white;
-            font-weight: bold;
             text-decoration: none;
+            font-weight: bold;
         }
 
-        .top-contact-buttons {
+        .contact-buttons {
             margin-top: 18px;
         }
 
-        .top-contact-buttons a {
+        .contact-buttons a {
             display: inline-block;
             background: white;
             color: #d60000;
-            padding: 10px 18px;
+            padding: 11px 20px;
             border-radius: 8px;
             margin: 5px;
             text-decoration: none;
             font-weight: bold;
         }
 
-        /* ================= NAV ================= */
+        .contact-buttons a:hover {
+            background: #f5f5f5;
+        }
+
+        /* =========================
+           NAV
+        ========================= */
 
         nav {
             background: white;
@@ -105,7 +116,9 @@
             color: #d60000;
         }
 
-        /* ================= BANNER ================= */
+        /* =========================
+           BANNER
+        ========================= */
 
         .banner {
             max-width: 1100px;
@@ -143,7 +156,9 @@
             background: #a80000;
         }
 
-        /* ================= SEARCH ================= */
+        /* =========================
+           SEARCH
+        ========================= */
 
         .search-box {
             max-width: 1100px;
@@ -162,7 +177,9 @@
             font-size: 15px;
         }
 
-        /* ================= CONTAINER ================= */
+        /* =========================
+           CONTAINER
+        ========================= */
 
         .container {
             max-width: 1100px;
@@ -180,7 +197,9 @@
             font-size: 27px;
         }
 
-        /* ================= JOBS ================= */
+        /* =========================
+           JOBS
+        ========================= */
 
         .jobs {
             display: grid;
@@ -230,7 +249,9 @@
             margin-bottom: 10px;
         }
 
-        /* ================= BENEFITS ================= */
+        /* =========================
+           BENEFITS
+        ========================= */
 
         .benefits {
             display: grid;
@@ -254,11 +275,13 @@
             margin-bottom: 5px;
         }
 
-        /* ================= COUNTER ================= */
+        /* =========================
+           COUNTER
+        ========================= */
 
         .registration-counter {
             max-width: 700px;
-            margin: 25px auto 0;
+            margin: 25px auto;
             padding: 15px 20px;
             background: #fff7ed;
             border: 1px solid #fed7aa;
@@ -272,72 +295,9 @@
             font-size: 25px;
         }
 
-        /* ================= THÔNG BÁO ỨNG VIÊN ================= */
-
-        .registration-toast {
-            position: fixed;
-            left: 20px;
-            bottom: 20px;
-            z-index: 99999;
-
-            width: 350px;
-            max-width: calc(100vw - 40px);
-
-            background: white;
-            border-radius: 14px;
-            padding: 15px;
-
-            box-shadow: 0 8px 30px rgba(0,0,0,0.18);
-
-            display: none;
-            align-items: flex-start;
-            gap: 12px;
-
-            border: 1px solid #eee;
-        }
-
-        .registration-toast.show {
-            display: flex;
-            animation: registrationToastIn 0.35s ease;
-        }
-
-        .registration-toast-icon {
-            font-size: 24px;
-        }
-
-        .registration-toast-title {
-            font-weight: bold;
-            color: #111;
-            margin-bottom: 5px;
-        }
-
-        .registration-toast-line {
-            font-size: 14px;
-            color: #555;
-            line-height: 1.5;
-        }
-
-        .registration-toast-time {
-            color: #999;
-            font-size: 13px;
-            margin-top: 3px;
-        }
-
-        @keyframes registrationToastIn {
-
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-        }
-
-        /* ================= FORM ================= */
+        /* =========================
+           REGISTER FORM
+        ========================= */
 
         .register {
             background: white;
@@ -387,11 +347,6 @@
             border-color: #d60000;
         }
 
-        .register textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
         .register button {
             width: 100%;
             margin-top: 5px;
@@ -409,7 +364,70 @@
             font-weight: bold;
         }
 
-        /* ================= FOOTER ================= */
+        /* =========================
+           REGISTRATION NOTIFICATION
+        ========================= */
+
+        .registration-toast {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            z-index: 99999;
+
+            width: 360px;
+            max-width: calc(100vw - 40px);
+
+            background: white;
+            border-radius: 14px;
+            padding: 14px;
+
+            box-shadow: 0 8px 30px rgba(0,0,0,0.20);
+
+            display: none;
+            align-items: flex-start;
+            gap: 10px;
+
+            border: 1px solid #eee;
+        }
+
+        .registration-toast.show {
+            display: flex;
+            animation: registrationToastIn 0.35s ease;
+        }
+
+        .registration-toast-icon {
+            font-size: 25px;
+        }
+
+        .registration-toast-title {
+            font-weight: bold;
+            color: #111;
+            margin-bottom: 3px;
+        }
+
+        .registration-toast-text {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        @keyframes registrationToastIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
             background: #222;
@@ -419,7 +437,9 @@
             font-size: 14px;
         }
 
-        /* ================= MOBILE ================= */
+        /* =========================
+           MOBILE
+        ========================= */
 
         @media (max-width: 800px) {
 
@@ -479,13 +499,34 @@
 
 <body>
 
-<!-- ================= LIÊN HỆ ĐƯA LÊN TRÊN ================= -->
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <h1>VIỆC LÀM MIỀN BẮC</h1>
+
+    <p>
+        Tìm việc nhanh - Việc thật - Thu nhập ổn định
+    </p>
+
+</header>
+
+
+<!-- =========================
+     LIÊN HỆ ĐƯA LÊN ĐẦU
+========================= -->
 
 <section class="top-contact">
 
-    <h2>☎️ LIÊN HỆ TUYỂN DỤNG</h2>
+    <h2>
+        ☎️ LIÊN HỆ TUYỂN DỤNG
+    </h2>
 
-    <p>Đức HR - Tư vấn việc làm miền Bắc</p>
+    <p>
+        Đức HR - Tư vấn việc làm miền Bắc
+    </p>
 
     <p>
         ☎️ Hotline:
@@ -501,7 +542,7 @@
         </a>
     </p>
 
-    <div class="top-contact-buttons">
+    <div class="contact-buttons">
 
         <a href="tel:0369759879">
             ☎️ GỌI NGAY
@@ -516,20 +557,9 @@
 </section>
 
 
-<!-- ================= HEADER ================= -->
-
-<header>
-
-    <h1>VIỆC LÀM MIỀN BẮC</h1>
-
-    <p>
-        Tìm việc nhanh - Việc thật - Thu nhập ổn định
-    </p>
-
-</header>
-
-
-<!-- ================= NAV ================= -->
+<!-- =========================
+     MENU
+========================= -->
 
 <nav>
 
@@ -545,14 +575,12 @@
         Đăng ký
     </a>
 
-    <a href="#lien-he">
-        Liên hệ
-    </a>
-
 </nav>
 
 
-<!-- ================= BANNER ================= -->
+<!-- =========================
+     BANNER
+========================= -->
 
 <section class="banner">
 
@@ -571,7 +599,9 @@
 </section>
 
 
-<!-- ================= SEARCH ================= -->
+<!-- =========================
+     SEARCH
+========================= -->
 
 <div class="search-box">
 
@@ -628,7 +658,9 @@
 </div>
 
 
-<!-- ================= VIỆC LÀM ================= -->
+<!-- =========================
+     VIỆC LÀM
+========================= -->
 
 <section id="viec-lam" class="container">
 
@@ -851,7 +883,9 @@
 </section>
 
 
-<!-- ================= QUYỀN LỢI ================= -->
+<!-- =========================
+     QUYỀN LỢI
+========================= -->
 
 <section id="quyen-loi" class="container">
 
@@ -916,7 +950,9 @@
 </section>
 
 
-<!-- ================= SỐ NGƯỜI QUAN TÂM ================= -->
+<!-- =========================
+     SỐ NGƯỜI QUAN TÂM
+========================= -->
 
 <div class="registration-counter">
 
@@ -931,7 +967,9 @@
 </div>
 
 
-<!-- ================= POPUP ỨNG VIÊN ================= -->
+<!-- =========================
+     POPUP ĐĂNG KÝ THỰC TẾ
+========================= -->
 
 <div
     id="registrationToast"
@@ -945,24 +983,19 @@
 
     <div>
 
-        <div
-            id="registrationToastTitle"
-            class="registration-toast-title"
-        >
-            Ứng viên mới vừa đăng ký
+        <div class="registration-toast-title">
+            <span id="toastName">
+                Ứng viên
+            </span>
+            vừa đăng ký
         </div>
 
         <div
             id="registrationToastText"
-            class="registration-toast-line"
+            class="registration-toast-text"
         >
-            Hồ sơ mới vừa được tiếp nhận.
-        </div>
-
-        <div
-            id="registrationToastTime"
-            class="registration-toast-time"
-        >
+            📱 098****123<br>
+            📍 Bắc Ninh<br>
             ⏱️ Vừa xong
         </div>
 
@@ -971,22 +1004,18 @@
 </div>
 
 
-<!-- ================= FORM ĐĂNG KÝ ================= -->
+<!-- =========================
+     ĐĂNG KÝ
+========================= -->
 
-<section
-    id="dang-ky"
-    class="register"
->
+<section id="dang-ky" class="register">
 
     <h2>
         📝 ĐĂNG KÝ TÌM VIỆC
     </h2>
 
     <p class="subtitle">
-
-        Điền thông tin bên dưới,
-        bộ phận tuyển dụng sẽ liên hệ lại với bạn.
-
+        Điền thông tin bên dưới, bộ phận tuyển dụng sẽ liên hệ lại với bạn.
     </p>
 
 
@@ -994,10 +1023,7 @@
         id="successMessage"
         class="success-message"
     >
-
-        ✅ Đăng ký thành công!
-        Bộ phận tuyển dụng sẽ liên hệ với bạn sớm nhất.
-
+        ✅ Đăng ký thành công! Bộ phận tuyển dụng sẽ liên hệ với bạn sớm nhất.
     </div>
 
 
@@ -1102,56 +1128,13 @@
 </section>
 
 
-<!-- ================= LIÊN HỆ CUỐI TRANG ================= -->
-
-<section
-    id="lien-he"
-    class="top-contact"
->
-
-    <h2>
-        📞 LIÊN HỆ TUYỂN DỤNG
-    </h2>
-
-    <p>
-        Đức HR - Tư vấn việc làm miền Bắc
-    </p>
-
-    <p>
-        ☎️ Hotline:
-        <a href="tel:0369759879">
-            0369 759 879
-        </a>
-    </p>
-
-    <p>
-        💬 Zalo:
-        <a href="https://zalo.me/0369759879">
-            0369 759 879
-        </a>
-    </p>
-
-    <div class="top-contact-buttons">
-
-        <a href="tel:0369759879">
-            ☎️ GỌI NGAY
-        </a>
-
-        <a href="https://zalo.me/0369759879">
-            💬 NHẮN ZALO
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- ================= FOOTER ================= -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-    © 2026 Việc Làm Miền Bắc -
-    Thông tin tuyển dụng
+    © 2026 Việc Làm Miền Bắc - Thông tin tuyển dụng
 
 </footer>
 
@@ -1160,21 +1143,21 @@
 
 /* =====================================================
    TÌM KIẾM VIỆC LÀM
-   ===================================================== */
+===================================================== */
 
 function searchJobs() {
 
     const keyword =
         document
-        .getElementById("search")
-        .value
-        .toLowerCase();
+            .getElementById("search")
+            .value
+            .toLowerCase();
 
     const location =
         document
-        .getElementById("location")
-        .value
-        .toLowerCase();
+            .getElementById("location")
+            .value
+            .toLowerCase();
 
     const jobs =
         document.querySelectorAll(".job");
@@ -1213,36 +1196,38 @@ function searchJobs() {
 
 
 /* =====================================================
-   CHE SỐ ĐIỆN THOẠI
+   ẨN SỐ ĐIỆN THOẠI
    Ví dụ:
-   0987654321 -> 098****321
-   ===================================================== */
+   0987654321
+   =>
+   098****321
+===================================================== */
 
 function maskPhone(phone) {
 
     phone =
-        phone.replace(/\s+/g, "");
+        phone.replace(/\D/g, "");
 
-    if (phone.length >= 7) {
-
-        return (
-            phone.substring(0, 3) +
-            "****" +
-            phone.substring(phone.length - 3)
-        );
-
+    if (phone.length <= 6) {
+        return phone;
     }
 
-    return phone;
+    const first =
+        phone.substring(0, 3);
+
+    const last =
+        phone.substring(phone.length - 3);
+
+    return first + "****" + last;
 
 }
 
 
 /* =====================================================
-   HIỂN THỊ THÔNG BÁO ỨNG VIÊN THẬT
-   ===================================================== */
+   POPUP ĐĂNG KÝ THỰC TẾ
+===================================================== */
 
-function showApplicantNotification(
+function showRealRegistration(
     name,
     phone,
     location
@@ -1253,37 +1238,28 @@ function showApplicantNotification(
             "registrationToast"
         );
 
-    const title =
+    const toastName =
         document.getElementById(
-            "registrationToastTitle"
+            "toastName"
         );
 
-    const text =
+    const toastText =
         document.getElementById(
             "registrationToastText"
         );
 
-    const time =
-        document.getElementById(
-            "registrationToastTime"
-        );
+
+    toastName.innerText =
+        name || "Ứng viên";
 
 
-    title.innerText =
-        "🔔 " +
-        name +
-        " vừa đăng ký";
-
-
-    text.innerHTML =
+    toastText.innerHTML =
         "📱 " +
         maskPhone(phone) +
         "<br>" +
         "📍 " +
-        location;
-
-
-    time.innerText =
+        location +
+        "<br>" +
         "⏱️ Vừa xong";
 
 
@@ -1301,7 +1277,7 @@ function showApplicantNotification(
 
 /* =====================================================
    FORMSPREE
-   ===================================================== */
+===================================================== */
 
 const form =
     document.getElementById("jobForm");
@@ -1324,17 +1300,17 @@ form.addEventListener(
             );
 
 
+        /* LẤY THÔNG TIN NGƯỜI ĐĂNG KÝ */
+
         const nameInput =
             form.querySelector(
                 '[name="Họ và tên"]'
             );
 
-
         const phoneInput =
             form.querySelector(
                 '[name="Số điện thoại"]'
             );
-
 
         const locationInput =
             form.querySelector(
@@ -1345,10 +1321,8 @@ form.addEventListener(
         const name =
             nameInput.value.trim();
 
-
         const phone =
             phoneInput.value.trim();
-
 
         const location =
             locationInput.value;
@@ -1371,9 +1345,7 @@ form.addEventListener(
                     form.action,
                     {
                         method: "POST",
-
                         body: formData,
-
                         headers: {
                             "Accept":
                                 "application/json"
@@ -1385,17 +1357,40 @@ form.addEventListener(
             if (response.ok) {
 
 
-                /*
-                 * Hiển thị thông báo dựa trên
-                 * chính thông tin người vừa đăng ký.
-                 */
+                /* =========================
+                   HIỆN THÔNG BÁO NGƯỜI VỪA ĐĂNG KÝ
+                ========================= */
 
-                showApplicantNotification(
+                showRealRegistration(
                     name,
                     phone,
                     location
                 );
 
+
+                /* =========================
+                   TĂNG SỐ QUAN TÂM
+                ========================= */
+
+                interestCount += 1;
+
+
+                if (interestCount > 150) {
+
+                    interestCount = 150;
+
+                }
+
+
+                registrationCount.innerText =
+                    interestCount.toLocaleString(
+                        "vi-VN"
+                    );
+
+
+                /* =========================
+                   RESET FORM
+                ========================= */
 
                 form.reset();
 
@@ -1459,7 +1454,7 @@ form.addEventListener(
 
 /* =====================================================
    SỐ NGƯỜI ĐANG QUAN TÂM
-   ===================================================== */
+===================================================== */
 
 const registrationCount =
     document.getElementById(
@@ -1474,11 +1469,12 @@ let interestCount =
 
 
 registrationCount.innerText =
-    interestCount.toLocaleString("vi-VN");
+    interestCount.toLocaleString(
+        "vi-VN"
+    );
 
 
 setInterval(function() {
-
 
     const change =
         Math.floor(
@@ -1504,70 +1500,14 @@ setInterval(function() {
 
 
     registrationCount.innerText =
-        interestCount.toLocaleString("vi-VN");
-
+        interestCount.toLocaleString(
+            "vi-VN"
+        );
 
 }, 30000);
 
 
-/* =====================================================
-   LƯU THÔNG TIN ĐĂNG KÝ TRÊN TRÌNH DUYỆT
-   ===================================================== */
-
-form.addEventListener(
-    "submit",
-    function() {
-
-        const name =
-            form.querySelector(
-                '[name="Họ và tên"]'
-            ).value.trim();
-
-        const phone =
-            form.querySelector(
-                '[name="Số điện thoại"]'
-            ).value.trim();
-
-        const location =
-            form.querySelector(
-                '[name="Tỉnh thành hiện tại"]'
-            ).value;
-
-
-        if (
-            name &&
-            phone &&
-            location
-        ) {
-
-            const applicant = {
-
-                name: name,
-
-                phone: phone,
-
-                location: location,
-
-                time:
-                    new Date().toLocaleString(
-                        "vi-VN"
-                    )
-
-            };
-
-
-            localStorage.setItem(
-                "lastApplicant",
-                JSON.stringify(applicant)
-            );
-
-        }
-
-    }
-);
-
 </script>
-
 
 </body>
 </html>
