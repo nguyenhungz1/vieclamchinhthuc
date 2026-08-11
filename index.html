@@ -269,7 +269,7 @@
             font-weight: bold;
         }
 
-        /* ===== THÔNG BÁO SỐ NGƯỜI ĐĂNG KÝ - THÊM MỚI ===== */
+        /* ===== ỨNG VIÊN ĐANG QUAN TÂM ===== */
 
         .registration-counter {
             max-width: 700px;
@@ -287,7 +287,7 @@
             font-size: 25px;
         }
 
-        /* ===== POPUP THÔNG BÁO - THÊM MỚI ===== */
+        /* ===== POPUP ===== */
 
         .registration-toast {
             position: fixed;
@@ -577,15 +577,15 @@
 
 </section>
 
-<!-- ===== PHẦN ĐẾM NGƯỜI ĐĂNG KÝ ===== -->
+<!-- ===== SỐ ỨNG VIÊN ĐANG QUAN TÂM ===== -->
 
 <div class="registration-counter">
-    👥 Đã có
-    <strong id="registrationCount">0</strong>
-    người đăng ký tìm việc
+    👥 Hiện có
+    <strong id="registrationCount">100</strong>
+    ứng viên đang quan tâm tìm việc
 </div>
 
-<!-- ===== POPUP THÔNG BÁO ===== -->
+<!-- ===== POPUP ===== -->
 
 <div id="registrationToast" class="registration-toast" aria-live="polite">
 
@@ -596,11 +596,11 @@
     <div>
 
         <div class="registration-toast-title">
-            Đăng ký thành công
+            🔥 Đang có nhiều người quan tâm
         </div>
 
         <div id="registrationToastText" class="registration-toast-text">
-            Hồ sơ của bạn đã được tiếp nhận.
+            Nhiều ứng viên đang tìm hiểu các đơn tuyển dụng.
         </div>
 
     </div>
@@ -741,6 +741,10 @@
 
 <script>
 
+/* =====================================================
+   TÌM KIẾM VIỆC LÀM
+   ===================================================== */
+
 function searchJobs() {
 
     const keyword =
@@ -821,34 +825,7 @@ form.addEventListener("submit", async function(event) {
 
         if (response.ok) {
 
-            /* =========================================
-               ĐĂNG KÝ THÀNH CÔNG
-               TĂNG BỘ ĐẾM
-               ========================================= */
-
-            let count =
-                Number(
-                    localStorage.getItem(
-                        "siteRegistrationCount"
-                    ) || "0"
-                );
-
-            count++;
-
-            localStorage.setItem(
-                "siteRegistrationCount",
-                count
-            );
-
-            document.getElementById(
-                "registrationCount"
-            ).innerText =
-                count.toLocaleString("vi-VN");
-
-
-            /* =========================================
-               HIỆN THÔNG BÁO POPUP
-               ========================================= */
+            /* Đăng ký thật đã được gửi thành công */
 
             const nameInput =
                 form.querySelector(
@@ -860,7 +837,6 @@ form.addEventListener("submit", async function(event) {
                     ? nameInput.value.trim()
                     : "";
 
-
             const toast =
                 document.getElementById(
                     "registrationToast"
@@ -871,24 +847,21 @@ form.addEventListener("submit", async function(event) {
                     "registrationToastText"
                 );
 
-
             if (name) {
 
                 toastText.innerText =
                     "Cảm ơn " +
                     name +
-                    "! Hồ sơ của bạn đã được gửi thành công.";
+                    "! Hồ sơ của bạn đã được tiếp nhận.";
 
             } else {
 
                 toastText.innerText =
-                    "Hồ sơ của bạn đã được gửi thành công.";
+                    "Hồ sơ của bạn đã được tiếp nhận thành công.";
 
             }
 
-
             toast.classList.add("show");
-
 
             setTimeout(function() {
 
@@ -897,9 +870,7 @@ form.addEventListener("submit", async function(event) {
             }, 5000);
 
 
-            /* =========================================
-               RESET FORM
-               ========================================= */
+            /* Reset form */
 
             form.reset();
 
@@ -911,7 +882,6 @@ form.addEventListener("submit", async function(event) {
 
             button.innerText =
                 "📩 GỬI ĐĂNG KÝ";
-
 
             successMessage.scrollIntoView({
                 behavior: "smooth",
@@ -950,20 +920,122 @@ form.addEventListener("submit", async function(event) {
 
 
 /* =====================================================
-   HIỂN THỊ SỐ ĐĂNG KÝ ĐÃ LƯU TRÊN TRÌNH DUYỆT
+   HIỂN THỊ MỨC ĐỘ QUAN TÂM
    ===================================================== */
 
-const savedRegistrationCount =
-    Number(
-        localStorage.getItem(
-            "siteRegistrationCount"
-        ) || "0"
-    );
+const registrationCount =
+    document.getElementById("registrationCount");
 
-document.getElementById(
-    "registrationCount"
-).innerText =
-    savedRegistrationCount.toLocaleString("vi-VN");
+
+/*
+   Số này chỉ thể hiện mức độ quan tâm mô phỏng,
+   không phải số hồ sơ đăng ký thực tế.
+*/
+
+let interestCount =
+    Math.floor(
+        Math.random() * 66
+    ) + 85;
+
+
+/* Hiển thị số ban đầu */
+
+registrationCount.innerText =
+    interestCount.toLocaleString("vi-VN");
+
+
+/* Thay đổi nhẹ sau mỗi 30 giây */
+
+setInterval(function() {
+
+    const change =
+        Math.floor(
+            Math.random() * 7
+        ) - 3;
+
+    interestCount += change;
+
+    if (interestCount < 85) {
+        interestCount = 85;
+    }
+
+    if (interestCount > 150) {
+        interestCount = 150;
+    }
+
+    registrationCount.innerText =
+        interestCount.toLocaleString("vi-VN");
+
+}, 30000);
+
+
+/* =====================================================
+   POPUP THÔNG BÁO
+   ===================================================== */
+
+const popupMessages = [
+
+    "Nhiều ứng viên đang tìm hiểu các đơn tuyển dụng.",
+
+    "Các vị trí công nhân tại miền Bắc đang được quan tâm.",
+
+    "Nhiều ứng viên đang xem thông tin tuyển dụng hôm nay.",
+
+    "Các đơn tuyển dụng mới đang nhận được nhiều sự quan tâm.",
+
+    "Ứng viên đang tìm kiếm việc làm tại Bắc Ninh, Hải Dương và các tỉnh miền Bắc."
+
+];
+
+
+function showRegistrationToast() {
+
+    const randomIndex =
+        Math.floor(
+            Math.random() *
+            popupMessages.length
+        );
+
+    const toastText =
+        document.getElementById(
+            "registrationToastText"
+        );
+
+    const toast =
+        document.getElementById(
+            "registrationToast"
+        );
+
+    toastText.innerText =
+        popupMessages[randomIndex];
+
+    toast.classList.add("show");
+
+    setTimeout(function() {
+
+        toast.classList.remove("show");
+
+    }, 5000);
+
+}
+
+
+/* Popup đầu tiên sau 8 giây */
+
+setTimeout(function() {
+
+    showRegistrationToast();
+
+}, 8000);
+
+
+/* Sau đó hiện lại mỗi 25 giây */
+
+setInterval(function() {
+
+    showRegistrationToast();
+
+}, 25000);
 
 </script>
 
