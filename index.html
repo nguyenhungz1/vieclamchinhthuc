@@ -25,9 +25,7 @@
             line-height: 1.6;
         }
 
-        /* =========================
-           HEADER
-        ========================= */
+        /* ================= HEADER ================= */
 
         header {
             background: linear-gradient(135deg, #d60000, #ff4b2b);
@@ -45,55 +43,7 @@
             font-size: 16px;
         }
 
-        /* =========================
-           CONTACT TOP
-        ========================= */
-
-        .top-contact {
-            background: #e60000;
-            color: white;
-            text-align: center;
-            padding: 28px 15px;
-        }
-
-        .top-contact h2 {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-
-        .top-contact p {
-            margin: 5px 0;
-            font-size: 16px;
-        }
-
-        .top-contact a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .contact-buttons {
-            margin-top: 18px;
-        }
-
-        .contact-buttons a {
-            display: inline-block;
-            background: white;
-            color: #d60000;
-            padding: 11px 20px;
-            border-radius: 8px;
-            margin: 5px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .contact-buttons a:hover {
-            background: #f5f5f5;
-        }
-
-        /* =========================
-           NAV
-        ========================= */
+        /* ================= NAV ================= */
 
         nav {
             background: white;
@@ -116,9 +66,7 @@
             color: #d60000;
         }
 
-        /* =========================
-           BANNER
-        ========================= */
+        /* ================= BANNER ================= */
 
         .banner {
             max-width: 1100px;
@@ -156,9 +104,7 @@
             background: #a80000;
         }
 
-        /* =========================
-           SEARCH
-        ========================= */
+        /* ================= SEARCH ================= */
 
         .search-box {
             max-width: 1100px;
@@ -177,9 +123,7 @@
             font-size: 15px;
         }
 
-        /* =========================
-           CONTAINER
-        ========================= */
+        /* ================= CONTAINER ================= */
 
         .container {
             max-width: 1100px;
@@ -197,9 +141,7 @@
             font-size: 27px;
         }
 
-        /* =========================
-           JOBS
-        ========================= */
+        /* ================= JOBS ================= */
 
         .jobs {
             display: grid;
@@ -249,9 +191,7 @@
             margin-bottom: 10px;
         }
 
-        /* =========================
-           BENEFITS
-        ========================= */
+        /* ================= BENEFITS ================= */
 
         .benefits {
             display: grid;
@@ -275,29 +215,7 @@
             margin-bottom: 5px;
         }
 
-        /* =========================
-           COUNTER
-        ========================= */
-
-        .registration-counter {
-            max-width: 700px;
-            margin: 25px auto;
-            padding: 15px 20px;
-            background: #fff7ed;
-            border: 1px solid #fed7aa;
-            border-radius: 12px;
-            text-align: center;
-            font-size: 16px;
-        }
-
-        .registration-counter strong {
-            color: #ea580c;
-            font-size: 25px;
-        }
-
-        /* =========================
-           REGISTER FORM
-        ========================= */
+        /* ================= REGISTER ================= */
 
         .register {
             background: white;
@@ -347,6 +265,11 @@
             border-color: #d60000;
         }
 
+        .register textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
         .register button {
             width: 100%;
             margin-top: 5px;
@@ -364,9 +287,27 @@
             font-weight: bold;
         }
 
-        /* =========================
-           REGISTRATION NOTIFICATION
-        ========================= */
+        /* ================= SỐ NGƯỜI QUAN TÂM ================= */
+
+        .registration-counter {
+            max-width: 700px;
+            margin: 25px auto 0;
+            padding: 15px 20px;
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .registration-counter strong {
+            color: #ea580c;
+            font-size: 25px;
+        }
+
+        /* =====================================================
+           THÔNG BÁO ĐĂNG KÝ MẪU
+           ===================================================== */
 
         .registration-toast {
             position: fixed;
@@ -374,18 +315,20 @@
             bottom: 20px;
             z-index: 99999;
 
-            width: 360px;
+            width: 350px;
             max-width: calc(100vw - 40px);
 
             background: white;
             border-radius: 14px;
-            padding: 14px;
 
-            box-shadow: 0 8px 30px rgba(0,0,0,0.20);
+            padding: 14px 16px;
+
+            box-shadow: 0 8px 30px rgba(0,0,0,0.22);
 
             display: none;
+
             align-items: flex-start;
-            gap: 10px;
+            gap: 12px;
 
             border: 1px solid #eee;
         }
@@ -399,16 +342,42 @@
             font-size: 25px;
         }
 
+        .registration-toast-content {
+            flex: 1;
+        }
+
         .registration-toast-title {
             font-weight: bold;
             color: #111;
-            margin-bottom: 3px;
+            margin-bottom: 5px;
+            font-size: 15px;
         }
 
-        .registration-toast-text {
+        .registration-toast-phone {
+            color: #333;
             font-size: 14px;
+            margin-bottom: 2px;
+        }
+
+        .registration-toast-location {
             color: #555;
-            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .registration-toast-time {
+            color: #777;
+            font-size: 13px;
+        }
+
+        .sample-label {
+            display: inline-block;
+            margin-top: 5px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: #fff1f1;
+            color: #d60000;
+            font-size: 10px;
+            font-weight: bold;
         }
 
         @keyframes registrationToastIn {
@@ -425,9 +394,44 @@
 
         }
 
-        /* =========================
-           FOOTER
-        ========================= */
+        /* ================= CONTACT ================= */
+
+        .contact {
+            background: #d60000;
+            color: white;
+            text-align: center;
+            padding: 35px 15px;
+            margin-top: 40px;
+        }
+
+        .contact h2 {
+            margin-bottom: 10px;
+        }
+
+        .contact p {
+            margin: 6px 0;
+        }
+
+        .contact a {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .contact-buttons {
+            margin-top: 20px;
+        }
+
+        .contact-buttons a {
+            display: inline-block;
+            background: white;
+            color: #d60000;
+            padding: 10px 18px;
+            border-radius: 8px;
+            margin: 5px;
+        }
+
+        /* ================= FOOTER ================= */
 
         footer {
             background: #222;
@@ -437,9 +441,7 @@
             font-size: 14px;
         }
 
-        /* =========================
-           MOBILE
-        ========================= */
+        /* ================= MOBILE ================= */
 
         @media (max-width: 800px) {
 
@@ -487,21 +489,16 @@
                 width: calc(100vw - 24px);
             }
 
-            .top-contact h2 {
-                font-size: 21px;
-            }
-
         }
 
     </style>
-
 </head>
 
 <body>
 
-<!-- =========================
+<!-- =====================================================
      HEADER
-========================= -->
+     ===================================================== -->
 
 <header>
 
@@ -514,52 +511,9 @@
 </header>
 
 
-<!-- =========================
-     LIÊN HỆ ĐƯA LÊN ĐẦU
-========================= -->
-
-<section class="top-contact">
-
-    <h2>
-        ☎️ LIÊN HỆ TUYỂN DỤNG
-    </h2>
-
-    <p>
-        Đức HR - Tư vấn việc làm miền Bắc
-    </p>
-
-    <p>
-        ☎️ Hotline:
-        <a href="tel:0369759879">
-            0369 759 879
-        </a>
-    </p>
-
-    <p>
-        💬 Zalo:
-        <a href="https://zalo.me/0369759879">
-            0369 759 879
-        </a>
-    </p>
-
-    <div class="contact-buttons">
-
-        <a href="tel:0369759879">
-            ☎️ GỌI NGAY
-        </a>
-
-        <a href="https://zalo.me/0369759879">
-            💬 NHẮN ZALO
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
+<!-- =====================================================
      MENU
-========================= -->
+     ===================================================== -->
 
 <nav>
 
@@ -575,12 +529,16 @@
         Đăng ký
     </a>
 
+    <a href="#lien-he">
+        Liên hệ
+    </a>
+
 </nav>
 
 
-<!-- =========================
+<!-- =====================================================
      BANNER
-========================= -->
+     ===================================================== -->
 
 <section class="banner">
 
@@ -599,9 +557,9 @@
 </section>
 
 
-<!-- =========================
-     SEARCH
-========================= -->
+<!-- =====================================================
+     TÌM KIẾM
+     ===================================================== -->
 
 <div class="search-box">
 
@@ -658,9 +616,9 @@
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      VIỆC LÀM
-========================= -->
+     ===================================================== -->
 
 <section id="viec-lam" class="container">
 
@@ -678,7 +636,6 @@
 
 
     <div class="jobs">
-
 
         <div class="job">
 
@@ -877,15 +834,14 @@
 
         </div>
 
-
     </div>
 
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      QUYỀN LỢI
-========================= -->
+     ===================================================== -->
 
 <section id="quyen-loi" class="container">
 
@@ -899,7 +855,6 @@
 
 
     <div class="benefits">
-
 
         <div class="benefit">
 
@@ -944,15 +899,14 @@
 
         </div>
 
-
     </div>
 
 </section>
 
 
-<!-- =========================
-     SỐ NGƯỜI QUAN TÂM
-========================= -->
+<!-- =====================================================
+     SỐ ỨNG VIÊN QUAN TÂM
+     ===================================================== -->
 
 <div class="registration-counter">
 
@@ -967,9 +921,9 @@
 </div>
 
 
-<!-- =========================
-     POPUP ĐĂNG KÝ THỰC TẾ
-========================= -->
+<!-- =====================================================
+     POPUP THÔNG BÁO MẪU
+     ===================================================== -->
 
 <div
     id="registrationToast"
@@ -981,38 +935,60 @@
         🔔
     </div>
 
-    <div>
 
-        <div class="registration-toast-title">
-            <span id="toastName">
-                Ứng viên
-            </span>
-            vừa đăng ký
-        </div>
+    <div class="registration-toast-content">
 
         <div
-            id="registrationToastText"
-            class="registration-toast-text"
+            id="registrationToastTitle"
+            class="registration-toast-title"
         >
-            📱 098****123<br>
-            📍 Bắc Ninh<br>
+            Nguyễn Văn A vừa đăng ký
+        </div>
+
+
+        <div
+            id="registrationToastPhone"
+            class="registration-toast-phone"
+        >
+            📱 098****123
+        </div>
+
+
+        <div
+            id="registrationToastLocation"
+            class="registration-toast-location"
+        >
+            📍 Bắc Ninh
+        </div>
+
+
+        <div
+            id="registrationToastTime"
+            class="registration-toast-time"
+        >
             ⏱️ Vừa xong
         </div>
+
+
+        <span class="sample-label">
+            THÔNG BÁO MẪU
+        </span>
 
     </div>
 
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      ĐĂNG KÝ
-========================= -->
+     ===================================================== -->
 
 <section id="dang-ky" class="register">
 
     <h2>
         📝 ĐĂNG KÝ TÌM VIỆC
     </h2>
+
 
     <p class="subtitle">
         Điền thông tin bên dưới, bộ phận tuyển dụng sẽ liên hệ lại với bạn.
@@ -1023,7 +999,10 @@
         id="successMessage"
         class="success-message"
     >
-        ✅ Đăng ký thành công! Bộ phận tuyển dụng sẽ liên hệ với bạn sớm nhất.
+
+        ✅ Đăng ký thành công!
+        Bộ phận tuyển dụng sẽ liên hệ với bạn sớm nhất.
+
     </div>
 
 
@@ -1032,7 +1011,6 @@
         action="https://formspree.io/f/xpqogqva"
         method="POST"
     >
-
 
         <div class="form-group">
 
@@ -1122,19 +1100,63 @@
             📩 GỬI ĐĂNG KÝ
         </button>
 
-
     </form>
 
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
+     LIÊN HỆ
+     ===================================================== -->
+
+<section id="lien-he" class="contact">
+
+    <h2>
+        📞 LIÊN HỆ TUYỂN DỤNG
+    </h2>
+
+    <p>
+        Đức HR - Tư vấn việc làm miền Bắc
+    </p>
+
+    <p>
+        ☎️ Hotline:
+        <a href="tel:0369759879">
+            0369 759 879
+        </a>
+    </p>
+
+    <p>
+        💬 Zalo:
+        <a href="https://zalo.me/0369759879">
+            0369 759 879
+        </a>
+    </p>
+
+
+    <div class="contact-buttons">
+
+        <a href="tel:0369759879">
+            ☎️ GỌI NGAY
+        </a>
+
+        <a href="https://zalo.me/0369759879">
+            💬 NHẮN ZALO
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
      FOOTER
-========================= -->
+     ===================================================== -->
 
 <footer>
 
-    © 2026 Việc Làm Miền Bắc - Thông tin tuyển dụng
+    © 2026 Việc Làm Miền Bắc -
+    Thông tin tuyển dụng
 
 </footer>
 
@@ -1143,21 +1165,19 @@
 
 /* =====================================================
    TÌM KIẾM VIỆC LÀM
-===================================================== */
+   ===================================================== */
 
 function searchJobs() {
 
     const keyword =
-        document
-            .getElementById("search")
-            .value
-            .toLowerCase();
+        document.getElementById("search")
+        .value
+        .toLowerCase();
 
     const location =
-        document
-            .getElementById("location")
-            .value
-            .toLowerCase();
+        document.getElementById("location")
+        .value
+        .toLowerCase();
 
     const jobs =
         document.querySelectorAll(".job");
@@ -1196,88 +1216,8 @@ function searchJobs() {
 
 
 /* =====================================================
-   ẨN SỐ ĐIỆN THOẠI
-   Ví dụ:
-   0987654321
-   =>
-   098****321
-===================================================== */
-
-function maskPhone(phone) {
-
-    phone =
-        phone.replace(/\D/g, "");
-
-    if (phone.length <= 6) {
-        return phone;
-    }
-
-    const first =
-        phone.substring(0, 3);
-
-    const last =
-        phone.substring(phone.length - 3);
-
-    return first + "****" + last;
-
-}
-
-
-/* =====================================================
-   POPUP ĐĂNG KÝ THỰC TẾ
-===================================================== */
-
-function showRealRegistration(
-    name,
-    phone,
-    location
-) {
-
-    const toast =
-        document.getElementById(
-            "registrationToast"
-        );
-
-    const toastName =
-        document.getElementById(
-            "toastName"
-        );
-
-    const toastText =
-        document.getElementById(
-            "registrationToastText"
-        );
-
-
-    toastName.innerText =
-        name || "Ứng viên";
-
-
-    toastText.innerHTML =
-        "📱 " +
-        maskPhone(phone) +
-        "<br>" +
-        "📍 " +
-        location +
-        "<br>" +
-        "⏱️ Vừa xong";
-
-
-    toast.classList.add("show");
-
-
-    setTimeout(function() {
-
-        toast.classList.remove("show");
-
-    }, 6000);
-
-}
-
-
-/* =====================================================
    FORMSPREE
-===================================================== */
+   ===================================================== */
 
 const form =
     document.getElementById("jobForm");
@@ -1298,34 +1238,6 @@ form.addEventListener(
             document.getElementById(
                 "successMessage"
             );
-
-
-        /* LẤY THÔNG TIN NGƯỜI ĐĂNG KÝ */
-
-        const nameInput =
-            form.querySelector(
-                '[name="Họ và tên"]'
-            );
-
-        const phoneInput =
-            form.querySelector(
-                '[name="Số điện thoại"]'
-            );
-
-        const locationInput =
-            form.querySelector(
-                '[name="Tỉnh thành hiện tại"]'
-            );
-
-
-        const name =
-            nameInput.value.trim();
-
-        const phone =
-            phoneInput.value.trim();
-
-        const location =
-            locationInput.value;
 
 
         button.disabled = true;
@@ -1356,41 +1268,32 @@ form.addEventListener(
 
             if (response.ok) {
 
-
-                /* =========================
-                   HIỆN THÔNG BÁO NGƯỜI VỪA ĐĂNG KÝ
-                ========================= */
-
-                showRealRegistration(
-                    name,
-                    phone,
-                    location
-                );
-
-
-                /* =========================
-                   TĂNG SỐ QUAN TÂM
-                ========================= */
-
-                interestCount += 1;
-
-
-                if (interestCount > 150) {
-
-                    interestCount = 150;
-
-                }
-
-
-                registrationCount.innerText =
-                    interestCount.toLocaleString(
-                        "vi-VN"
+                const nameInput =
+                    form.querySelector(
+                        '[name="Họ và tên"]'
                     );
 
 
-                /* =========================
-                   RESET FORM
-                ========================= */
+                const name =
+                    nameInput
+                        ? nameInput.value.trim()
+                        : "";
+
+
+                if (name) {
+
+                    successMessage.innerText =
+                        "✅ Cảm ơn " +
+                        name +
+                        "! Hồ sơ của bạn đã được tiếp nhận.";
+
+                } else {
+
+                    successMessage.innerText =
+                        "✅ Đăng ký thành công!";
+
+                }
+
 
                 form.reset();
 
@@ -1415,7 +1318,6 @@ form.addEventListener(
 
             } else {
 
-
                 alert(
                     "Không gửi được hồ sơ. Vui lòng thử lại hoặc gọi trực tiếp."
                 );
@@ -1432,7 +1334,6 @@ form.addEventListener(
 
 
         } catch (error) {
-
 
             alert(
                 "Có lỗi kết nối. Vui lòng thử lại hoặc gọi trực tiếp."
@@ -1453,8 +1354,8 @@ form.addEventListener(
 
 
 /* =====================================================
-   SỐ NGƯỜI ĐANG QUAN TÂM
-===================================================== */
+   SỐ NGƯỜI QUAN TÂM
+   ===================================================== */
 
 const registrationCount =
     document.getElementById(
@@ -1469,45 +1370,198 @@ let interestCount =
 
 
 registrationCount.innerText =
-    interestCount.toLocaleString(
-        "vi-VN"
+    interestCount.toLocaleString("vi-VN");
+
+
+setInterval(
+    function() {
+
+        const change =
+            Math.floor(
+                Math.random() * 7
+            ) - 3;
+
+
+        interestCount += change;
+
+
+        if (interestCount < 85) {
+
+            interestCount = 85;
+
+        }
+
+
+        if (interestCount > 150) {
+
+            interestCount = 150;
+
+        }
+
+
+        registrationCount.innerText =
+            interestCount.toLocaleString("vi-VN");
+
+    },
+    30000
+);
+
+
+/* =====================================================
+   THÔNG BÁO MẪU
+   ===================================================== */
+
+const sampleRegistrations = [
+
+    {
+        name: "Nguyễn Văn A",
+        phone: "098****123",
+        location: "Bắc Ninh"
+    },
+
+    {
+        name: "Trần Văn Minh",
+        phone: "097****456",
+        location: "Hải Dương"
+    },
+
+    {
+        name: "Lê Thị Hương",
+        phone: "096****789",
+        location: "Hưng Yên"
+    },
+
+    {
+        name: "Phạm Văn Nam",
+        phone: "091****234",
+        location: "Hà Nội"
+    },
+
+    {
+        name: "Hoàng Văn Tuấn",
+        phone: "098****567",
+        location: "Thái Nguyên"
+    },
+
+    {
+        name: "Đỗ Thị Mai",
+        phone: "097****890",
+        location: "Hải Phòng"
+    },
+
+    {
+        name: "Nguyễn Văn Thành",
+        phone: "096****321",
+        location: "Vĩnh Phúc"
+    },
+
+    {
+        name: "Bùi Văn Hùng",
+        phone: "098****654",
+        location: "Bắc Giang"
+    }
+
+];
+
+
+let sampleIndex = 0;
+
+
+function showSampleRegistration() {
+
+    const data =
+        sampleRegistrations[
+            sampleIndex
+        ];
+
+
+    document.getElementById(
+        "registrationToastTitle"
+    ).innerText =
+        "🔔 " +
+        data.name +
+        " vừa đăng ký";
+
+
+    document.getElementById(
+        "registrationToastPhone"
+    ).innerText =
+        "📱 " +
+        data.phone;
+
+
+    document.getElementById(
+        "registrationToastLocation"
+    ).innerText =
+        "📍 " +
+        data.location;
+
+
+    document.getElementById(
+        "registrationToastTime"
+    ).innerText =
+        "⏱️ Vừa xong";
+
+
+    const toast =
+        document.getElementById(
+            "registrationToast"
+        );
+
+
+    toast.classList.add("show");
+
+
+    setTimeout(
+        function() {
+
+            toast.classList.remove("show");
+
+        },
+        5000
     );
 
 
-setInterval(function() {
-
-    const change =
-        Math.floor(
-            Math.random() * 7
-        ) - 3;
+    sampleIndex++;
 
 
-    interestCount += change;
+    if (
+        sampleIndex >=
+        sampleRegistrations.length
+    ) {
 
-
-    if (interestCount < 85) {
-
-        interestCount = 85;
+        sampleIndex = 0;
 
     }
 
-
-    if (interestCount > 150) {
-
-        interestCount = 150;
-
-    }
+}
 
 
-    registrationCount.innerText =
-        interestCount.toLocaleString(
-            "vi-VN"
-        );
+/* Thông báo mẫu đầu tiên sau 8 giây */
 
-}, 30000);
+setTimeout(
+    function() {
 
+        showSampleRegistration();
+
+    },
+    8000
+);
+
+
+/* Sau đó lặp lại mỗi 20 giây */
+
+setInterval(
+    function() {
+
+        showSampleRegistration();
+
+    },
+    20000
+);
 
 </script>
+
 
 </body>
 </html>
