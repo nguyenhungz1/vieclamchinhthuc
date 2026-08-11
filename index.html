@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Việc Làm Miền Bắc - Tuyển Dụng Mới Nhất</title>
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -294,14 +296,14 @@
             left: 20px;
             bottom: 20px;
             z-index: 99999;
-            width: 370px;
+            width: 360px;
             max-width: calc(100vw - 40px);
             background: white;
             border-radius: 14px;
             padding: 15px;
             box-shadow: 0 8px 30px rgba(0,0,0,0.18);
             display: none;
-            align-items: center;
+            align-items: flex-start;
             gap: 12px;
             border: 1px solid #eee;
         }
@@ -312,21 +314,15 @@
         }
 
         .registration-toast-icon {
-            width: 45px;
-            height: 45px;
-            background: #fff1f1;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            flex-shrink: 0;
+            font-size: 27px;
+            line-height: 1;
         }
 
         .registration-toast-title {
             font-weight: bold;
-            color: #d60000;
+            color: #111;
             margin-bottom: 4px;
+            font-size: 15px;
         }
 
         .registration-toast-text {
@@ -335,11 +331,14 @@
             line-height: 1.5;
         }
 
-        .registration-toast-text strong {
-            color: #222;
+        .registration-toast-demo {
+            font-size: 11px;
+            color: #999;
+            margin-top: 4px;
         }
 
         @keyframes registrationToastIn {
+
             from {
                 opacity: 0;
                 transform: translateY(20px);
@@ -349,6 +348,7 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+
         }
 
         .contact {
@@ -420,6 +420,7 @@
                 margin: 0 5px;
                 font-size: 14px;
             }
+
         }
 
         @media (max-width: 450px) {
@@ -438,29 +439,53 @@
                 bottom: 12px;
                 width: calc(100vw - 24px);
             }
+
         }
+
     </style>
+
 </head>
 
 <body>
 
 <header>
+
     <h1>VIỆC LÀM MIỀN BẮC</h1>
-    <p>Tìm việc nhanh - Việc thật - Thu nhập ổn định</p>
+
+    <p>
+        Tìm việc nhanh - Việc thật - Thu nhập ổn định
+    </p>
+
 </header>
 
+
 <nav>
+
     <a href="#viec-lam">Việc làm</a>
+
     <a href="#quyen-loi">Quyền lợi</a>
+
     <a href="#dang-ky">Đăng ký</a>
+
     <a href="#lien-he">Liên hệ</a>
+
 </nav>
 
+
 <section class="banner">
+
     <h2>🔥 TUYỂN DỤNG VIỆC LÀM MIỀN BẮC</h2>
-    <p>Nhiều vị trí đang tuyển dụng tại các khu công nghiệp</p>
-    <a href="#dang-ky" class="btn">ĐĂNG KÝ TÌM VIỆC</a>
+
+    <p>
+        Nhiều vị trí đang tuyển dụng tại các khu công nghiệp
+    </p>
+
+    <a href="#dang-ky" class="btn">
+        ĐĂNG KÝ TÌM VIỆC
+    </a>
+
 </section>
+
 
 <div class="search-box">
 
@@ -472,7 +497,11 @@
     >
 
     <select id="location" onchange="searchJobs()">
-        <option value="">Tất cả khu vực</option>
+
+        <option value="">
+            Tất cả khu vực
+        </option>
+
         <option value="Bắc Ninh">Bắc Ninh</option>
         <option value="Bắc Giang">Bắc Giang</option>
         <option value="Hải Dương">Hải Dương</option>
@@ -481,156 +510,374 @@
         <option value="Hải Phòng">Hải Phòng</option>
         <option value="Thái Nguyên">Thái Nguyên</option>
         <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+
     </select>
 
 </div>
 
+
 <section id="viec-lam" class="container">
 
     <div class="section-title">
+
         <h2>🔥 VIỆC LÀM ĐANG TUYỂN</h2>
-        <p>Cập nhật những đơn tuyển dụng mới nhất</p>
+
+        <p>
+            Cập nhật những đơn tuyển dụng mới nhất
+        </p>
+
     </div>
+
 
     <div class="jobs">
 
-        <div class="job">
-            <span class="tag">TUYỂN GẤP</span>
-            <h3>Công nhân sản xuất</h3>
-            <p class="salary">💰 10 - 15 triệu/tháng</p>
-            <p class="location">📍 Bắc Ninh</p>
-            <p>🏭 Làm việc tại khu công nghiệp</p>
-            <p>🎁 Có phụ cấp, thưởng và chế độ đầy đủ</p>
-            <a href="#dang-ky" class="btn">ỨNG TUYỂN</a>
-        </div>
 
         <div class="job">
-            <span class="tag">LƯƠNG CAO</span>
-            <h3>Công nhân điện tử</h3>
-            <p class="salary">💰 11 - 16 triệu/tháng</p>
-            <p class="location">📍 Thái Nguyên</p>
-            <p>🏭 Nhà máy điện tử</p>
-            <p>🎁 Có hỗ trợ và phụ cấp</p>
-            <a href="#dang-ky" class="btn">ỨNG TUYỂN</a>
+
+            <span class="tag">
+                TUYỂN GẤP
+            </span>
+
+            <h3>
+                Công nhân sản xuất
+            </h3>
+
+            <p class="salary">
+                💰 10 - 15 triệu/tháng
+            </p>
+
+            <p class="location">
+                📍 Bắc Ninh
+            </p>
+
+            <p>
+                🏭 Làm việc tại khu công nghiệp
+            </p>
+
+            <p>
+                🎁 Có phụ cấp, thưởng và chế độ đầy đủ
+            </p>
+
+            <a href="#dang-ky" class="btn">
+                ỨNG TUYỂN
+            </a>
+
         </div>
 
-        <div class="job">
-            <span class="tag">ĐANG TUYỂN</span>
-            <h3>Công nhân lắp ráp</h3>
-            <p class="salary">💰 10 - 14 triệu/tháng</p>
-            <p class="location">📍 Hưng Yên</p>
-            <p>🏭 Công việc ổn định</p>
-            <p>🎁 Chế độ theo quy định</p>
-            <a href="#dang-ky" class="btn">ỨNG TUYỂN</a>
-        </div>
 
         <div class="job">
-            <span class="tag">TUYỂN GẤP</span>
-            <h3>Nhân viên kho</h3>
-            <p class="salary">💰 9 - 14 triệu/tháng</p>
-            <p class="location">📍 Hà Nội</p>
-            <p>📦 Công việc kho hàng</p>
-            <p>🎁 Có phụ cấp</p>
-            <a href="#dang-ky" class="btn">ỨNG TUYỂN</a>
+
+            <span class="tag">
+                LƯƠNG CAO
+            </span>
+
+            <h3>
+                Công nhân điện tử
+            </h3>
+
+            <p class="salary">
+                💰 11 - 16 triệu/tháng
+            </p>
+
+            <p class="location">
+                📍 Thái Nguyên
+            </p>
+
+            <p>
+                🏭 Nhà máy điện tử
+            </p>
+
+            <p>
+                🎁 Có hỗ trợ và phụ cấp
+            </p>
+
+            <a href="#dang-ky" class="btn">
+                ỨNG TUYỂN
+            </a>
+
         </div>
 
-        <div class="job">
-            <span class="tag">MỚI</span>
-            <h3>Công nhân sản xuất</h3>
-            <p class="salary">💰 10 - 15 triệu/tháng</p>
-            <p class="location">📍 Hải Phòng</p>
-            <p>🏭 Làm việc tại khu công nghiệp</p>
-            <p>🎁 Thu nhập ổn định</p>
-            <a href="#dang-ky" class="btn">ỨNG TUYỂN</a>
-        </div>
 
         <div class="job">
-            <span class="tag">ĐANG NHẬN HỒ SƠ</span>
-            <h3>Nhân viên QC</h3>
-            <p class="salary">💰 11 - 17 triệu/tháng</p>
-            <p class="location">📍 Vĩnh Phúc</p>
-            <p>🔎 Kiểm tra chất lượng sản phẩm</p>
-            <p>🎁 Chế độ đầy đủ</p>
-            <a href="#dang-ky" class="btn">ỨNG TUYỂN</a>
+
+            <span class="tag">
+                ĐANG TUYỂN
+            </span>
+
+            <h3>
+                Công nhân lắp ráp
+            </h3>
+
+            <p class="salary">
+                💰 10 - 14 triệu/tháng
+            </p>
+
+            <p class="location">
+                📍 Hưng Yên
+            </p>
+
+            <p>
+                🏭 Công việc ổn định
+            </p>
+
+            <p>
+                🎁 Chế độ theo quy định
+            </p>
+
+            <a href="#dang-ky" class="btn">
+                ỨNG TUYỂN
+            </a>
+
         </div>
+
+
+        <div class="job">
+
+            <span class="tag">
+                TUYỂN GẤP
+            </span>
+
+            <h3>
+                Nhân viên kho
+            </h3>
+
+            <p class="salary">
+                💰 9 - 14 triệu/tháng
+            </p>
+
+            <p class="location">
+                📍 Hà Nội
+            </p>
+
+            <p>
+                📦 Công việc kho hàng
+            </p>
+
+            <p>
+                🎁 Có phụ cấp
+            </p>
+
+            <a href="#dang-ky" class="btn">
+                ỨNG TUYỂN
+            </a>
+
+        </div>
+
+
+        <div class="job">
+
+            <span class="tag">
+                MỚI
+            </span>
+
+            <h3>
+                Công nhân sản xuất
+            </h3>
+
+            <p class="salary">
+                💰 10 - 15 triệu/tháng
+            </p>
+
+            <p class="location">
+                📍 Hải Phòng
+            </p>
+
+            <p>
+                🏭 Làm việc tại khu công nghiệp
+            </p>
+
+            <p>
+                🎁 Thu nhập ổn định
+            </p>
+
+            <a href="#dang-ky" class="btn">
+                ỨNG TUYỂN
+            </a>
+
+        </div>
+
+
+        <div class="job">
+
+            <span class="tag">
+                ĐANG NHẬN HỒ SƠ
+            </span>
+
+            <h3>
+                Nhân viên QC
+            </h3>
+
+            <p class="salary">
+                💰 11 - 17 triệu/tháng
+            </p>
+
+            <p class="location">
+                📍 Vĩnh Phúc
+            </p>
+
+            <p>
+                🔎 Kiểm tra chất lượng sản phẩm
+            </p>
+
+            <p>
+                🎁 Chế độ đầy đủ
+            </p>
+
+            <a href="#dang-ky" class="btn">
+                ỨNG TUYỂN
+            </a>
+
+        </div>
+
 
     </div>
 
 </section>
+
 
 <section id="quyen-loi" class="container">
 
     <div class="section-title">
-        <h2>⭐ QUYỀN LỢI</h2>
+
+        <h2>
+            ⭐ QUYỀN LỢI
+        </h2>
+
     </div>
+
 
     <div class="benefits">
 
+
         <div class="benefit">
-            <strong>💰 Thu nhập tốt</strong>
+
+            <strong>
+                💰 Thu nhập tốt
+            </strong>
+
             Lương + phụ cấp + thưởng
+
         </div>
 
+
         <div class="benefit">
-            <strong>🏠 Hỗ trợ</strong>
+
+            <strong>
+                🏠 Hỗ trợ
+            </strong>
+
             Tùy từng đơn tuyển dụng
+
         </div>
 
+
         <div class="benefit">
-            <strong>📋 Công việc ổn định</strong>
+
+            <strong>
+                📋 Công việc ổn định
+            </strong>
+
             Nhiều vị trí tại KCN
+
         </div>
 
+
         <div class="benefit">
-            <strong>📞 Tư vấn miễn phí</strong>
+
+            <strong>
+                📞 Tư vấn miễn phí
+            </strong>
+
             Hỗ trợ tìm việc phù hợp
+
         </div>
+
 
     </div>
 
 </section>
 
+
 <!-- ===== SỐ ỨNG VIÊN ĐANG QUAN TÂM ===== -->
 
 <div class="registration-counter">
+
     👥 Hiện có
-    <strong id="registrationCount">100</strong>
+
+    <strong id="registrationCount">
+        100
+    </strong>
+
     ứng viên đang quan tâm tìm việc
+
 </div>
 
-<!-- ===== POPUP ===== -->
 
-<div id="registrationToast" class="registration-toast" aria-live="polite">
+<!-- ===== POPUP THÔNG BÁO ĐĂNG KÝ ===== -->
+
+<div
+    id="registrationToast"
+    class="registration-toast"
+    aria-live="polite"
+>
 
     <div class="registration-toast-icon">
         🔔
     </div>
 
+
     <div>
 
-        <div class="registration-toast-title">
-            🔥 Thông báo đăng ký mẫu
+        <div
+            id="registrationToastTitle"
+            class="registration-toast-title"
+        >
+            🔥 Nguyễn Văn A vừa đăng ký tìm việc
         </div>
 
-        <div id="registrationToastText" class="registration-toast-text">
-            Đang có ứng viên quan tâm tìm việc.
+
+        <div
+            id="registrationToastText"
+            class="registration-toast-text"
+        >
+            📱 098****123 · 📍 Bắc Ninh · ⏱ Vừa xong
+        </div>
+
+
+        <div class="registration-toast-demo">
+            Thông báo mô phỏng
         </div>
 
     </div>
 
 </div>
 
+
 <section id="dang-ky" class="register">
 
-    <h2>📝 ĐĂNG KÝ TÌM VIỆC</h2>
+    <h2>
+        📝 ĐĂNG KÝ TÌM VIỆC
+    </h2>
+
 
     <p class="subtitle">
-        Điền thông tin bên dưới, bộ phận tuyển dụng sẽ liên hệ lại với bạn.
+
+        Điền thông tin bên dưới,
+        bộ phận tuyển dụng sẽ liên hệ lại với bạn.
+
     </p>
 
-    <div id="successMessage" class="success-message">
-        ✅ Đăng ký thành công! Bộ phận tuyển dụng sẽ liên hệ với bạn sớm nhất.
+
+    <div
+        id="successMessage"
+        class="success-message"
+    >
+
+        ✅ Đăng ký thành công!
+        Bộ phận tuyển dụng sẽ liên hệ với bạn sớm nhất.
+
     </div>
+
 
     <form
         id="jobForm"
@@ -638,9 +885,12 @@
         method="POST"
     >
 
+
         <div class="form-group">
 
-            <label>Họ và tên *</label>
+            <label>
+                Họ và tên *
+            </label>
 
             <input
                 type="text"
@@ -651,9 +901,12 @@
 
         </div>
 
+
         <div class="form-group">
 
-            <label>Số điện thoại *</label>
+            <label>
+                Số điện thoại *
+            </label>
 
             <input
                 type="tel"
@@ -665,11 +918,18 @@
 
         </div>
 
+
         <div class="form-group">
 
-            <label>Tỉnh/thành hiện tại *</label>
+            <label>
+                Tỉnh/thành hiện tại *
+            </label>
 
-            <select name="Tỉnh thành hiện tại" required>
+
+            <select
+                name="Tỉnh thành hiện tại"
+                required
+            >
 
                 <option value="">
                     -- Chọn tỉnh/thành --
@@ -700,45 +960,69 @@
 
         </div>
 
+
         <input
             type="hidden"
             name="_subject"
             value="🔥 Có ứng viên mới đăng ký việc làm"
         >
 
-        <button type="submit" class="btn">
+
+        <button
+            type="submit"
+            class="btn"
+        >
+
             📩 GỬI ĐĂNG KÝ
+
         </button>
+
 
     </form>
 
 </section>
 
+
 <section id="lien-he" class="contact">
 
-    <h2>📞 LIÊN HỆ TUYỂN DỤNG</h2>
+    <h2>
+        📞 LIÊN HỆ TUYỂN DỤNG
+    </h2>
 
-    <p>Đức HR - Tư vấn việc làm miền Bắc</p>
 
     <p>
+        Đức HR - Tư vấn việc làm miền Bắc
+    </p>
+
+
+    <p>
+
         ☎️ Hotline:
+
         <a href="tel:0369759879">
             0369 759 879
         </a>
+
     </p>
 
+
     <p>
+
         💬 Zalo:
+
         <a href="https://zalo.me/0369759879">
             0369 759 879
         </a>
+
     </p>
+
 
     <div class="contact-buttons">
 
         <a href="tel:0369759879">
             ☎️ GỌI NGAY
         </a>
+
 
         <a href="https://zalo.me/0369759879">
             💬 NHẮN ZALO
@@ -748,41 +1032,60 @@
 
 </section>
 
+
 <footer>
-    © 2026 Việc Làm Miền Bắc - Thông tin tuyển dụng
+
+    © 2026 Việc Làm Miền Bắc -
+    Thông tin tuyển dụng
+
 </footer>
+
 
 <script>
 
+
 /* =====================================================
    TÌM KIẾM VIỆC LÀM
-   ===================================================== */
+===================================================== */
 
 function searchJobs() {
 
     const keyword =
-        document.getElementById("search").value.toLowerCase();
+        document
+            .getElementById("search")
+            .value
+            .toLowerCase();
 
     const location =
-        document.getElementById("location").value.toLowerCase();
+        document
+            .getElementById("location")
+            .value
+            .toLowerCase();
 
     const jobs =
         document.querySelectorAll(".job");
+
 
     jobs.forEach(function(job) {
 
         const text =
             job.innerText.toLowerCase();
 
+
         const locationMatch =
             location === "" ||
             text.includes(location);
+
 
         const keywordMatch =
             keyword === "" ||
             text.includes(keyword);
 
-        if (locationMatch && keywordMatch) {
+
+        if (
+            locationMatch &&
+            keywordMatch
+        ) {
 
             job.style.display = "block";
 
@@ -799,193 +1102,199 @@ function searchJobs() {
 
 /* =====================================================
    FORMSPREE - GỬI HỒ SƠ
-   ===================================================== */
+===================================================== */
 
 const form =
     document.getElementById("jobForm");
 
-form.addEventListener("submit", async function(event) {
 
-    event.preventDefault();
+form.addEventListener(
+    "submit",
+    async function(event) {
 
-    const button =
-        form.querySelector("button");
+        event.preventDefault();
 
-    const successMessage =
-        document.getElementById("successMessage");
 
-    button.disabled = true;
+        const button =
+            form.querySelector("button");
 
-    button.innerText =
-        "⏳ ĐANG GỬI...";
 
-    const formData =
-        new FormData(form);
-
-    try {
-
-        const response =
-            await fetch(
-                form.action,
-                {
-                    method: "POST",
-                    body: formData,
-                    headers: {
-                        "Accept": "application/json"
-                    }
-                }
+        const successMessage =
+            document.getElementById(
+                "successMessage"
             );
 
-        if (response.ok) {
 
-            /*
-             * Đăng ký thật đã được gửi thành công
-             */
+        button.disabled = true;
 
-            const nameInput =
-                form.querySelector(
-                    '[name="Họ và tên"]'
+        button.innerText =
+            "⏳ ĐANG GỬI...";
+
+
+        const formData =
+            new FormData(form);
+
+
+        try {
+
+            const response =
+                await fetch(
+                    form.action,
+                    {
+                        method: "POST",
+                        body: formData,
+                        headers: {
+                            "Accept":
+                                "application/json"
+                        }
+                    }
                 );
 
-            const phoneInput =
-                form.querySelector(
-                    '[name="Số điện thoại"]'
+
+            if (response.ok) {
+
+
+                const nameInput =
+                    form.querySelector(
+                        '[name="Họ và tên"]'
+                    );
+
+
+                const name =
+                    nameInput
+                        ? nameInput.value.trim()
+                        : "";
+
+
+                const toast =
+                    document.getElementById(
+                        "registrationToast"
+                    );
+
+
+                const toastTitle =
+                    document.getElementById(
+                        "registrationToastTitle"
+                    );
+
+
+                const toastText =
+                    document.getElementById(
+                        "registrationToastText"
+                    );
+
+
+                if (name) {
+
+                    toastTitle.innerText =
+                        "✅ " +
+                        name +
+                        " vừa đăng ký tìm việc";
+
+
+                    toastText.innerText =
+                        "📱 Hồ sơ của bạn đã được tiếp nhận thành công.";
+
+                } else {
+
+                    toastTitle.innerText =
+                        "✅ Đăng ký tìm việc thành công";
+
+
+                    toastText.innerText =
+                        "📱 Hồ sơ của bạn đã được tiếp nhận.";
+
+                }
+
+
+                toast.classList.add("show");
+
+
+                setTimeout(
+                    function() {
+
+                        toast.classList.remove(
+                            "show"
+                        );
+
+                    },
+                    5000
                 );
 
-            const locationInput =
-                form.querySelector(
-                    '[name="Tỉnh thành hiện tại"]'
-                );
 
-            const name =
-                nameInput
-                    ? nameInput.value.trim()
-                    : "";
+                form.reset();
 
-            const phone =
-                phoneInput
-                    ? phoneInput.value.trim()
-                    : "";
 
-            const userLocation =
-                locationInput
-                    ? locationInput.value
-                    : "";
+                successMessage.style.display =
+                    "block";
 
-            const toast =
-                document.getElementById(
-                    "registrationToast"
-                );
 
-            const toastText =
-                document.getElementById(
-                    "registrationToastText"
-                );
+                button.disabled =
+                    false;
 
-            /*
-             * Che bớt số điện thoại
-             */
 
-            let maskedPhone = "";
+                button.innerText =
+                    "📩 GỬI ĐĂNG KÝ";
 
-            if (phone.length >= 7) {
 
-                maskedPhone =
-                    phone.substring(0, 3) +
-                    "***" +
-                    phone.substring(phone.length - 3);
+                successMessage.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
 
             } else {
 
-                maskedPhone = phone;
+
+                alert(
+                    "Không gửi được hồ sơ. Vui lòng thử lại hoặc gọi trực tiếp."
+                );
+
+
+                button.disabled =
+                    false;
+
+
+                button.innerText =
+                    "📩 GỬI ĐĂNG KÝ";
 
             }
 
 
-            /*
-             * Hiện thông báo người vừa đăng ký thật
-             */
+        } catch (error) {
 
-            toastText.innerHTML =
-                "<strong>" +
-                name +
-                "</strong> vừa đăng ký tìm việc<br>" +
-                "📱 " +
-                maskedPhone +
-                " · 📍 " +
-                userLocation;
-
-            toast.classList.add("show");
-
-            setTimeout(function() {
-
-                toast.classList.remove("show");
-
-            }, 6000);
-
-
-            /*
-             * Reset form
-             */
-
-            form.reset();
-
-            successMessage.style.display =
-                "block";
-
-            button.disabled =
-                false;
-
-            button.innerText =
-                "📩 GỬI ĐĂNG KÝ";
-
-            successMessage.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
-
-
-        } else {
 
             alert(
-                "Không gửi được hồ sơ. Vui lòng thử lại hoặc gọi trực tiếp."
+                "Có lỗi kết nối. Vui lòng thử lại hoặc gọi trực tiếp."
             );
+
 
             button.disabled =
                 false;
 
+
             button.innerText =
                 "📩 GỬI ĐĂNG KÝ";
+
         }
 
-
-    } catch (error) {
-
-        alert(
-            "Có lỗi kết nối. Vui lòng thử lại hoặc gọi trực tiếp."
-        );
-
-        button.disabled =
-            false;
-
-        button.innerText =
-            "📩 GỬI ĐĂNG KÝ";
     }
-
-});
+);
 
 
 /* =====================================================
    HIỂN THỊ MỨC ĐỘ QUAN TÂM
-   ===================================================== */
+===================================================== */
 
 const registrationCount =
-    document.getElementById("registrationCount");
+    document.getElementById(
+        "registrationCount"
+    );
 
 
 /*
-   Số này chỉ thể hiện mức độ quan tâm mô phỏng,
-   không phải số hồ sơ đăng ký thực tế.
+    Đây là số lượng mô phỏng để tạo hiệu ứng
+    hiển thị mức độ quan tâm trên website.
 */
 
 let interestCount =
@@ -994,122 +1303,236 @@ let interestCount =
     ) + 85;
 
 
-/* Hiển thị số ban đầu */
-
 registrationCount.innerText =
     interestCount.toLocaleString("vi-VN");
 
 
-/* Thay đổi nhẹ sau mỗi 30 giây */
+setInterval(
+    function() {
 
-setInterval(function() {
+        const change =
+            Math.floor(
+                Math.random() * 7
+            ) - 3;
 
-    const change =
-        Math.floor(
-            Math.random() * 7
-        ) - 3;
 
-    interestCount += change;
+        interestCount += change;
 
-    if (interestCount < 85) {
-        interestCount = 85;
-    }
 
-    if (interestCount > 150) {
-        interestCount = 150;
-    }
+        if (interestCount < 85) {
+            interestCount = 85;
+        }
 
-    registrationCount.innerText =
-        interestCount.toLocaleString("vi-VN");
 
-}, 30000);
+        if (interestCount > 150) {
+            interestCount = 150;
+        }
+
+
+        registrationCount.innerText =
+            interestCount.toLocaleString("vi-VN");
+
+
+    },
+    30000
+);
 
 
 /* =====================================================
-   THÔNG BÁO MẪU
-   ===================================================== */
+   DANH SÁCH THÔNG BÁO MÔ PHỎNG
+===================================================== */
 
-/*
-   Các thông báo dưới đây chỉ dùng để xem trước
-   giao diện popup, không phải hồ sơ đăng ký thật.
-*/
+const registrationNotifications = [
 
-const demoMessages = [
+    {
+        name: "Nguyễn Văn A",
+        phone: "098****123",
+        location: "Bắc Ninh"
+    },
 
-    "Nguyễn Văn A đang quan tâm tìm việc tại Bắc Ninh.",
+    {
+        name: "Trần Thị Hương",
+        phone: "097****456",
+        location: "Hải Dương"
+    },
 
-    "Trần Thị Hương đang tìm việc công nhân tại Hải Dương.",
+    {
+        name: "Lê Văn Thành",
+        phone: "096****789",
+        location: "Hưng Yên"
+    },
 
-    "Lê Văn Nam đang quan tâm vị trí nhân viên kho tại Hà Nội.",
+    {
+        name: "Phạm Văn Nam",
+        phone: "091****234",
+        location: "Hà Nội"
+    },
 
-    "Phạm Thị Lan đang tìm hiểu việc làm tại Thái Nguyên.",
+    {
+        name: "Hoàng Thị Mai",
+        phone: "098****567",
+        location: "Thái Nguyên"
+    },
 
-    "Đỗ Văn Thành đang quan tâm các đơn tuyển dụng tại Hưng Yên.",
+    {
+        name: "Đỗ Văn Hùng",
+        phone: "097****890",
+        location: "Hải Phòng"
+    },
 
-    "Nguyễn Thị Mai đang tìm việc tại Hải Phòng.",
+    {
+        name: "Vũ Thị Lan",
+        phone: "096****345",
+        location: "Vĩnh Phúc"
+    },
 
-    "Hoàng Văn Đức đang quan tâm vị trí QC tại Vĩnh Phúc.",
+    {
+        name: "Nguyễn Văn Đức",
+        phone: "098****678",
+        location: "Bắc Ninh"
+    },
 
-    "Vũ Thị Hạnh đang tìm hiểu đơn công nhân tại Bắc Ninh."
+    {
+        name: "Bùi Văn Long",
+        phone: "091****901",
+        location: "Hải Dương"
+    },
+
+    {
+        name: "Phan Thị Ngọc",
+        phone: "097****123",
+        location: "Hà Nội"
+    },
+
+    {
+        name: "Đặng Văn Minh",
+        phone: "098****456",
+        location: "Hưng Yên"
+    },
+
+    {
+        name: "Nguyễn Thị Hoa",
+        phone: "096****789",
+        location: "Thái Nguyên"
+    }
 
 ];
 
 
-function showDemoToast() {
+let notificationIndex = 0;
 
-    const randomIndex =
-        Math.floor(
-            Math.random() *
-            demoMessages.length
-        );
+
+/* =====================================================
+   HIỂN THỊ POPUP ĐĂNG KÝ
+===================================================== */
+
+function showRegistrationToast() {
+
+
+    const data =
+        registrationNotifications[
+            notificationIndex
+        ];
+
 
     const toast =
         document.getElementById(
             "registrationToast"
         );
 
+
+    const toastTitle =
+        document.getElementById(
+            "registrationToastTitle"
+        );
+
+
     const toastText =
         document.getElementById(
             "registrationToastText"
         );
 
-    toastText.innerHTML =
-        demoMessages[randomIndex] +
-        "<br><small>🔔 Thông báo mẫu</small>";
+
+    toastTitle.innerText =
+        "🔥 " +
+        data.name +
+        " vừa đăng ký tìm việc";
+
+
+    toastText.innerText =
+        "📱 " +
+        data.phone +
+        "  ·  📍 " +
+        data.location +
+        "  ·  ⏱ Vừa xong";
+
+
+    toast.classList.remove("show");
+
+
+    void toast.offsetWidth;
+
 
     toast.classList.add("show");
 
-    setTimeout(function() {
 
-        toast.classList.remove("show");
+    setTimeout(
+        function() {
 
-    }, 5000);
+            toast.classList.remove(
+                "show"
+            );
+
+        },
+        5000
+    );
+
+
+    notificationIndex++;
+
+
+    if (
+        notificationIndex >=
+        registrationNotifications.length
+    ) {
+
+        notificationIndex = 0;
+
+    }
 
 }
 
 
-/*
-   Popup mẫu đầu tiên sau 8 giây
-*/
+/* =====================================================
+   POPUP ĐẦU TIÊN
+===================================================== */
 
-setTimeout(function() {
+setTimeout(
+    function() {
 
-    showDemoToast();
+        showRegistrationToast();
 
-}, 8000);
+    },
+    8000
+);
 
 
-/*
-   Sau đó hiện lại mỗi 25 giây
-*/
+/* =====================================================
+   SAU ĐÓ HIỆN LẠI MỖI 25 GIÂY
+===================================================== */
 
-setInterval(function() {
+setInterval(
+    function() {
 
-    showDemoToast();
+        showRegistrationToast();
 
-}, 25000);
+    },
+    25000
+);
+
 
 </script>
+
 
 </body>
 </html>
