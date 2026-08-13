@@ -6,6 +6,9 @@
 
     <title>Việc Làm Miền Bắc - Tuyển Dụng Mới Nhất</title>
 
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <style>
 
         * {
@@ -25,12 +28,10 @@
                     rgba(239, 247, 255, 0.88),
                     rgba(239, 247, 255, 0.92)
                 ),
-                url("khucongnghiep.jpg") center top / cover fixed no-repeat;
+                url("khucongnghiep.jpg?v=20260812") center top / cover fixed no-repeat;
             color: #222;
             line-height: 1.6;
         }
-
-        /* ================= HEADER ================= */
 
         header {
             background: linear-gradient(135deg, #0757b8, #0d73d5);
@@ -48,8 +49,6 @@
         header p {
             font-size: 16px;
         }
-
-        /* ================= NAV ================= */
 
         nav {
             background: rgba(255, 255, 255, 0.97);
@@ -74,8 +73,6 @@
             color: #0865c4;
         }
 
-        /* ================= BANNER ================= */
-
         .banner {
             max-width: 1100px;
             margin: 25px auto;
@@ -85,7 +82,7 @@
                     rgba(255, 255, 255, 0.82),
                     rgba(255, 255, 255, 0.82)
                 ),
-                url("khucongnghiep.jpg") center center / cover no-repeat;
+                url("khucongnghiep.jpg?v=20260812") center center / cover no-repeat;
             border-radius: 16px;
             text-align: center;
             border: 1px solid rgba(255,255,255,0.8);
@@ -124,7 +121,11 @@
             transform: translateY(-1px);
         }
 
-        /* ================= SEARCH ================= */
+        .btn:disabled {
+            opacity: 0.65;
+            cursor: wait;
+            transform: none;
+        }
 
         .search-box {
             max-width: 1100px;
@@ -152,8 +153,6 @@
             box-shadow: 0 0 0 3px rgba(20, 115, 209, 0.10);
         }
 
-        /* ================= CONTAINER ================= */
-
         .container {
             max-width: 1100px;
             margin: auto;
@@ -176,8 +175,6 @@
             color: #555;
         }
 
-        /* ================= JOBS ================= */
-
         .jobs {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -198,8 +195,6 @@
             transform: translateY(-4px);
             box-shadow: 0 8px 22px rgba(0, 75, 150, 0.15);
         }
-
-        /* ================= ẢNH VIỆC LÀM ================= */
 
         .job-image {
             width: 100%;
@@ -262,8 +257,6 @@
             margin-top: 10px;
         }
 
-        /* ================= BENEFITS ================= */
-
         .benefits {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -286,8 +279,6 @@
             font-size: 18px;
             margin-bottom: 5px;
         }
-
-        /* ================= REGISTER ================= */
 
         .register {
             background: rgba(255,255,255,0.98);
@@ -362,8 +353,6 @@
             font-weight: bold;
         }
 
-        /* ================= SỐ NGƯỜI QUAN TÂM ================= */
-
         .registration-counter {
             max-width: 700px;
             margin: 25px auto 0;
@@ -381,28 +370,20 @@
             font-size: 25px;
         }
 
-        /* ================= THÔNG BÁO ================= */
-
         .registration-toast {
             position: fixed;
             left: 20px;
             bottom: 20px;
             z-index: 99999;
-
             width: 350px;
             max-width: calc(100vw - 40px);
-
             background: rgba(255,255,255,0.98);
             border-radius: 14px;
             padding: 14px 16px;
-
             box-shadow: 0 10px 35px rgba(0,0,0,0.18);
-
             display: none;
-
             align-items: flex-start;
             gap: 12px;
-
             border: 1px solid #dbe9f7;
         }
 
@@ -443,20 +424,177 @@
         }
 
         @keyframes registrationToastIn {
-
             from {
                 opacity: 0;
                 transform: translateY(20px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
-
         }
 
-        /* ================= CONTACT ================= */
+        /* ================= ĐÁNH GIÁ ONLINE ================= */
+
+        .reviews-section {
+            max-width: 900px;
+            margin: 45px auto;
+            padding: 0 15px;
+        }
+
+        .review-box {
+            background: rgba(255,255,255,0.98);
+            border: 1px solid #e0ebf7;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,70,140,0.10);
+            margin-bottom: 25px;
+        }
+
+        .review-box h2 {
+            text-align: center;
+            color: #075fc2;
+            margin-bottom: 8px;
+        }
+
+        .review-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .rating-select {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin: 10px 0 18px;
+        }
+
+        .rating-star {
+            border: none;
+            background: transparent;
+            font-size: 35px;
+            color: #c7d0d9;
+            cursor: pointer;
+            padding: 2px 5px;
+            transition: 0.15s;
+        }
+
+        .rating-star:hover,
+        .rating-star.active {
+            color: #ffb400;
+            transform: scale(1.08);
+        }
+
+        .review-box input,
+        .review-box textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #cbdff5;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            margin-bottom: 12px;
+        }
+
+        .review-box textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .review-box input:focus,
+        .review-box textarea:focus {
+            border-color: #0865c7;
+            box-shadow: 0 0 0 3px rgba(8,101,199,0.08);
+        }
+
+        .review-status {
+            display: none;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .review-status.success {
+            display: block;
+            background: #e8f8ee;
+            color: #16753a;
+        }
+
+        .review-status.error {
+            display: block;
+            background: #fff0f0;
+            color: #b42318;
+        }
+
+        .review-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .review-item {
+            background: rgba(255,255,255,0.98);
+            border: 1px solid #e0ebf7;
+            border-radius: 12px;
+            padding: 17px;
+            box-shadow: 0 3px 12px rgba(0,70,140,0.07);
+            animation: reviewIn 0.3s ease;
+        }
+
+        @keyframes reviewIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .review-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .review-stars {
+            color: #ffb400;
+            letter-spacing: 1px;
+            font-size: 18px;
+            margin-top: 2px;
+        }
+
+        .review-date {
+            color: #888;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .review-item p {
+            margin-top: 10px;
+            color: #444;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .review-empty,
+        .review-loading {
+            text-align: center;
+            color: #777;
+            padding: 20px;
+            background: #f8fbfe;
+            border-radius: 10px;
+        }
+
+        .review-count {
+            text-align: center;
+            color: #555;
+            margin: 0 0 15px;
+        }
 
         .contact {
             background: linear-gradient(135deg, #0757b8, #0d73d5);
@@ -500,8 +638,6 @@
             transform: translateY(-1px);
         }
 
-        /* ================= FOOTER ================= */
-
         footer {
             background: #0c1c2c;
             color: #b8c6d3;
@@ -510,7 +646,80 @@
             font-size: 14px;
         }
 
-        /* ================= MOBILE ================= */
+        .scroll-top-button {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 45px;
+            height: 45px;
+            border: none;
+            border-radius: 50%;
+            background: #0865c7;
+            color: white;
+            font-size: 25px;
+            cursor: pointer;
+            box-shadow: 0 5px 18px rgba(0,70,140,0.25);
+            z-index: 9998;
+            display: none;
+        }
+
+        .scroll-top-button.show {
+            display: block;
+        }
+
+        .image-lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.82);
+            z-index: 100000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            opacity: 0;
+            transition: opacity 0.25s;
+        }
+
+        .image-lightbox.active {
+            opacity: 1;
+        }
+
+        .image-lightbox img {
+            max-width: 95vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: white;
+            font-size: 32px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .visible {
+            animation: fadeUp 0.55s ease both;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        nav.nav-scrolled {
+            box-shadow: 0 4px 18px rgba(0,70,140,0.16);
+        }
 
         @media (max-width: 800px) {
 
@@ -551,7 +760,6 @@
                 object-fit: contain;
                 background: #f1f7fc;
             }
-
         }
 
         @media (max-width: 450px) {
@@ -587,105 +795,48 @@
                 font-size: 24px;
             }
 
-        }
+            .reviews-section {
+                padding: 0 12px;
+            }
 
-    
-.reviews-section{max-width:1100px;margin:45px auto 20px;padding:0 15px}
-.reviews-box{background:linear-gradient(135deg,#fff,#f5fbff);border:1px solid #dbeeff;border-radius:16px;padding:30px;box-shadow:0 6px 24px rgba(0,83,170,.08)}
-.reviews-summary{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:25px;text-align:center}
-.reviews-score{font-size:30px;font-weight:800;color:#075fc2}.reviews-stars,.review-card-stars{color:#f5a623;letter-spacing:2px}
-.reviews-stars{font-size:24px}.reviews-count{color:#666;font-size:14px}
-.review-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.review-card{background:#fff;border:1px solid #e3eef8;border-radius:12px;padding:18px;box-shadow:0 3px 12px rgba(0,70,140,.06);transition:.2s}
-.review-card:hover{transform:translateY(-3px);box-shadow:0 7px 18px rgba(0,80,160,.10)}
-.review-card p{color:#444;font-size:14px;margin:8px 0 12px}.review-author{font-weight:bold;color:#075fc2;font-size:14px}
-.review-location{color:#777;font-size:13px;margin-top:2px}.review-form{max-width:700px;margin:28px auto 0;padding-top:25px;border-top:1px solid #e3eef8}
-.review-form h3{text-align:center;color:#075fc2;margin-bottom:15px}.review-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.review-form input,.review-form textarea,.review-form select{width:100%;padding:12px;border:1px solid #cbdff5;border-radius:8px;font-size:14px;outline:none;background:#fff}
-.review-form textarea{min-height:90px;resize:vertical;grid-column:1/-1}
-.review-form input:focus,.review-form textarea:focus,.review-form select:focus{border-color:#0865c7;box-shadow:0 0 0 3px rgba(8,101,199,.08)}
-.review-form .btn{width:100%;margin-top:12px}.review-note{text-align:center;color:#777;font-size:12px;margin-top:8px}
-.review-success{display:none;background:#e8f8ee;color:#16753a;padding:12px;border-radius:8px;text-align:center;margin-bottom:12px;font-weight:bold}
-@media(max-width:800px){.review-list{grid-template-columns:1fr}.reviews-box{padding:22px 16px}}
-@media(max-width:500px){.review-form-grid{grid-template-columns:1fr}.review-form textarea{grid-column:auto}.reviews-score{font-size:26px}}
+            .review-box {
+                padding: 20px 15px;
+            }
+
+            .rating-star {
+                font-size: 31px;
+            }
+
+            .review-top {
+                flex-direction: column;
+            }
+        }
 
     </style>
 </head>
 
 <body>
 
-
-<!-- =====================================================
-     HEADER
-     ===================================================== -->
-
 <header>
-
     <h1>VIỆC LÀM MIỀN BẮC</h1>
-
-    <p>
-        Tìm việc nhanh - Việc thật - Thu nhập ổn định
-    </p>
-
+    <p>Tìm việc nhanh - Việc thật - Thu nhập ổn định</p>
 </header>
 
-
-<!-- =====================================================
-     MENU
-     ===================================================== -->
-
 <nav>
-
-    <a href="#viec-lam">
-        Việc làm
-    </a>
-
-    <a href="#quyen-loi">
-        Quyền lợi
-    </a>
-
-    <a href="#dang-ky">
-        Đăng ký
-    </a>
-
-    <a href="#danh-gia">
-        Đánh giá
-    </a>
-
-    <a href="#lien-he">
-        Liên hệ
-    </a>
-
+    <a href="#viec-lam">Việc làm</a>
+    <a href="#quyen-loi">Quyền lợi</a>
+    <a href="#dang-ky">Đăng ký</a>
+    <a href="#danh-gia">Đánh giá</a>
+    <a href="#lien-he">Liên hệ</a>
 </nav>
 
-
-<!-- =====================================================
-     BANNER
-     ===================================================== -->
-
 <section class="banner">
-
-    <h2>
-        🔥 TUYỂN DỤNG VIỆC LÀM MIỀN BẮC
-    </h2>
-
-    <p>
-        Nhiều vị trí đang tuyển dụng tại các khu công nghiệp
-    </p>
-
-    <a href="#dang-ky" class="btn">
-        ĐĂNG KÝ TÌM VIỆC
-    </a>
-
+    <h2>🔥 TUYỂN DỤNG VIỆC LÀM MIỀN BẮC</h2>
+    <p>Nhiều vị trí đang tuyển dụng tại các khu công nghiệp</p>
+    <a href="#dang-ky" class="btn">ĐĂNG KÝ TÌM VIỆC</a>
 </section>
 
-
-<!-- =====================================================
-     TÌM KIẾM
-     ===================================================== -->
-
 <div class="search-box">
-
     <input
         type="text"
         id="search"
@@ -693,751 +844,393 @@
         onkeyup="searchJobs()"
     >
 
-    <select
-        id="location"
-        onchange="searchJobs()"
-    >
-
-        <option value="">
-            Tất cả khu vực
-        </option>
-
-        <option value="Bắc Ninh">
-            Bắc Ninh
-        </option>
-
-        <option value="Bắc Giang">
-            Bắc Giang
-        </option>
-
-        <option value="Hưng Yên">
-            Hưng Yên
-        </option>
-
-        <option value="Quảng Ninh">
-            Quảng Ninh
-        </option>
-
-        <option value="Hải Dương">
-            Hải Dương
-        </option>
-
-        <option value="Hà Nội">
-            Hà Nội
-        </option>
-
-        <option value="Hải Phòng">
-            Hải Phòng
-        </option>
-
-        <option value="Thái Nguyên">
-            Thái Nguyên
-        </option>
-
-        <option value="Vĩnh Phúc">
-            Vĩnh Phúc
-        </option>
-
-        <option value="Khác">
-            Khu vực khác
-        </option>
-
+    <select id="location" onchange="searchJobs()">
+        <option value="">Tất cả khu vực</option>
+        <option value="Bắc Ninh">Bắc Ninh</option>
+        <option value="Bắc Giang">Bắc Giang</option>
+        <option value="Hưng Yên">Hưng Yên</option>
+        <option value="Quảng Ninh">Quảng Ninh</option>
+        <option value="Hải Dương">Hải Dương</option>
+        <option value="Hà Nội">Hà Nội</option>
+        <option value="Hải Phòng">Hải Phòng</option>
+        <option value="Thái Nguyên">Thái Nguyên</option>
+        <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+        <option value="Khác">Khu vực khác</option>
     </select>
-
 </div>
-
-
-<!-- =====================================================
-     VIỆC LÀM
-     ===================================================== -->
 
 <section id="viec-lam" class="container">
 
     <div class="section-title">
-
-        <h2>
-            🔥 VIỆC LÀM ĐANG TUYỂN
-        </h2>
-
-        <p>
-            Cập nhật những đơn tuyển dụng mới nhất
-        </p>
-
+        <h2>🔥 VIỆC LÀM ĐANG TUYỂN</h2>
+        <p>Cập nhật những đơn tuyển dụng mới nhất</p>
     </div>
-
 
     <div class="jobs">
 
-
-        <!-- ================= CANON ================= -->
-
         <div class="job">
-
-            <img
-                src="canon.jpg"
-                alt="Tuyển dụng công nhân sản xuất Canon"
-                class="job-image"
-            >
-
-            <span class="tag">
-                TUYỂN GẤP
-            </span>
-
-            <h3>
-                Công nhân sản xuất Canon
-            </h3>
-
-            <p class="company-name">
-                🏭 Công ty Canon
-            </p>
-
-            <p class="salary">
-                💰 Thu nhập thực tế: 13 - 15 triệu/tháng
-            </p>
-
-            <p>
-                🎁 Thưởng người mới lên tới 11 triệu đồng
-            </p>
-
-            <p class="location">
-                📍 Đơn tuyển Canon
-            </p>
-
-            <p class="job-description">
-                🔧 Công việc sản xuất trong nhà máy, làm việc tại dây chuyền
-                sản xuất. Phù hợp với người muốn tìm công việc nhà máy ổn định.
-            </p>
-
-            <p>
-                📋 Hồ sơ: CCCD/Căn cước công dân
-            </p>
-
-            <p>
-                🕐 Phỏng vấn: 08:00 - 10:00, các ngày làm việc trong tuần
-            </p>
-
-            <a href="#dang-ky" class="btn">
-                ỨNG TUYỂN CANON
-            </a>
-
+            <img src="canon.jpg" alt="Tuyển dụng công nhân sản xuất Canon" class="job-image">
+            <span class="tag">TUYỂN GẤP</span>
+            <h3>Công nhân sản xuất Canon</h3>
+            <p class="company-name">🏭 Công ty Canon</p>
+            <p class="salary">💰 Thu nhập thực tế: 13 - 15 triệu/tháng</p>
+            <p>🎁 Thưởng người mới lên tới 11 triệu đồng</p>
+            <p class="location">📍 Đơn tuyển Canon</p>
+            <p class="job-description">🔧 Công việc sản xuất trong nhà máy, làm việc tại dây chuyền sản xuất. Phù hợp với người muốn tìm công việc nhà máy ổn định.</p>
+            <p>📋 Hồ sơ: CCCD/Căn cước công dân</p>
+            <p>🕐 Phỏng vấn: 08:00 - 10:00, các ngày làm việc trong tuần</p>
+            <a href="#dang-ky" class="btn">ỨNG TUYỂN CANON</a>
         </div>
 
-
-        <!-- ================= FOXCONN ================= -->
-
         <div class="job">
-
-            <img
-                src="foxconn.jpg"
-                alt="Tuyển công nhân Foxconn EV Quảng Ninh"
-                class="job-image"
-            >
-
-            <span class="tag">
-                TUYỂN CHÍNH THỨC
-            </span>
-
-            <h3>
-                Công nhân Foxconn EV
-            </h3>
-
-            <p class="company-name">
-                🏭 Foxconn EV Quảng Ninh
-            </p>
-
-            <p class="salary">
-                💰 Thu nhập: 14 - 16 triệu/tháng
-            </p>
-
-            <p>
-                🎁 Thưởng lên tới 9,5 triệu đồng
-            </p>
-
-            <p class="location">
-                📍 KCN Amata Sông Khoai / KCN Đông Mai - Quảng Ninh
-            </p>
-
-            <p class="job-description">
-                🔧 Các vị trí gồm công nhân lắp ráp sản xuất,
-                công nhân kho, công nhân QA/QC và một số vị trí sản xuất,
-                SMT, thanh hình.
-            </p>
-
-            <p>
-                🕐 Ca ngày: 08:00 - 17:00
-            </p>
-
-            <p>
-                🌙 Ca đêm: 20:00 - 05:00
-            </p>
-
-            <a href="#dang-ky" class="btn">
-                ỨNG TUYỂN FOXCONN
-            </a>
-
+            <img src="foxconn.jpg" alt="Tuyển công nhân Foxconn EV Quảng Ninh" class="job-image">
+            <span class="tag">TUYỂN CHÍNH THỨC</span>
+            <h3>Công nhân Foxconn EV</h3>
+            <p class="company-name">🏭 Foxconn EV Quảng Ninh</p>
+            <p class="salary">💰 Thu nhập: 14 - 16 triệu/tháng</p>
+            <p>🎁 Thưởng lên tới 9,5 triệu đồng</p>
+            <p class="location">📍 KCN Amata Sông Khoai / KCN Đông Mai - Quảng Ninh</p>
+            <p class="job-description">🔧 Các vị trí gồm công nhân lắp ráp sản xuất, công nhân kho, công nhân QA/QC và một số vị trí sản xuất, SMT, thanh hình.</p>
+            <p>🕐 Ca ngày: 08:00 - 17:00</p>
+            <p>🌙 Ca đêm: 20:00 - 05:00</p>
+            <a href="#dang-ky" class="btn">ỨNG TUYỂN FOXCONN</a>
         </div>
 
-
-        <!-- ================= FUKANG ================= -->
-
         <div class="job">
-
-            <img
-                src="fukang.jpg"
-                alt="Tuyển dụng lao động Fukang"
-                class="job-image"
-            >
-
-            <span class="tag">
-                THƯỞNG CAO
-            </span>
-
-            <h3>
-                Công nhân sản xuất Fukang
-            </h3>
-
-            <p class="company-name">
-                🏭 Fukang - Topwork Vina
-            </p>
-
-            <p class="salary">
-                💰 Tổng lương trên poster: 8,27 triệu/tháng
-            </p>
-
-            <p>
-                🎁 Tổng thưởng có thể lên tới 19 triệu đồng
-            </p>
-
-            <p class="job-description">
-                🔧 Công việc sản xuất tại nhà máy, làm việc theo ngày công
-                và các điều kiện thưởng được quy định trong đơn tuyển dụng.
-            </p>
-
-            <p>
-                🎁 Có các khoản hỗ trợ tiền ăn, xăng xe, chuyên cần và nhà ở
-                theo chính sách tuyển dụng.
-            </p>
-
-            <p>
-                📋 Chính sách thưởng áp dụng từ 05/08/2026
-            </p>
-
-            <a href="#dang-ky" class="btn">
-                ỨNG TUYỂN FUKANG
-            </a>
-
+            <img src="fukang.jpg" alt="Tuyển dụng lao động Fukang" class="job-image">
+            <span class="tag">THƯỞNG CAO</span>
+            <h3>Công nhân sản xuất Fukang</h3>
+            <p class="company-name">🏭 Fukang - Topwork Vina</p>
+            <p class="salary">💰 Tổng lương trên poster: 8,27 triệu/tháng</p>
+            <p>🎁 Tổng thưởng có thể lên tới 19 triệu đồng</p>
+            <p class="job-description">🔧 Công việc sản xuất tại nhà máy, làm việc theo ngày công và các điều kiện thưởng được quy định trong đơn tuyển dụng.</p>
+            <p>🎁 Có các khoản hỗ trợ tiền ăn, xăng xe, chuyên cần và nhà ở theo chính sách tuyển dụng.</p>
+            <p>📋 Chính sách thưởng áp dụng từ 05/08/2026</p>
+            <a href="#dang-ky" class="btn">ỨNG TUYỂN FUKANG</a>
         </div>
 
-
-        <!-- ================= GOERTEK ================= -->
-
         <div class="job">
-
-            <img
-                src="goertek.jpg"
-                alt="Tuyển dụng công nhân Goertek Bắc Ninh"
-                class="job-image"
-            >
-
-            <span class="tag">
-                TUYỂN NHIỀU VỊ TRÍ
-            </span>
-
-            <h3>
-                Công nhân Goertek
-            </h3>
-
-            <p class="company-name">
-                🏭 Công ty Goertek
-            </p>
-
-            <p class="salary">
-                💰 Lương cơ bản: 5,7 triệu/tháng
-            </p>
-
-            <p>
-                🎁 Tổng phụ cấp: khoảng 1,25 triệu/tháng
-            </p>
-
-            <p>
-                🎁 Thưởng người mới lên tới 20,2 triệu đồng
-            </p>
-
-            <p class="location">
-                📍 KCN Quế Võ, Nam Sơn, Bắc Ninh
-            </p>
-
-            <p class="job-description">
-                🔧 Công ty tuyển nhiều vị trí trong nhà máy.
-                Công việc sản xuất, thao tác tại dây chuyền và thực hiện
-                công việc theo hướng dẫn của nhà máy.
-            </p>
-
-            <p>
-                ⭐ Có đào tạo bài bản và môi trường làm việc chuyên nghiệp.
-            </p>
-
-            <a href="#dang-ky" class="btn">
-                ỨNG TUYỂN GOERTEK
-            </a>
-
+            <img src="goertek.jpg" alt="Tuyển dụng công nhân Goertek Bắc Ninh" class="job-image">
+            <span class="tag">TUYỂN NHIỀU VỊ TRÍ</span>
+            <h3>Công nhân Goertek</h3>
+            <p class="company-name">🏭 Công ty Goertek</p>
+            <p class="salary">💰 Lương cơ bản: 5,7 triệu/tháng</p>
+            <p>🎁 Tổng phụ cấp: khoảng 1,25 triệu/tháng</p>
+            <p>🎁 Thưởng người mới lên tới 20,2 triệu đồng</p>
+            <p class="location">📍 KCN Quế Võ, Nam Sơn, Bắc Ninh</p>
+            <p class="job-description">🔧 Công ty tuyển nhiều vị trí trong nhà máy. Công việc sản xuất, thao tác tại dây chuyền và thực hiện công việc theo hướng dẫn của nhà máy.</p>
+            <p>⭐ Có đào tạo bài bản và môi trường làm việc chuyên nghiệp.</p>
+            <a href="#dang-ky" class="btn">ỨNG TUYỂN GOERTEK</a>
         </div>
 
-
-        <!-- ================= KINH ĐÔ ================= -->
-
         <div class="job">
-
-            <img
-                src="kinhdo.jpg"
-                alt="Tuyển lao động sản xuất bánh kẹo Kinh Đô"
-                class="job-image"
-            >
-
-            <span class="tag">
-                CẦN TUYỂN 1000 LAO ĐỘNG
-            </span>
-
-            <h3>
-                Công nhân sản xuất bánh kẹo
-            </h3>
-
-            <p class="company-name">
-                🍪 Công ty Bánh kẹo Kinh Đô miền Bắc
-            </p>
-
-            <p class="salary">
-                💰 Thu nhập bình quân: 8 - 14 triệu/tháng
-            </p>
-
-            <p>
-                💵 Lương cơ bản: 5 triệu/tháng
-            </p>
-
-            <p>
-                🎁 Tổng phụ cấp: 2,343 triệu/tháng
-            </p>
-
-            <p class="location">
-                📍 Phường Bần Yên Nhân - Mỹ Hào - Hưng Yên
-            </p>
-
-            <p class="job-description">
-                🍪 Công việc sản xuất bánh kẹo Trung thu và thực hiện
-                các công việc tại dây chuyền sản xuất của nhà máy.
-            </p>
-
-            <p>
-                👨 Nam, nữ từ 16 - 60 tuổi theo nội dung poster
-            </p>
-
-            <p>
-                🚌 Có hỗ trợ tiền xe cho nhóm lao động ở xa và hỗ trợ
-                ứng lương theo chính sách.
-            </p>
-
-            <a href="#dang-ky" class="btn">
-                ỨNG TUYỂN KINH ĐÔ
-            </a>
-
+            <img src="kinhdo.jpg" alt="Tuyển lao động sản xuất bánh kẹo Kinh Đô" class="job-image">
+            <span class="tag">CẦN TUYỂN 1000 LAO ĐỘNG</span>
+            <h3>Công nhân sản xuất bánh kẹo</h3>
+            <p class="company-name">🍪 Công ty Bánh kẹo Kinh Đô miền Bắc</p>
+            <p class="salary">💰 Thu nhập bình quân: 8 - 14 triệu/tháng</p>
+            <p>💵 Lương cơ bản: 5 triệu/tháng</p>
+            <p>🎁 Tổng phụ cấp: 2,343 triệu/tháng</p>
+            <p class="location">📍 Phường Bần Yên Nhân - Mỹ Hào - Hưng Yên</p>
+            <p class="job-description">🍪 Công việc sản xuất bánh kẹo Trung thu và thực hiện các công việc tại dây chuyền sản xuất của nhà máy.</p>
+            <p>👨 Nam, nữ từ 16 - 60 tuổi theo nội dung poster</p>
+            <p>🚌 Có hỗ trợ tiền xe cho nhóm lao động ở xa và hỗ trợ ứng lương theo chính sách.</p>
+            <a href="#dang-ky" class="btn">ỨNG TUYỂN KINH ĐÔ</a>
         </div>
 
-
-        <!-- ================= LENS ================= -->
-
         <div class="job">
-
-            <img
-                src="lens.jpg"
-                alt="Chính sách thưởng LENS tháng 8"
-                class="job-image"
-            >
-
-            <span class="tag">
-                THƯỞNG THÁNG 8
-            </span>
-
-            <h3>
-                Đơn LENS - Chính sách thưởng
-            </h3>
-
-            <p class="company-name">
-                🏭 Topwork Vina - LENS
-            </p>
-
-            <p class="salary">
-                💰 Tổng thưởng theo poster: 18,5 triệu đồng
-            </p>
-
-            <p>
-                🎁 Thưởng hoàn thành 1 tháng: 4 triệu
-            </p>
-
-            <p>
-                🎁 Hỗ trợ tiền xe và thưởng chuyên cần
-            </p>
-
-            <p class="job-description">
-                📋 Poster tập trung vào chính sách thưởng theo số ngày công,
-                thưởng Topwork, chuyên cần và giới thiệu nội bộ.
-            </p>
-
-            <p>
-                ⚠️ Ảnh chưa thể hiện rõ vị trí công việc và địa điểm làm việc,
-                ứng viên nên đăng ký để được tư vấn đơn cụ thể.
-            </p>
-
-            <a href="#dang-ky" class="btn">
-                NHẬN TƯ VẤN LENS
-            </a>
-
+            <img src="lens.jpg" alt="Chính sách thưởng LENS tháng 8" class="job-image">
+            <span class="tag">THƯỞNG THÁNG 8</span>
+            <h3>Đơn LENS - Chính sách thưởng</h3>
+            <p class="company-name">🏭 Topwork Vina - LENS</p>
+            <p class="salary">💰 Tổng thưởng theo poster: 18,5 triệu đồng</p>
+            <p>🎁 Thưởng hoàn thành 1 tháng: 4 triệu</p>
+            <p>🎁 Hỗ trợ tiền xe và thưởng chuyên cần</p>
+            <p class="job-description">📋 Poster tập trung vào chính sách thưởng theo số ngày công, thưởng Topwork, chuyên cần và giới thiệu nội bộ.</p>
+            <p>⚠️ Ảnh chưa thể hiện rõ vị trí công việc và địa điểm làm việc, ứng viên nên đăng ký để được tư vấn đơn cụ thể.</p>
+            <a href="#dang-ky" class="btn">NHẬN TƯ VẤN LENS</a>
         </div>
 
-
-        <!-- ================= LUXSHARE ================= -->
-
         <div class="job">
-
-            <img
-                src="luxshare.jpg"
-                alt="Chính sách thưởng Luxshare"
-                class="job-image"
-            >
-
-            <span class="tag">
-                THƯỞNG CAO
-            </span>
-
-            <h3>
-                Công nhân Luxshare
-            </h3>
-
-            <p class="company-name">
-                🏭 Luxshare
-            </p>
-
-            <p class="salary">
-                💰 Tổng thưởng theo poster: 15,7 triệu đồng
-            </p>
-
-            <p>
-                🎁 Thưởng công ty: 10 triệu đồng
-            </p>
-
-            <p>
-                🎁 Thưởng thêm nhà cung ứng: 5,7 triệu đồng
-            </p>
-
-            <p class="job-description">
-                🔧 Công việc nhà máy, đi làm đủ ngày công và duy trì
-                chuyên cần theo điều kiện thưởng của đơn tuyển dụng.
-            </p>
-
-            <p>
-                🏠 Có hỗ trợ nhà ở theo điều kiện của chương trình.
-            </p>
-
-            <p>
-                📋 Chính sách trong poster áp dụng từ 04/08/2026.
-            </p>
-
-            <a href="#dang-ky" class="btn">
-                ỨNG TUYỂN LUXSHARE
-            </a>
-
+            <img src="luxshare.jpg" alt="Chính sách thưởng Luxshare" class="job-image">
+            <span class="tag">THƯỞNG CAO</span>
+            <h3>Công nhân Luxshare</h3>
+            <p class="company-name">🏭 Luxshare</p>
+            <p class="salary">💰 Tổng thưởng theo poster: 15,7 triệu đồng</p>
+            <p>🎁 Thưởng công ty: 10 triệu đồng</p>
+            <p>🎁 Thưởng thêm nhà cung ứng: 5,7 triệu đồng</p>
+            <p class="job-description">🔧 Công việc nhà máy, đi làm đủ ngày công và duy trì chuyên cần theo điều kiện thưởng của đơn tuyển dụng.</p>
+            <p>🏠 Có hỗ trợ nhà ở theo điều kiện của chương trình.</p>
+            <p>📋 Chính sách trong poster áp dụng từ 04/08/2026.</p>
+            <a href="#dang-ky" class="btn">ỨNG TUYỂN LUXSHARE</a>
         </div>
 
-
-        <!-- ================= NEWWING ================= -->
-
         <div class="job">
-
-            <img
-                src="newwing.jpg"
-                alt="Tuyển công nhân Newwing Bắc Giang"
-                class="job-image"
-            >
-
-            <span class="tag">
-                THƯỞNG NGƯỜI MỚI
-            </span>
-
-            <h3>
-                Công nhân Newwing
-            </h3>
-
-            <p class="company-name">
-                🏭 Công ty Hồng Hải Newwing
-            </p>
-
-            <p class="salary">
-                💰 Tổng lương trên poster: 8,27 triệu/tháng
-            </p>
-
-            <p>
-                🎁 Tổng thưởng lên tới 15 triệu đồng
-            </p>
-
-            <p>
-                💵 Lương cơ bản: 5,7 triệu/tháng
-            </p>
-
-            <p>
-                🎁 Phụ cấp: khoảng 2,57 triệu/tháng
-            </p>
-
-            <p class="location">
-                📍 KCN Vân Trung, Việt Yên, Bắc Giang
-            </p>
-
-            <p class="job-description">
-                🔧 Công việc sản xuất trong nhà máy điện tử,
-                làm việc tại dây chuyền và thực hiện công việc theo
-                hướng dẫn của nhà máy.
-            </p>
-
-            <p>
-                🏠 Có phụ cấp nhà ở, đi lại và tiền ăn theo poster.
-            </p>
-
-            <a href="#dang-ky" class="btn">
-                ỨNG TUYỂN NEWWING
-            </a>
-
+            <img src="newwing.jpg" alt="Tuyển công nhân Newwing Bắc Giang" class="job-image">
+            <span class="tag">THƯỞNG NGƯỜI MỚI</span>
+            <h3>Công nhân Newwing</h3>
+            <p class="company-name">🏭 Công ty Hồng Hải Newwing</p>
+            <p class="salary">💰 Tổng lương trên poster: 8,27 triệu/tháng</p>
+            <p>🎁 Tổng thưởng lên tới 15 triệu đồng</p>
+            <p>💵 Lương cơ bản: 5,7 triệu/tháng</p>
+            <p>🎁 Phụ cấp: khoảng 2,57 triệu/tháng</p>
+            <p class="location">📍 KCN Vân Trung, Việt Yên, Bắc Giang</p>
+            <p class="job-description">🔧 Công việc sản xuất trong nhà máy điện tử, làm việc tại dây chuyền và thực hiện công việc theo hướng dẫn của nhà máy.</p>
+            <p>🏠 Có phụ cấp nhà ở, đi lại và tiền ăn theo poster.</p>
+            <a href="#dang-ky" class="btn">ỨNG TUYỂN NEWWING</a>
         </div>
 
-
-        <!-- ================= VIETINAK ================= -->
-
         <div class="job">
-
-            <img
-                src="vietinak.jpg"
-                alt="Tuyển dụng công ty Vietinak Hưng Yên"
-                class="job-image"
-            >
-
-            <span class="tag">
-                THU NHẬP CAO
-            </span>
-
-            <h3>
-                Công nhân Vietinak
-            </h3>
-
-            <p class="company-name">
-                🏭 Công ty Vietinak
-            </p>
-
-            <p class="salary">
-                💰 Thu nhập lên tới 16 triệu/tháng
-            </p>
-
-            <p>
-                💵 Lương cơ bản: 6,85 triệu/tháng
-            </p>
-
-            <p>
-                🎁 Tổng phụ cấp, trợ cấp lên tới 3,05 triệu/tháng
-            </p>
-
-            <p>
-                🎁 Thưởng công nhân mới: 6 triệu đồng
-            </p>
-
-            <p class="location">
-                📍 Lô C5, KCN Thăng Long II, Nguyễn Văn Linh, Hưng Yên
-            </p>
-
-            <p class="job-description">
-                🔧 Vị trí tuyển dụng gồm nam vận hành máy và nữ kiểm tra hàng.
-                Có thể làm 3 ca hoặc hành chính tùy vị trí.
-            </p>
-
-            <p>
-                🛡️ Tham gia đầy đủ BHXH, BHYT, bảo hiểm 24H theo poster.
-            </p>
-
-            <a href="#dang-ky" class="btn">
-                ỨNG TUYỂN VIETINAK
-            </a>
-
+            <img src="vietinak.jpg" alt="Tuyển dụng công ty Vietinak Hưng Yên" class="job-image">
+            <span class="tag">THU NHẬP CAO</span>
+            <h3>Công nhân Vietinak</h3>
+            <p class="company-name">🏭 Công ty Vietinak</p>
+            <p class="salary">💰 Thu nhập lên tới 16 triệu/tháng</p>
+            <p>💵 Lương cơ bản: 6,85 triệu/tháng</p>
+            <p>🎁 Tổng phụ cấp, trợ cấp lên tới 3,05 triệu/tháng</p>
+            <p>🎁 Thưởng công nhân mới: 6 triệu đồng</p>
+            <p class="location">📍 Lô C5, KCN Thăng Long II, Nguyễn Văn Linh, Hưng Yên</p>
+            <p class="job-description">🔧 Vị trí tuyển dụng gồm nam vận hành máy và nữ kiểm tra hàng. Có thể làm 3 ca hoặc hành chính tùy vị trí.</p>
+            <p>🛡️ Tham gia đầy đủ BHXH, BHYT, bảo hiểm 24H theo poster.</p>
+            <a href="#dang-ky" class="btn">ỨNG TUYỂN VIETINAK</a>
         </div>
 
-
-        <!-- ================= WISTRON ================= -->
-
         <div class="job">
-
-            <img
-                src="wistron.jpg"
-                alt="Tuyển công nhân Wistron"
-                class="job-image"
-            >
-
-            <span class="tag">
-                THƯỞNG NGƯỜI MỚI
-            </span>
-
-            <h3>
-                Công nhân Wistron
-            </h3>
-
-            <p class="company-name">
-                🏭 Công ty Wistron
-            </p>
-
-            <p class="salary">
-                💰 Thu nhập trung bình: 13 - 15 triệu/tháng
-            </p>
-
-            <p>
-                💵 Lương cơ bản: 5,6 triệu/tháng
-            </p>
-
-            <p>
-                🎁 Phụ cấp: khoảng 1,3 triệu/tháng
-            </p>
-
-            <p>
-                🎁 Thưởng người mới lên tới 12 triệu đồng
-            </p>
-
-            <p class="job-description">
-                🔧 Sản xuất thiết bị máy tính, bàn phím và phụ kiện.
-                Công việc thực hiện tại dây chuyền sản xuất trong nhà máy.
-            </p>
-
-            <p>
-                🚌 Có xe đưa đón theo nội dung poster.
-            </p>
-
-            <p>
-                🏠 Có ký túc xá miễn phí theo nội dung poster.
-            </p>
-
-            <p>
-                🌙 Làm 2 ca ngày - đêm theo sắp xếp.
-            </p>
-
-            <a href="#dang-ky" class="btn">
-                ỨNG TUYỂN WISTRON
-            </a>
-
+            <img src="wistron.jpg" alt="Tuyển công nhân Wistron" class="job-image">
+            <span class="tag">THƯỞNG NGƯỜI MỚI</span>
+            <h3>Công nhân Wistron</h3>
+            <p class="company-name">🏭 Công ty Wistron</p>
+            <p class="salary">💰 Thu nhập trung bình: 13 - 15 triệu/tháng</p>
+            <p>💵 Lương cơ bản: 5,6 triệu/tháng</p>
+            <p>🎁 Phụ cấp: khoảng 1,3 triệu/tháng</p>
+            <p>🎁 Thưởng người mới lên tới 12 triệu đồng</p>
+            <p class="job-description">🔧 Sản xuất thiết bị máy tính, bàn phím và phụ kiện. Công việc thực hiện tại dây chuyền sản xuất trong nhà máy.</p>
+            <p>🚌 Có xe đưa đón theo nội dung poster.</p>
+            <p>🏠 Có ký túc xá miễn phí theo nội dung poster.</p>
+            <p>🌙 Làm 2 ca ngày - đêm theo sắp xếp.</p>
+            <a href="#dang-ky" class="btn">ỨNG TUYỂN WISTRON</a>
         </div>
-
 
     </div>
-
 </section>
-
-
-<!-- =====================================================
-     QUYỀN LỢI
-     ===================================================== -->
 
 <section id="quyen-loi" class="container">
 
     <div class="section-title">
-
-        <h2>
-            ⭐ QUYỀN LỢI
-        </h2>
-
+        <h2>🎁 QUYỀN LỢI</h2>
+        <p>Hỗ trợ ứng viên trong quá trình tìm việc</p>
     </div>
 
-
     <div class="benefits">
-
         <div class="benefit">
-
-            <strong>
-                💰 Thu nhập tốt
-            </strong>
-
-            Lương + phụ cấp + thưởng
-
+            <strong>💰 Thu nhập</strong>
+            Tư vấn đơn tuyển phù hợp với nhu cầu và khả năng.
         </div>
 
-
         <div class="benefit">
-
-            <strong>
-                🏠 Hỗ trợ
-            </strong>
-
-            Tùy từng đơn tuyển dụng
-
+            <strong>📋 Hồ sơ</strong>
+            Hướng dẫn chuẩn bị hồ sơ và thủ tục ứng tuyển.
         </div>
 
-
         <div class="benefit">
-
-            <strong>
-                📋 Công việc ổn định
-            </strong>
-
-            Nhiều vị trí tại KCN
-
+            <strong>🏭 Nhiều lựa chọn</strong>
+            Nhiều đơn tuyển tại các khu công nghiệp miền Bắc.
         </div>
 
-
         <div class="benefit">
-
-            <strong>
-                📞 Tư vấn miễn phí
-            </strong>
-
-            Hỗ trợ tìm việc phù hợp
-
+            <strong>📞 Hỗ trợ</strong>
+            Tư vấn trực tiếp trước khi ứng tuyển.
         </div>
-
     </div>
 
 </section>
 
-
-<section class="reviews-section" id="danh-gia">
-<div class="section-title"><h2>⭐ ĐÁNH GIÁ CỦA ỨNG VIÊN</h2><p>Những chia sẻ từ người đã được tư vấn tìm việc</p></div>
-<div class="reviews-box">
-<div class="reviews-summary"><div class="reviews-score">4.9/5</div><div class="reviews-stars">★★★★★</div><div class="reviews-count">Đánh giá tích cực từ ứng viên</div></div>
-<div class="review-list" id="reviewList">
-<div class="review-card"><div class="review-card-stars">★★★★★</div><p>“Tư vấn nhiệt tình, hướng dẫn hồ sơ khá nhanh. Mình được giới thiệu đơn phù hợp với khu vực đang ở.”</p><div class="review-author">Nguyễn Văn M.</div><div class="review-location">📍 Bắc Ninh</div></div>
-<div class="review-card"><div class="review-card-stars">★★★★★</div><p>“Thông tin công việc dễ xem, được tư vấn rõ về lương và thời gian làm việc trước khi đăng ký.”</p><div class="review-author">Trần Thị H.</div><div class="review-location">📍 Hưng Yên</div></div>
-<div class="review-card"><div class="review-card-stars">★★★★★</div><p>“Mình cần tìm việc gần nhà và được hỗ trợ khá nhanh. Cảm ơn bộ phận tuyển dụng.”</p><div class="review-author">Lê Văn T.</div><div class="review-location">📍 Hải Dương</div></div>
-</div>
-<div class="review-form"><h3>✍️ Chia sẻ đánh giá của bạn</h3>
-<div id="reviewSuccess" class="review-success">✅ Cảm ơn bạn! Đánh giá đã được ghi nhận.</div>
-<form id="reviewForm"><div class="review-form-grid">
-<input type="text" id="reviewName" placeholder="Họ và tên" maxlength="50" required>
-<select id="reviewProvince" required><option value="">-- Khu vực --</option><option>Hà Nội</option><option>Bắc Ninh</option><option>Hưng Yên</option><option>Hải Phòng</option><option>Thái Nguyên</option><option>Vĩnh Phúc</option><option>Hải Dương</option><option>Bắc Giang</option><option>Quảng Ninh</option><option>Khác</option></select>
-<select id="reviewRating" required><option value="">-- Số sao --</option><option value="5">★★★★★ - Rất hài lòng</option><option value="4">★★★★☆ - Hài lòng</option><option value="3">★★★☆☆ - Bình thường</option><option value="2">★★☆☆☆ - Chưa hài lòng</option><option value="1">★☆☆☆☆ - Cần cải thiện</option></select>
-<textarea id="reviewText" placeholder="Viết cảm nhận của bạn..." maxlength="300" required></textarea>
-</div><button type="submit" class="btn">⭐ GỬI ĐÁNH GIÁ</button>
-<div class="review-note">Đánh giá mới sẽ được hiển thị trên thiết bị này sau khi gửi.</div></form>
-</div></div></section>
-
-
-<!-- =====================================================
-     SỐ ỨNG VIÊN QUAN TÂM
-     ===================================================== -->
-
 <div class="registration-counter">
-
-    👥 Hiện có
-
-    <strong id="registrationCount">
-        100
-    </strong>
-
-    ứng viên đang quan tâm tìm việc
-
+    👥 Hiện có <strong id="registrationCount">100</strong> người đang quan tâm các đơn tuyển dụng
 </div>
 
+<section id="dang-ky" class="register">
 
-<!-- =====================================================
-     POPUP THÔNG BÁO
-     ===================================================== -->
+    <h2>📩 ĐĂNG KÝ TÌM VIỆC</h2>
+
+    <p class="subtitle">
+        Để lại thông tin, chúng tôi sẽ liên hệ tư vấn đơn phù hợp.
+    </p>
+
+    <div id="successMessage" class="success-message"></div>
+
+    <form
+        id="jobForm"
+        action="https://formspree.io/f/xpqogqva"
+        method="POST"
+    >
+
+        <div class="form-group">
+            <label for="fullName">Họ và tên</label>
+            <input
+                id="fullName"
+                type="text"
+                name="Họ và tên"
+                placeholder="Nhập họ và tên"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Số điện thoại</label>
+            <input
+                id="phone"
+                type="tel"
+                name="Số điện thoại"
+                placeholder="Nhập số điện thoại"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="desiredJob">Công việc quan tâm</label>
+            <input
+                id="desiredJob"
+                type="text"
+                name="Công việc quan tâm"
+                placeholder="Ví dụ: Canon, Foxconn, công nhân..."
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="desiredLocation">Khu vực mong muốn</label>
+            <select id="desiredLocation" name="Khu vực mong muốn">
+                <option value="">Chọn khu vực</option>
+                <option>Bắc Ninh</option>
+                <option>Bắc Giang</option>
+                <option>Hưng Yên</option>
+                <option>Quảng Ninh</option>
+                <option>Hải Dương</option>
+                <option>Hà Nội</option>
+                <option>Hải Phòng</option>
+                <option>Thái Nguyên</option>
+                <option>Vĩnh Phúc</option>
+                <option>Khác</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="note">Ghi chú thêm</label>
+            <textarea
+                id="note"
+                name="Ghi chú"
+                placeholder="Thông tin thêm nếu có..."
+            ></textarea>
+        </div>
+
+        <button type="submit" class="btn">
+            📩 GỬI ĐĂNG KÝ
+        </button>
+
+    </form>
+</section>
+
+<!-- ================= ĐÁNH GIÁ ================= -->
+
+<section id="danh-gia" class="reviews-section">
+
+    <div class="section-title">
+        <h2>⭐ KHÁCH HÀNG ĐÁNH GIÁ</h2>
+        <p>Đánh giá được lưu trực tiếp trên hệ thống và hiển thị cho mọi người.</p>
+    </div>
+
+    <div class="review-box">
+
+        <h2>Gửi đánh giá của bạn</h2>
+
+        <p class="review-subtitle">
+            Chọn số sao và chia sẻ trải nghiệm của bạn.
+        </p>
+
+        <div
+            id="reviewStatus"
+            class="review-status"
+            aria-live="polite"
+        ></div>
+
+        <input
+            id="reviewName"
+            type="text"
+            maxlength="100"
+            placeholder="Họ và tên"
+            autocomplete="name"
+        >
+
+        <div class="rating-select" aria-label="Chọn số sao">
+
+            <button type="button" class="rating-star" data-rating="1" aria-label="1 sao">★</button>
+            <button type="button" class="rating-star" data-rating="2" aria-label="2 sao">★</button>
+            <button type="button" class="rating-star" data-rating="3" aria-label="3 sao">★</button>
+            <button type="button" class="rating-star" data-rating="4" aria-label="4 sao">★</button>
+            <button type="button" class="rating-star" data-rating="5" aria-label="5 sao">★</button>
+
+        </div>
+
+        <textarea
+            id="reviewContent"
+            maxlength="1000"
+            placeholder="Viết đánh giá của bạn..."
+        ></textarea>
+
+        <button
+            type="button"
+            id="submitReviewButton"
+            class="btn"
+        >
+            ⭐ GỬI ĐÁNH GIÁ
+        </button>
+
+    </div>
+
+    <div id="reviewCount" class="review-count">
+        Đang tải đánh giá...
+    </div>
+
+    <div id="reviewList" class="review-list">
+        <div class="review-loading">⏳ Đang tải đánh giá...</div>
+    </div>
+
+</section>
+
+<section id="lien-he" class="contact">
+
+    <h2>📞 LIÊN HỆ TƯ VẤN</h2>
+
+    <p>Đức HR - Tư vấn việc làm miền Bắc</p>
+
+    <p>
+        Zalo:
+        <a href="https://zalo.me/0369759879" target="_blank" rel="noopener">
+            0369 759 879
+        </a>
+    </p>
+
+    <p>
+        Hỗ trợ tư vấn đơn tuyển và hướng dẫn ứng tuyển.
+    </p>
+
+    <div class="contact-buttons">
+
+        <a
+            href="https://zalo.me/0369759879"
+            target="_blank"
+            rel="noopener"
+        >
+            💬 NHẮN ZALO
+        </a>
+
+        <a href="tel:0369759879">
+            📞 GỌI NGAY
+        </a>
+
+    </div>
+
+</section>
 
 <div
     id="registrationToast"
@@ -1449,229 +1242,62 @@
         🔔
     </div>
 
-
     <div class="registration-toast-content">
 
         <div
             id="registrationToastTitle"
             class="registration-toast-title"
-        >
-            Nguyễn Văn A vừa đăng ký
-        </div>
-
+        ></div>
 
         <div
             id="registrationToastPhone"
             class="registration-toast-phone"
-        >
-            📱 098****123
-        </div>
-
+        ></div>
 
         <div
             id="registrationToastLocation"
             class="registration-toast-location"
-        >
-            📍 Bắc Ninh
-        </div>
-
+        ></div>
 
         <div
             id="registrationToastTime"
             class="registration-toast-time"
-        >
-            ⏱️ Vừa xong
-        </div>
+        ></div>
 
     </div>
 
 </div>
 
-
-<!-- =====================================================
-     ĐĂNG KÝ
-     ===================================================== -->
-
-<section id="dang-ky" class="register">
-
-    <h2>
-        📝 ĐĂNG KÝ TÌM VIỆC
-    </h2>
-
-
-    <p class="subtitle">
-        Điền thông tin bên dưới, bộ phận tuyển dụng sẽ liên hệ lại với bạn.
-    </p>
-
-
-    <div
-        id="successMessage"
-        class="success-message"
-    >
-
-        ✅ Đăng ký thành công!
-        Bộ phận tuyển dụng sẽ liên hệ với bạn sớm nhất.
-
-    </div>
-
-
-    <form
-        id="jobForm"
-        action="https://formspree.io/f/xpqogqva"
-        method="POST"
-    >
-
-        <div class="form-group">
-
-            <label>
-                Họ và tên *
-            </label>
-
-            <input
-                type="text"
-                name="Họ và tên"
-                placeholder="Nhập họ và tên"
-                required
-            >
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>
-                Số điện thoại *
-            </label>
-
-            <input
-                type="tel"
-                name="Số điện thoại"
-                placeholder="Nhập số điện thoại"
-                pattern="[0-9]{9,11}"
-                required
-            >
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>
-                Tỉnh/thành hiện tại *
-            </label>
-
-            <select
-                name="Tỉnh thành hiện tại"
-                required
-            >
-
-                <option value="">
-                    -- Chọn tỉnh/thành --
-                </option>
-
-                <option>Hà Nội</option>
-                <option>Bắc Ninh</option>
-                <option>Hưng Yên</option>
-                <option>Hải Phòng</option>
-                <option>Thái Nguyên</option>
-                <option>Vĩnh Phúc</option>
-                <option>Hải Dương</option>
-                <option>Bắc Giang</option>
-                <option>Quảng Ninh</option>
-                <option>Nam Định</option>
-                <option>Ninh Bình</option>
-                <option>Phú Thọ</option>
-                <option>Lạng Sơn</option>
-                <option>Cao Bằng</option>
-                <option>Bắc Kạn</option>
-                <option>Tuyên Quang</option>
-                <option>Yên Bái</option>
-                <option>Lào Cai</option>
-                <option>Thái Bình</option>
-                <option>Hà Nam</option>
-                <option>Khác</option>
-
-            </select>
-
-        </div>
-
-
-        <input
-            type="hidden"
-            name="_subject"
-            value="🔥 Có ứng viên mới đăng ký việc làm"
-        >
-
-
-        <button
-            type="submit"
-            class="btn"
-        >
-            📩 GỬI ĐĂNG KÝ
-        </button>
-
-    </form>
-
-</section>
-
-
-<!-- =====================================================
-     LIÊN HỆ
-     ===================================================== -->
-
-<section id="lien-he" class="contact">
-
-    <h2>
-        📞 LIÊN HỆ TUYỂN DỤNG
-    </h2>
-
-    <p>
-        Đức HR - Tư vấn việc làm miền Bắc
-    </p>
-
-    <p>
-        ☎️ Hotline:
-        <a href="tel:0369759879">
-            0369 759 879
-        </a>
-    </p>
-
-    <p>
-        💬 Zalo:
-        <a href="https://zalo.me/0369759879">
-            0369 759 879
-        </a>
-    </p>
-
-
-    <div class="contact-buttons">
-
-        <a href="tel:0369759879">
-            ☎️ GỌI NGAY
-        </a>
-
-        <a href="https://zalo.me/0369759879">
-            💬 NHẮN ZALO
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     FOOTER
-     ===================================================== -->
-
 <footer>
-
-    © 2026 Việc Làm Miền Bắc -
-    Thông tin tuyển dụng
-
+    © 2026 Việc Làm Miền Bắc - Thông tin tuyển dụng
 </footer>
 
+<button
+    id="scrollTopButton"
+    class="scroll-top-button"
+    aria-label="Cuộn lên đầu trang"
+>
+    ↑
+</button>
 
 <script>
+
+/* =====================================================
+   SUPABASE
+   ===================================================== */
+
+const SUPABASE_URL =
+    "https://kgtrbhqvronutpecxvwv.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_1jTbRHd5xNZDVOIxGaMfYA_UPepW3QK";
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
 
 /* =====================================================
    TÌM KIẾM VIỆC LÀM
@@ -1682,16 +1308,17 @@ function searchJobs() {
     const keyword =
         document.getElementById("search")
         .value
-        .toLowerCase();
+        .toLowerCase()
+        .trim();
 
     const location =
         document.getElementById("location")
         .value
-        .toLowerCase();
+        .toLowerCase()
+        .trim();
 
     const jobs =
         document.querySelectorAll(".job");
-
 
     jobs.forEach(function(job) {
 
@@ -1706,19 +1333,10 @@ function searchJobs() {
             keyword === "" ||
             text.includes(keyword);
 
-
-        if (
-            locationMatch &&
-            keywordMatch
-        ) {
-
-            job.style.display = "block";
-
-        } else {
-
-            job.style.display = "none";
-
-        }
+        job.style.display =
+            locationMatch && keywordMatch
+                ? "block"
+                : "none";
 
     });
 
@@ -1732,135 +1350,102 @@ function searchJobs() {
 const form =
     document.getElementById("jobForm");
 
+if (form) {
 
-form.addEventListener(
-    "submit",
-    async function(event) {
+    form.addEventListener(
+        "submit",
+        async function(event) {
 
-        event.preventDefault();
+            event.preventDefault();
 
+            const button =
+                form.querySelector("button");
 
-        const button =
-            form.querySelector("button");
-
-
-        const successMessage =
-            document.getElementById(
-                "successMessage"
-            );
-
-
-        button.disabled = true;
-
-        button.innerText =
-            "⏳ ĐANG GỬI...";
-
-
-        const formData =
-            new FormData(form);
-
-
-        try {
-
-            const response =
-                await fetch(
-                    form.action,
-                    {
-                        method: "POST",
-                        body: formData,
-                        headers: {
-                            "Accept":
-                                "application/json"
-                        }
-                    }
+            const successMessage =
+                document.getElementById(
+                    "successMessage"
                 );
 
+            button.disabled = true;
+            button.innerText = "⏳ ĐANG GỬI...";
 
-            if (response.ok) {
+            const formData =
+                new FormData(form);
 
-                const nameInput =
-                    form.querySelector(
-                        '[name="Họ và tên"]'
+            try {
+
+                const response =
+                    await fetch(
+                        form.action,
+                        {
+                            method: "POST",
+                            body: formData,
+                            headers: {
+                                "Accept":
+                                    "application/json"
+                            }
+                        }
                     );
 
+                if (response.ok) {
 
-                const name =
-                    nameInput
-                        ? nameInput.value.trim()
-                        : "";
+                    const nameInput =
+                        form.querySelector(
+                            '[name="Họ và tên"]'
+                        );
 
-
-                if (name) {
+                    const name =
+                        nameInput
+                            ? nameInput.value.trim()
+                            : "";
 
                     successMessage.innerText =
-                        "✅ Cảm ơn " +
-                        name +
-                        "! Hồ sơ của bạn đã được tiếp nhận.";
+                        name
+                            ? "✅ Cảm ơn " + name +
+                              "! Hồ sơ của bạn đã được tiếp nhận."
+                            : "✅ Đăng ký thành công!";
+
+                    form.reset();
+
+                    successMessage.style.display =
+                        "block";
+
+                    button.disabled = false;
+                    button.innerText =
+                        "📩 GỬI ĐĂNG KÝ";
+
+                    successMessage.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
 
                 } else {
 
-                    successMessage.innerText =
-                        "✅ Đăng ký thành công!";
+                    alert(
+                        "Không gửi được hồ sơ. Vui lòng thử lại hoặc gọi trực tiếp."
+                    );
 
+                    button.disabled = false;
+                    button.innerText =
+                        "📩 GỬI ĐĂNG KÝ";
                 }
 
+            } catch (error) {
 
-                form.reset();
-
-
-                successMessage.style.display =
-                    "block";
-
-
-                button.disabled =
-                    false;
-
-
-                button.innerText =
-                    "📩 GỬI ĐĂNG KÝ";
-
-
-                successMessage.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
-
-
-            } else {
+                console.error(error);
 
                 alert(
-                    "Không gửi được hồ sơ. Vui lòng thử lại hoặc gọi trực tiếp."
+                    "Có lỗi kết nối. Vui lòng thử lại hoặc gọi trực tiếp."
                 );
 
-
-                button.disabled =
-                    false;
-
-
+                button.disabled = false;
                 button.innerText =
                     "📩 GỬI ĐĂNG KÝ";
-
             }
 
-
-        } catch (error) {
-
-            alert(
-                "Có lỗi kết nối. Vui lòng thử lại hoặc gọi trực tiếp."
-            );
-
-
-            button.disabled =
-                false;
-
-
-            button.innerText =
-                "📩 GỬI ĐĂNG KÝ";
-
         }
-
-    }
-);
+    );
+}
 
 
 /* =====================================================
@@ -1872,16 +1457,16 @@ const registrationCount =
         "registrationCount"
     );
 
-
 let interestCount =
     Math.floor(
         Math.random() * 66
     ) + 85;
 
+if (registrationCount) {
 
-registrationCount.innerText =
-    interestCount.toLocaleString("vi-VN");
-
+    registrationCount.innerText =
+        interestCount.toLocaleString("vi-VN");
+}
 
 setInterval(
     function() {
@@ -1891,26 +1476,21 @@ setInterval(
                 Math.random() * 7
             ) - 3;
 
-
         interestCount += change;
 
-
         if (interestCount < 85) {
-
             interestCount = 85;
-
         }
-
 
         if (interestCount > 150) {
-
             interestCount = 150;
-
         }
 
+        if (registrationCount) {
 
-        registrationCount.innerText =
-            interestCount.toLocaleString("vi-VN");
+            registrationCount.innerText =
+                interestCount.toLocaleString("vi-VN");
+        }
 
     },
     30000
@@ -1985,123 +1565,887 @@ const sampleRegistrations = [
 
 ];
 
-
 let sampleIndex = 0;
-
 
 function showSampleRegistration() {
 
     const data =
         sampleRegistrations[sampleIndex];
 
+    const title =
+        document.getElementById(
+            "registrationToastTitle"
+        );
 
-    document.getElementById(
-        "registrationToastTitle"
-    ).innerText =
-        "🔔 " +
-        data.name +
-        " vừa đăng ký";
+    const phone =
+        document.getElementById(
+            "registrationToastPhone"
+        );
 
+    const location =
+        document.getElementById(
+            "registrationToastLocation"
+        );
 
-    document.getElementById(
-        "registrationToastPhone"
-    ).innerText =
-        "📱 " +
-        data.phone;
-
-
-    document.getElementById(
-        "registrationToastLocation"
-    ).innerText =
-        "📍 " +
-        data.location;
-
-
-    document.getElementById(
-        "registrationToastTime"
-    ).innerText =
-        "⏱️ Vừa xong";
-
+    const time =
+        document.getElementById(
+            "registrationToastTime"
+        );
 
     const toast =
         document.getElementById(
             "registrationToast"
         );
 
+    if (
+        !title ||
+        !phone ||
+        !location ||
+        !time ||
+        !toast
+    ) {
+        return;
+    }
+
+    title.innerText =
+        "🔔 " + data.name + " vừa đăng ký";
+
+    phone.innerText =
+        "📱 " + data.phone;
+
+    location.innerText =
+        "📍 " + data.location;
+
+    time.innerText =
+        "⏱️ Vừa xong";
 
     toast.classList.add("show");
 
-
     setTimeout(
         function() {
-
             toast.classList.remove("show");
-
         },
         5000
     );
 
-
     sampleIndex++;
-
 
     if (
         sampleIndex >=
         sampleRegistrations.length
     ) {
-
         sampleIndex = 0;
+    }
+}
+
+setTimeout(
+    function() {
+        showSampleRegistration();
+    },
+    8000
+);
+
+setInterval(
+    function() {
+        showSampleRegistration();
+    },
+    20000
+);
+
+
+/* =====================================================
+   ĐÁNH GIÁ ONLINE - SUPABASE
+   ===================================================== */
+
+let selectedRating = 0;
+
+const reviewNameInput =
+    document.getElementById(
+        "reviewName"
+    );
+
+const reviewContentInput =
+    document.getElementById(
+        "reviewContent"
+    );
+
+const reviewList =
+    document.getElementById(
+        "reviewList"
+    );
+
+const reviewCount =
+    document.getElementById(
+        "reviewCount"
+    );
+
+const reviewStatus =
+    document.getElementById(
+        "reviewStatus"
+    );
+
+const submitReviewButton =
+    document.getElementById(
+        "submitReviewButton"
+    );
+
+const ratingStars =
+    document.querySelectorAll(
+        ".rating-star"
+    );
+
+
+function selectRating(number) {
+
+    selectedRating = number;
+
+    ratingStars.forEach(
+        function(star) {
+
+            const starRating =
+                Number(
+                    star.dataset.rating
+                );
+
+            if (
+                starRating <= number
+            ) {
+
+                star.classList.add(
+                    "active"
+                );
+
+            } else {
+
+                star.classList.remove(
+                    "active"
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+ratingStars.forEach(
+    function(star) {
+
+        star.addEventListener(
+            "click",
+            function() {
+
+                selectRating(
+                    Number(
+                        this.dataset.rating
+                    )
+                );
+
+            }
+        );
+
+    }
+);
+
+
+function showReviewStatus(
+    message,
+    type
+) {
+
+    if (!reviewStatus) {
+        return;
+    }
+
+    reviewStatus.innerText =
+        message;
+
+    reviewStatus.className =
+        "review-status " + type;
+
+}
+
+
+function hideReviewStatus() {
+
+    if (!reviewStatus) {
+        return;
+    }
+
+    reviewStatus.style.display =
+        "none";
+
+    reviewStatus.className =
+        "review-status";
+
+}
+
+
+function formatReviewDate(dateString) {
+
+    const date =
+        new Date(dateString);
+
+    if (
+        Number.isNaN(
+            date.getTime()
+        )
+    ) {
+        return "Vừa xong";
+    }
+
+    return date.toLocaleString(
+        "vi-VN",
+        {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit"
+        }
+    );
+
+}
+
+
+function createReviewElement(review) {
+
+    const item =
+        document.createElement(
+            "div"
+        );
+
+    item.className =
+        "review-item";
+
+    const top =
+        document.createElement(
+            "div"
+        );
+
+    top.className =
+        "review-top";
+
+    const left =
+        document.createElement(
+            "div"
+        );
+
+    const strong =
+        document.createElement(
+            "strong"
+        );
+
+    strong.textContent =
+        review.name;
+
+    const stars =
+        document.createElement(
+            "div"
+        );
+
+    stars.className =
+        "review-stars";
+
+    stars.textContent =
+        "★".repeat(
+            Number(review.rating)
+        ) +
+        "☆".repeat(
+            5 - Number(review.rating)
+        );
+
+    left.appendChild(strong);
+    left.appendChild(stars);
+
+    const date =
+        document.createElement(
+            "span"
+        );
+
+    date.className =
+        "review-date";
+
+    date.textContent =
+        formatReviewDate(
+            review.created_at
+        );
+
+    top.appendChild(left);
+    top.appendChild(date);
+
+    const content =
+        document.createElement(
+            "p"
+        );
+
+    content.textContent =
+        review.content;
+
+    item.appendChild(top);
+    item.appendChild(content);
+
+    return item;
+
+}
+
+
+async function loadReviews() {
+
+    if (!reviewList) {
+        return;
+    }
+
+    reviewList.innerHTML =
+        '<div class="review-loading">⏳ Đang tải đánh giá...</div>';
+
+    try {
+
+        const result =
+            await supabaseClient
+                .from("reviews")
+                .select(
+                    "id,name,rating,content,created_at"
+                )
+                .order(
+                    "created_at",
+                    {
+                        ascending: false
+                    }
+                );
+
+        if (result.error) {
+            throw result.error;
+        }
+
+        const reviews =
+            result.data || [];
+
+        reviewList.innerHTML = "";
+
+        if (reviewCount) {
+
+            reviewCount.innerText =
+                "⭐ Có " +
+                reviews.length +
+                " đánh giá từ khách hàng";
+
+        }
+
+        if (reviews.length === 0) {
+
+            reviewList.innerHTML =
+                '<div class="review-empty">Chưa có đánh giá nào. Hãy là người đầu tiên đánh giá!</div>';
+
+            return;
+        }
+
+        reviews.forEach(
+            function(review) {
+
+                reviewList.appendChild(
+                    createReviewElement(
+                        review
+                    )
+                );
+
+            }
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Lỗi tải đánh giá:",
+            error
+        );
+
+        reviewList.innerHTML =
+            '<div class="review-empty">⚠️ Không tải được đánh giá. Vui lòng tải lại trang.</div>';
+
+        if (reviewCount) {
+
+            reviewCount.innerText =
+                "Không thể tải đánh giá";
+
+        }
 
     }
 
 }
 
 
-/* Thông báo đầu tiên sau 8 giây */
+async function submitReview() {
 
-setTimeout(
-    function() {
+    hideReviewStatus();
 
-        showSampleRegistration();
+    const name =
+        reviewNameInput
+            ? reviewNameInput.value.trim()
+            : "";
 
-    },
-    8000
-);
+    const content =
+        reviewContentInput
+            ? reviewContentInput.value.trim()
+            : "";
 
+    if (!name) {
 
-/* Sau đó lặp lại mỗi 20 giây */
+        showReviewStatus(
+            "Vui lòng nhập họ tên.",
+            "error"
+        );
 
-setInterval(
-    function() {
+        reviewNameInput.focus();
 
-        showSampleRegistration();
+        return;
+    }
 
-    },
-    20000
-);
+    if (selectedRating === 0) {
 
+        showReviewStatus(
+            "Vui lòng chọn số sao đánh giá.",
+            "error"
+        );
 
+        return;
+    }
 
-/* ===== XỬ LÝ ĐÁNH GIÁ - THÊM MỚI ===== */
-const reviewForm=document.getElementById("reviewForm"),reviewList=document.getElementById("reviewList"),reviewSuccess=document.getElementById("reviewSuccess");
-function addReviewCard(review,save){
- const card=document.createElement("div"); card.className="review-card";
- const stars="★".repeat(review.rating)+"☆".repeat(5-review.rating);
- card.innerHTML='<div class="review-card-stars">'+stars+'</div><p></p><div class="review-author"></div><div class="review-location"></div>';
- card.querySelector("p").textContent="“"+review.text+"”"; card.querySelector(".review-author").textContent=review.name;
- card.querySelector(".review-location").textContent="📍 "+review.province; reviewList.prepend(card);
- if(save){try{const a=JSON.parse(localStorage.getItem("viecLamMienBacReviews")||"[]");a.push(review);localStorage.setItem("viecLamMienBacReviews",JSON.stringify(a.slice(-20)))}catch(e){}}
+    if (!content) {
+
+        showReviewStatus(
+            "Vui lòng nhập nội dung đánh giá.",
+            "error"
+        );
+
+        reviewContentInput.focus();
+
+        return;
+    }
+
+    if (name.length > 100) {
+
+        showReviewStatus(
+            "Họ tên không được vượt quá 100 ký tự.",
+            "error"
+        );
+
+        return;
+    }
+
+    if (content.length > 1000) {
+
+        showReviewStatus(
+            "Nội dung đánh giá không được vượt quá 1000 ký tự.",
+            "error"
+        );
+
+        return;
+    }
+
+    submitReviewButton.disabled =
+        true;
+
+    submitReviewButton.innerText =
+        "⏳ ĐANG LƯU...";
+
+    try {
+
+        const result =
+            await supabaseClient
+                .from("reviews")
+                .insert([
+                    {
+                        name: name,
+                        rating: selectedRating,
+                        content: content
+                    }
+                ])
+                .select()
+                .single();
+
+        if (result.error) {
+            throw result.error;
+        }
+
+        if (reviewNameInput) {
+            reviewNameInput.value = "";
+        }
+
+        if (reviewContentInput) {
+            reviewContentInput.value = "";
+        }
+
+        selectedRating = 0;
+
+        ratingStars.forEach(
+            function(star) {
+                star.classList.remove(
+                    "active"
+                );
+            }
+        );
+
+        showReviewStatus(
+            "⭐ Cảm ơn bạn! Đánh giá đã được lưu thành công và mọi người có thể xem.",
+            "success"
+        );
+
+        if (result.data) {
+
+            const empty =
+                reviewList.querySelector(
+                    ".review-empty"
+                );
+
+            if (empty) {
+                reviewList.innerHTML = "";
+            }
+
+            reviewList.prepend(
+                createReviewElement(
+                    result.data
+                )
+            );
+
+            const currentCount =
+                reviewList.querySelectorAll(
+                    ".review-item"
+                ).length;
+
+            if (reviewCount) {
+
+                reviewCount.innerText =
+                    "⭐ Có " +
+                    currentCount +
+                    " đánh giá từ khách hàng";
+
+            }
+
+        } else {
+
+            await loadReviews();
+
+        }
+
+        setTimeout(
+            function() {
+
+                if (reviewStatus) {
+                    reviewStatus.style.display =
+                        "none";
+                }
+
+            },
+            5000
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Lỗi gửi đánh giá:",
+            error
+        );
+
+        showReviewStatus(
+            "❌ Không thể lưu đánh giá. Vui lòng thử lại sau.",
+            "error"
+        );
+
+    } finally {
+
+        submitReviewButton.disabled =
+            false;
+
+        submitReviewButton.innerText =
+            "⭐ GỬI ĐÁNH GIÁ";
+
+    }
+
 }
-try{const a=JSON.parse(localStorage.getItem("viecLamMienBacReviews")||"[]");a.reverse().forEach(r=>addReviewCard(r,false))}catch(e){}
-if(reviewForm){reviewForm.addEventListener("submit",function(e){e.preventDefault();
- const r={name:document.getElementById("reviewName").value.trim(),province:document.getElementById("reviewProvince").value,rating:Number(document.getElementById("reviewRating").value),text:document.getElementById("reviewText").value.trim()};
- if(!r.name||!r.province||!r.rating||!r.text)return; addReviewCard(r,true);reviewForm.reset();reviewSuccess.style.display="block";setTimeout(()=>reviewSuccess.style.display="none",4000);
-})}
 
 
+if (submitReviewButton) {
+
+    submitReviewButton.addEventListener(
+        "click",
+        submitReview
+    );
+
+}
+
+
+/* Tải đánh giá ngay khi mở website */
+
+loadReviews();
+
+
+/* =====================================================
+   NÚT CUỘN LÊN ĐẦU TRANG
+   ===================================================== */
+
+const scrollTopButton =
+    document.getElementById(
+        "scrollTopButton"
+    );
+
+window.addEventListener(
+    "scroll",
+    function() {
+
+        if (!scrollTopButton) {
+            return;
+        }
+
+        if (window.scrollY > 500) {
+
+            scrollTopButton.classList.add(
+                "show"
+            );
+
+        } else {
+
+            scrollTopButton.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+if (scrollTopButton) {
+
+    scrollTopButton.addEventListener(
+        "click",
+        function() {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   HIỆU ỨNG FADE-IN KHI CUỘN
+   ===================================================== */
+
+const animatedElements =
+    document.querySelectorAll(
+        ".job, .benefit, .review-item, .register"
+    );
+
+const observer =
+    new IntersectionObserver(
+        function(entries) {
+
+            entries.forEach(
+                function(entry) {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        entry.target.classList.add(
+                            "visible"
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold: 0.08
+        }
+    );
+
+animatedElements.forEach(
+    function(element) {
+
+        observer.observe(element);
+
+    }
+);
+
+
+/* =====================================================
+   HIỆU ỨNG MENU KHI CUỘN
+   ===================================================== */
+
+const nav =
+    document.querySelector("nav");
+
+window.addEventListener(
+    "scroll",
+    function() {
+
+        if (!nav) {
+            return;
+        }
+
+        if (window.scrollY > 50) {
+
+            nav.classList.add(
+                "nav-scrolled"
+            );
+
+        } else {
+
+            nav.classList.remove(
+                "nav-scrolled"
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   CLICK ẢNH VIỆC LÀM - PHÓNG TO
+   ===================================================== */
+
+const jobImages =
+    document.querySelectorAll(
+        ".job-image"
+    );
+
+jobImages.forEach(
+    function(image) {
+
+        image.addEventListener(
+            "click",
+            function() {
+
+                const overlay =
+                    document.createElement(
+                        "div"
+                    );
+
+                overlay.className =
+                    "image-lightbox";
+
+                overlay.innerHTML = `
+                    <div class="lightbox-close">✕</div>
+                    <img src="${this.src}" alt="">
+                `;
+
+                document.body.appendChild(
+                    overlay
+                );
+
+                setTimeout(
+                    function() {
+
+                        overlay.classList.add(
+                            "active"
+                        );
+
+                    },
+                    10
+                );
+
+                overlay.addEventListener(
+                    "click",
+                    function(event) {
+
+                        if (
+                            event.target ===
+                                overlay ||
+                            event.target.classList.contains(
+                                "lightbox-close"
+                            )
+                        ) {
+
+                            overlay.classList.remove(
+                                "active"
+                            );
+
+                            setTimeout(
+                                function() {
+
+                                    overlay.remove();
+
+                                },
+                                250
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* =====================================================
+   KHÔNG CHO PHÓNG TO TRANG KHI DOUBLE CLICK ẢNH
+   ===================================================== */
+
+document.addEventListener(
+    "dblclick",
+    function(event) {
+
+        if (
+            event.target.tagName ===
+            "IMG"
+        ) {
+
+            event.preventDefault();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   HIỆU ỨNG NÚT ĐĂNG KÝ
+   ===================================================== */
+
+document.querySelectorAll(
+    'a[href="#dang-ky"]'
+).forEach(
+    function(button) {
+
+        button.addEventListener(
+            "click",
+            function() {
+
+                setTimeout(
+                    function() {
+
+                        const firstInput =
+                            document.querySelector(
+                                "#jobForm input"
+                            );
+
+                        if (firstInput) {
+                            firstInput.focus();
+                        }
+
+                    },
+                    500
+                );
+
+            }
+        );
+
+    }
+);
 
 </script>
-
 
 </body>
 </html>
