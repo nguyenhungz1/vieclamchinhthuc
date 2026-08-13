@@ -60,6 +60,11 @@
             top: 0;
             z-index: 100;
             backdrop-filter: blur(8px);
+            transition: 0.25s;
+        }
+
+        nav.nav-scrolled {
+            box-shadow: 0 5px 18px rgba(0, 70, 140, 0.16);
         }
 
         nav a {
@@ -192,6 +197,14 @@
             transition: 0.2s;
             overflow: hidden;
             border: 1px solid #e2edf8;
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        .job.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: 0.5s ease;
         }
 
         .job:hover {
@@ -278,6 +291,14 @@
             border-radius: 10px;
             box-shadow: 0 3px 12px rgba(0,70,140,0.08);
             border: 1px solid #e2edf8;
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        .benefit.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: 0.5s ease;
         }
 
         .benefit strong {
@@ -297,6 +318,14 @@
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,70,140,0.10);
             border: 1px solid #e0ebf7;
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        .register.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: 0.5s ease;
         }
 
         .register h2 {
@@ -379,6 +408,91 @@
         .registration-counter strong {
             color: #0764c7;
             font-size: 25px;
+        }
+
+        /* ================= REVIEW ================= */
+
+        .reviews-section {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 15px;
+        }
+
+        .review-form {
+            background: rgba(255,255,255,0.98);
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 5px 18px rgba(0,70,140,0.08);
+            border: 1px solid #e0ebf7;
+            margin-bottom: 25px;
+        }
+
+        .review-form h3 {
+            color: #075fc2;
+            margin-bottom: 15px;
+        }
+
+        .review-form input,
+        .review-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #cbdff5;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        .review-form textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .rating {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+        .rating-star {
+            font-size: 30px;
+            cursor: pointer;
+            color: #bbb;
+            transition: 0.2s;
+        }
+
+        .rating-star.active,
+        .rating-star:hover {
+            color: #f5b400;
+        }
+
+        .review-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .review-item {
+            background: white;
+            padding: 18px;
+            border-radius: 12px;
+            border: 1px solid #e0ebf7;
+            box-shadow: 0 3px 12px rgba(0,70,140,0.06);
+        }
+
+        .review-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 8px;
+        }
+
+        .review-stars {
+            color: #f5b400;
+            letter-spacing: 1px;
+        }
+
+        .review-date {
+            color: #888;
+            font-size: 13px;
         }
 
         /* ================= THÔNG BÁO ================= */
@@ -510,6 +624,65 @@
             font-size: 14px;
         }
 
+        /* ================= SCROLL TOP ================= */
+
+        .scroll-top-button {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: 50%;
+            background: #075fc2;
+            color: white;
+            font-size: 25px;
+            cursor: pointer;
+            z-index: 9999;
+            display: none;
+            box-shadow: 0 5px 18px rgba(0,70,140,0.25);
+        }
+
+        .scroll-top-button.show {
+            display: block;
+        }
+
+        /* ================= LIGHTBOX ================= */
+
+        .image-lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.88);
+            z-index: 100000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+            opacity: 0;
+            transition: 0.25s;
+        }
+
+        .image-lightbox.active {
+            opacity: 1;
+        }
+
+        .image-lightbox img {
+            max-width: 95%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            color: white;
+            font-size: 35px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
         /* ================= MOBILE ================= */
 
         @media (max-width: 800px) {
@@ -587,12 +760,18 @@
                 font-size: 24px;
             }
 
+            .review-top {
+                flex-direction: column;
+                gap: 5px;
+            }
+
         }
 
     </style>
 </head>
 
 <body>
+
 
 <!-- =====================================================
      HEADER
@@ -625,6 +804,10 @@
 
     <a href="#dang-ky">
         Đăng ký
+    </a>
+
+    <a href="#danh-gia">
+        Đánh giá
     </a>
 
     <a href="#lien-he">
@@ -1305,1051 +1488,23 @@
     </div>
 
 </section>
-        /* ================= COMMENTS & REVIEWS ================= */
 
-        .reviews-section {
-            max-width: 1100px;
-            margin: 45px auto;
-            padding: 0 15px;
-        }
 
-        .reviews-box {
-            background: rgba(255,255,255,0.98);
-            border: 1px solid #dceaf7;
-            border-radius: 18px;
-            padding: 30px;
-            box-shadow: 0 8px 28px rgba(0,70,140,0.09);
-        }
-
-        .reviews-header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .reviews-header h2 {
-            color: #075fc2;
-            font-size: 28px;
-            margin-bottom: 7px;
-        }
-
-        .reviews-header p {
-            color: #666;
-        }
-
-        .rating-summary {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 18px;
-            margin-bottom: 28px;
-            padding: 18px;
-            background: linear-gradient(
-                135deg,
-                #eef7ff,
-                #f8fbff
-            );
-            border-radius: 14px;
-        }
-
-        .rating-number {
-            font-size: 42px;
-            font-weight: 800;
-            color: #075fc2;
-            line-height: 1;
-        }
-
-        .rating-stars {
-            color: #ffb400;
-            font-size: 25px;
-            letter-spacing: 2px;
-        }
-
-        .rating-text {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .review-list {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-            margin-bottom: 30px;
-        }
-
-        .review-card {
-            background: #fff;
-            border: 1px solid #e1edf8;
-            border-radius: 14px;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0,70,140,0.06);
-            transition: 0.25s;
-        }
-
-        .review-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 22px rgba(0,70,140,0.11);
-        }
-
-        .review-user {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
-        .review-avatar {
-            width: 43px;
-            height: 43px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(
-                135deg,
-                #0871d4,
-                #55a8f5
-            );
-            color: white;
-            font-weight: bold;
-            font-size: 17px;
-        }
-
-        .review-name {
-            font-weight: bold;
-            color: #222;
-        }
-
-        .review-location {
-            font-size: 13px;
-            color: #777;
-        }
-
-        .review-stars {
-            color: #ffb400;
-            font-size: 17px;
-            margin-bottom: 8px;
-        }
-
-        .review-content {
-            color: #555;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .review-form {
-            border-top: 1px solid #e5eef7;
-            padding-top: 25px;
-        }
-
-        .review-form h3 {
-            color: #075fc2;
-            margin-bottom: 15px;
-        }
-
-        .review-form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        .review-form input,
-        .review-form textarea,
-        .review-form select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #cbdff5;
-            border-radius: 8px;
-            font-size: 14px;
-            outline: none;
-        }
-
-        .review-form textarea {
-            min-height: 90px;
-            resize: vertical;
-            grid-column: 1 / -1;
-        }
-
-        .review-form input:focus,
-        .review-form textarea:focus,
-        .review-form select:focus {
-            border-color: #0865c7;
-            box-shadow: 0 0 0 3px rgba(8,101,199,0.08);
-        }
-
-        .review-form button {
-            margin-top: 12px;
-        }
-
-        .review-success {
-            display: none;
-            margin-top: 12px;
-            padding: 12px;
-            background: #e9f8ee;
-            color: #18763b;
-            border-radius: 8px;
-            font-weight: bold;
-            text-align: center;
-        }
-
-
-        /* ================= FLOATING CONTACT ================= */
-
-        .floating-contact {
-            position: fixed;
-            right: 18px;
-            bottom: 18px;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .floating-contact a {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            font-size: 22px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.18);
-            transition: 0.25s;
-        }
-
-        .floating-contact a:hover {
-            transform: scale(1.08);
-        }
-
-        .floating-call {
-            background: linear-gradient(135deg,#19a63a,#0c862b);
-        }
-
-        .floating-zalo {
-            background: linear-gradient(135deg,#0875d1,#0758ad);
-        }
-
-
-        /* ================= BACK TO TOP ================= */
-
-        #backToTop {
-            position: fixed;
-            right: 20px;
-            bottom: 145px;
-            width: 42px;
-            height: 42px;
-            border: none;
-            border-radius: 50%;
-            background: white;
-            color: #075fc2;
-            font-size: 20px;
-            cursor: pointer;
-            box-shadow: 0 5px 18px rgba(0,0,0,0.15);
-            display: none;
-            z-index: 9998;
-        }
-
-        #backToTop:hover {
-            transform: translateY(-2px);
-        }
-
-
-        /* ================= ANIMATION ================= */
-
-        .job,
-        .benefit,
-        .review-card,
-        .register {
-            animation: fadeUp 0.6s ease both;
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-
-        /* ================= MOBILE REVIEW ================= */
-
-        @media (max-width: 800px) {
-
-            .review-list {
-                grid-template-columns: 1fr;
-            }
-
-            .reviews-box {
-                padding: 20px;
-            }
-
-            .rating-summary {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .review-form-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .review-form textarea {
-                grid-column: auto;
-            }
-
-        }
-
-        @media (max-width: 450px) {
-
-            .reviews-section {
-                padding: 0 12px;
-            }
-
-            .reviews-box {
-                padding: 16px;
-            }
-
-            .reviews-header h2 {
-                font-size: 24px;
-            }
-
-            .rating-number {
-                font-size: 36px;
-            }
-
-            .floating-contact {
-                right: 12px;
-                bottom: 12px;
-            }
-
-            .floating-contact a {
-                width: 48px;
-                height: 48px;
-            }
-
-            #backToTop {
-                right: 15px;
-                bottom: 125px;
-            }
-
-        }
-
-    </style>
-
-</head>
-
-<body>
-
-
-<header>
-
-    <h1>VIỆC LÀM MIỀN BẮC</h1>
-
-    <p>
-        Tìm việc nhanh - Việc thật - Thu nhập ổn định
-    </p>
-
-</header>
-
-
-<nav>
-
-    <a href="#viec-lam">
-        Việc làm
-    </a>
-
-    <a href="#quyen-loi">
-        Quyền lợi
-    </a>
-
-    <a href="#danh-gia">
-        Đánh giá
-    </a>
-
-    <a href="#dang-ky">
-        Đăng ký
-    </a>
-
-    <a href="#lien-he">
-        Liên hệ
-    </a>
-
-</nav>
-
-
-<section class="banner">
-
-    <h2>
-        🔥 TUYỂN DỤNG VIỆC LÀM MIỀN BẮC
-    </h2>
-
-    <p>
-        Nhiều vị trí đang tuyển dụng tại các khu công nghiệp
-    </p>
-
-    <a href="#dang-ky" class="btn">
-        ĐĂNG KÝ TÌM VIỆC
-    </a>
-
-</section>
-
-
-<div class="search-box">
-
-    <input
-        type="text"
-        id="search"
-        placeholder="🔎 Tìm việc: công nhân, Canon, Foxconn, kho..."
-        onkeyup="searchJobs()"
-    >
-
-    <select
-        id="location"
-        onchange="searchJobs()"
-    >
-
-        <option value="">
-            Tất cả khu vực
-        </option>
-
-        <option value="Bắc Ninh">
-            Bắc Ninh
-        </option>
-
-        <option value="Bắc Giang">
-            Bắc Giang
-        </option>
-
-        <option value="Hưng Yên">
-            Hưng Yên
-        </option>
-
-        <option value="Quảng Ninh">
-            Quảng Ninh
-        </option>
-
-        <option value="Hải Dương">
-            Hải Dương
-        </option>
-
-        <option value="Hà Nội">
-            Hà Nội
-        </option>
-
-        <option value="Hải Phòng">
-            Hải Phòng
-        </option>
-
-        <option value="Thái Nguyên">
-            Thái Nguyên
-        </option>
-
-        <option value="Vĩnh Phúc">
-            Vĩnh Phúc
-        </option>
-
-        <option value="Khác">
-            Khu vực khác
-        </option>
-
-    </select>
-
-</div>
-
-
-<section id="viec-lam" class="container">
-
-    <div class="section-title">
-
-        <h2>
-            🔥 VIỆC LÀM ĐANG TUYỂN
-        </h2>
-
-        <p>
-            Cập nhật những đơn tuyển dụng mới nhất
-        </p>
-
-    </div>
-
-
-    <div class="jobs">
-
-
-        <!-- ================= CANON ================= -->
-
-        <div class="job">
-
-            <img
-                src="canon.jpg"
-                alt="Tuyển dụng công nhân sản xuất Canon"
-                class="job-image"
-            >
-
-            <span class="tag">
-                TUYỂN GẤP
-            </span>
-
-            <h3>
-                Công nhân sản xuất Canon
-            </h3>
-
-            <p class="company-name">
-                🏭 Công ty Canon
-            </p>
-
-            <p class="salary">
-                💰 Thu nhập thực tế: 13 - 15 triệu/tháng
-            </p>
-
-            <p>
-                🎁 Thưởng người mới lên tới 11 triệu đồng
-            </p>
-
-            <p class="location">
-                📍 Đơn tuyển Canon
-            </p>
-
-            <p class="job-description">
-                🔧 Công việc sản xuất trong nhà máy, làm việc tại dây chuyền
-                sản xuất. Phù hợp với người muốn tìm công việc nhà máy ổn định.
-            </p>
-
-            <p>
-                📋 Hồ sơ: CCCD/Căn cước công dân
-            </p>
-
-            <p>
-                🕐 Phỏng vấn: 08:00 - 10:00, các ngày làm việc trong tuần
-            </p>
-
-            <a href="#dang-ky" class="btn">
-                ỨNG TUYỂN CANON
-            </a>
-
-        </div>
-
-
-        <!-- ================= FOXCONN ================= -->
-
-        <div class="job">
-
-            <img
-                src="foxconn.jpg"
-                alt="Tuyển công nhân Foxconn EV Quảng Ninh"
-                class="job-image"
-            >
-
-            <span class="tag">
-                TUYỂN CHÍNH THỨC
-            </span>
-
-            <h3>
-                Công nhân Foxconn EV
-            </h3>
-
-            <p class="company-name">
-                🏭 Foxconn EV Quảng Ninh
-            </p>
-
-            <p class="salary">
-                💰 Thu nhập: 14 - 16 triệu/tháng
-            </p>
-
-            <p>
-                🎁 Thưởng lên tới 9,5 triệu đồng
-            </p>
-
-            <p class="location">
-                📍 KCN Amata Sông Khoai / KCN Đông Mai - Quảng Ninh
-            </p>
-
-            <p class="job-description">
-                🔧 Các vị trí gồm công nhân lắp ráp sản xuất,
-                công nhân kho, công nhân QA/QC và một số vị trí sản xuất,
-                SMT, thanh hình.
-            </p>
-
-            <p>
-                🕐 Ca ngày: 08:00 - 17:00
-            </p>
-
-            <p>
-                🌙 Ca đêm: 20:00 - 05:00
-            </p>
-
-            <a href="#dang-ky" class="btn">
-                ỨNG TUYỂN FOXCONN
-            </a>
-
-        </div>
-
-
-        <!-- ================= FUKANG ================= -->
-
-        <div class="job">
-
-            <img
-                src="fukang.jpg"
-                alt="Tuyển dụng lao động Fukang"
-                class="job-image"
-            >
-
-            <span class="tag">
-                THƯỞNG CAO
-            </span>
-
-            <h3>
-                Công nhân sản xuất Fukang
-            </h3>
-
-            <p class="company-name">
-                🏭 Fukang - Topwork Vina
-            </p>
-
-            <p class="salary">
-                💰 Tổng lương trên poster: 8,27 triệu/tháng
-            </p>
-
-            <p>
-                🎁 Tổng thưởng có thể lên tới 19 triệu đồng
-            </p>
-
-            <p class="job-description">
-                🔧 Công việc sản xuất tại nhà máy, làm việc theo ngày công
-                và các điều kiện thưởng được quy định trong đơn tuyển dụng.
-            </p>
-
-            <p>
-                🎁 Có các khoản hỗ trợ tiền ăn, xăng xe, chuyên cần và nhà ở
-                theo chính sách tuyển dụng.
-            </p>
-
-            <p>
-                📋 Chính sách thưởng áp dụng từ 05/08/2026
-            </p>
-
-            <a href="#dang-ky" class="btn">
-                ỨNG TUYỂN FUKANG
-            </a>
-
-        </div>
-
-
-        <!-- ================= GOERTEK ================= -->
-
-        <div class="job">
-
-            <img
-                src="goertek.jpg"
-                alt="Tuyển dụng công nhân Goertek Bắc Ninh"
-                class="job-image"
-            >
-
-            <span class="tag">
-                TUYỂN NHIỀU VỊ TRÍ
-            </span>
-
-            <h3>
-                Công nhân Goertek
-            </h3>
-
-            <p class="company-name">
-                🏭 Công ty Goertek
-            </p>
-
-            <p class="salary">
-                💰 Lương cơ bản: 5,7 triệu/tháng
-            </p>
-
-            <p>
-                🎁 Tổng phụ cấp: khoảng 1,25 triệu/tháng
-            </p>
-
-            <p>
-                🎁 Thưởng người mới lên tới 20,2 triệu đồng
-            </p>
-
-            <p class="location">
-                📍 KCN Quế Võ, Nam Sơn, Bắc Ninh
-            </p>
-
-            <p class="job-description">
-                🔧 Công ty tuyển nhiều vị trí trong nhà máy.
-                Công việc sản xuất, thao tác tại dây chuyền và thực hiện
-                công việc theo hướng dẫn của nhà máy.
-            </p>
-
-            <p>
-                ⭐ Có đào tạo bài bản và môi trường làm việc chuyên nghiệp.
-            </p>
-
-            <a href="#dang-ky" class="btn">
-                ỨNG TUYỂN GOERTEK
-            </a>
-
-        </div>
-
-
-        <!-- ================= KINH ĐÔ ================= -->
-
-        <div class="job">
-
-            <img
-                src="kinhdo.jpg"
-                alt="Tuyển lao động sản xuất bánh kẹo Kinh Đô"
-                class="job-image"
-            >
-
-            <span class="tag">
-                CẦN TUYỂN 1000 LAO ĐỘNG
-            </span>
-
-            <h3>
-                Công nhân sản xuất bánh kẹo
-            </h3>
-
-            <p class="company-name">
-                🍪 Công ty Bánh kẹo Kinh Đô miền Bắc
-            </p>
-
-            <p class="salary">
-                💰 Thu nhập bình quân: 8 - 14 triệu/tháng
-            </p>
-
-            <p>
-                💵 Lương cơ bản: 5 triệu/tháng
-            </p>
-
-            <p>
-                🎁 Tổng phụ cấp: 2,343 triệu/tháng
-            </p>
-
-            <p class="location">
-                📍 Phường Bần Yên Nhân - Mỹ Hào - Hưng Yên
-            </p>
-
-            <p class="job-description">
-                🍪 Công việc sản xuất bánh kẹo Trung thu và thực hiện
-                các công việc tại dây chuyền sản xuất của nhà máy.
-            </p>
-
-            <p>
-                👨 Nam, nữ từ 16 - 60 tuổi theo nội dung poster
-            </p>
-
-            <p>
-                🚌 Có hỗ trợ tiền xe cho nhóm lao động ở xa và hỗ trợ
-                ứng lương theo chính sách.
-            </p>
-
-            <a href="#dang-ky" class="btn">
-                ỨNG TUYỂN KINH ĐÔ
-            </a>
-
-        </div>
-
-
-        <!-- ================= LENS ================= -->
-
-        <div class="job">
-
-            <img
-                src="lens.jpg"
-                alt="Chính sách thưởng LENS tháng 8"
-                class="job-image"
-            >
-
-            <span class="tag">
-                THƯỞNG THÁNG 8
-            </span>
-
-            <h3>
-                Đơn LENS - Chính sách thưởng
-            </h3>
-
-            <p class="company-name">
-                🏭 Topwork Vina - LENS
-            </p>
-
-            <p class="salary">
-                💰 Tổng thưởng theo poster: 18,5 triệu đồng
-            </p>
-
-            <p>
-                🎁 Thưởng hoàn thành 1 tháng: 4 triệu
-            </p>
-
-            <p>
-                🎁 Hỗ trợ tiền xe và thưởng chuyên cần
-            </p>
-
-            <p class="job-description">
-                📋 Poster tập trung vào chính sách thưởng theo số ngày công,
-                thưởng Topwork, chuyên cần và giới thiệu nội bộ.
-            </p>
-
-            <p>
-                ⚠️ Ảnh chưa thể hiện rõ vị trí công việc và địa điểm làm việc,
-                ứng viên nên đăng ký để được tư vấn đơn cụ thể.
-            </p>
-
-            <a href="#dang-ky" class="btn">
-                NHẬN TƯ VẤN LENS
-            </a>
-
-        </div>
-
-
-        <!-- ================= LUXSHARE ================= -->
-
-        <div class="job">
-
-            <img
-                src="luxshare.jpg"
-                alt="Chính sách thưởng Luxshare"
-                class="job-image"
-            >
-
-            <span class="tag">
-                THƯỞNG CAO
-            </span>
-
-            <h3>
-                Công nhân Luxshare
-            </h3>
-
-            <p class="company-name">
-                🏭 Luxshare
-            </p>
-
-            <p class="salary">
-                💰 Tổng thưởng theo poster: 15,7 triệu đồng
-            </p>
-
-            <p>
-                🎁 Thưởng công ty: 10 triệu đồng
-            </p>
-
-            <p>
-                🎁 Thưởng thêm nhà cung ứng: 5,7 triệu đồng
-            </p>
-
-            <p class="job-description">
-                🔧 Công việc nhà máy, đi làm đủ ngày công và duy trì
-                chuyên cần theo điều kiện thưởng của đơn tuyển dụng.
-            </p>
-
-            <p>
-                🏠 Có hỗ trợ nhà ở theo điều kiện của chương trình.
-            </p>
-
-            <p>
-                📋 Chính sách trong poster áp dụng từ 04/08/2026.
-            </p>
-
-            <a href="#dang-ky" class="btn">
-                ỨNG TUYỂN LUXSHARE
-            </a>
-
-        </div>
-
-
-        <!-- ================= NEWWING ================= -->
-
-        <div class="job">
-
-            <img
-                src="newwing.jpg"
-                alt="Tuyển công nhân Newwing Bắc Giang"
-                class="job-image"
-            >
-
-            <span class="tag">
-                THƯỞNG NGƯỜI MỚI
-            </span>
-
-            <h3>
-                Công nhân Newwing
-            </h3>
-
-            <p class="company-name">
-                🏭 Công ty Hồng Hải Newwing
-            </p>
-
-            <p class="salary">
-                💰 Tổng lương trên poster: 8,27 triệu/tháng
-            </p>
-
-            <p>
-                🎁 Tổng thưởng lên tới 15 triệu đồng
-            </p>
-
-            <p>
-                💵 Lương cơ bản: 5,7 triệu/tháng
-            </p>
-
-            <p>
-                🎁 Phụ cấp: khoảng 2,57 triệu/tháng
-            </p>
-
-            <p class="location">
-                📍 KCN Vân Trung, Việt Yên, Bắc Giang
-            </p>
-
-            <p class="job-description">
-                🔧 Công việc sản xuất trong nhà máy điện tử,
-                làm việc tại dây chuyền và thực hiện công việc theo
-                hướng dẫn của nhà máy.
-            </p>
-
-            <p>
-                🏠 Có phụ cấp nhà ở, đi lại và tiền ăn theo poster.
-            </p>
-
-            <a href="#dang-ky" class="btn">
-                ỨNG TUYỂN NEWWING
-            </a>
-
-        </div>
-
-
-        <!-- ================= VIETINAK ================= -->
-
-        <div class="job">
-
-            <img
-                src="vietinak.jpg"
-                alt="Tuyển dụng công ty Vietinak Hưng Yên"
-                class="job-image"
-            >
-
-            <span class="tag">
-                THU NHẬP CAO
-            </span>
-
-            <h3>
-                Công nhân Vietinak
-            </h3>
-
-            <p class="company-name">
-                🏭 Công ty Vietinak
-            </p>
-
-            <p class="salary">
-                💰 Thu nhập lên tới 16 triệu/tháng
-            </p>
-
-            <p>
-                💵 Lương cơ bản: 6,85 triệu/tháng
-            </p>
-
-            <p>
-                🎁 Tổng phụ cấp, trợ cấp lên tới 3,05 triệu/tháng
-            </p>
-
-            <p>
-                🎁 Thưởng công nhân mới: 6 triệu đồng
-            </p>
-
-            <p class="location">
-                📍 Lô C5, KCN Thăng Long II, Nguyễn Văn Linh, Hưng Yên
-            </p>
-
-            <p class="job-description">
-                🔧 Vị trí tuyển dụng gồm nam vận hành máy và nữ kiểm tra hàng.
-                Có thể làm 3 ca hoặc hành chính tùy vị trí.
-            </p>
-
-            <p>
-                🛡️ Tham gia đầy đủ BHXH, BHYT, bảo hiểm 24H theo poster.
-            </p>
-
-            <a href="#dang-ky" class="btn">
-                ỨNG TUYỂN VIETINAK
-            </a>
-
-        </div>
-
-
-        <!-- ================= WISTRON ================= -->
-
-        <div class="job">
-
-            <img
-                src="wistron.jpg"
-                alt="Tuyển công nhân Wistron"
-                class="job-image"
-            >
-
-            <span class="tag">
-                THƯỞNG NGƯỜI MỚI
-            </span>
-
-            <h3>
-                Công nhân Wistron
-            </h3>
-
-            <p class="company-name">
-                🏭 Công ty Wistron
-            </p>
-
-            <p class="salary">
-                💰 Thu nhập trung bình: 13 - 15 triệu/tháng
-            </p>
-
-            <p>
-                💵 Lương cơ bản: 5,6 triệu/tháng
-            </p>
-
-            <p>
-                🎁 Phụ cấp: khoảng 1,3 triệu/tháng
-            </p>
-
-            <p>
-                🎁 Thưởng người mới lên tới 12 triệu đồng
-            </p>
-
-            <p class="job-description">
-                🔧 Sản xuất thiết bị máy tính, bàn phím và phụ kiện.
-                Công việc thực hiện tại dây chuyền sản xuất trong nhà máy.
-            </p>
-
-            <p>
-                🚌 Có xe đưa đón theo nội dung poster.
-            </p>
-
-            <p>
-                🏠 Có ký túc xá miễn phí theo nội dung poster.
-            </p>
-
-            <p>
-                🌙 Làm 2 ca ngày - đêm theo sắp xếp.
-            </p>
-
-            <a href="#dang-ky" class="btn">
-                ỨNG TUYỂN WISTRON
-            </a>
-
-        </div>
-
-
-    </div>
-
-</section>
-
+<!-- =====================================================
+     QUYỀN LỢI
+     ===================================================== -->
 
 <section id="quyen-loi" class="container">
 
     <div class="section-title">
 
         <h2>
-            ⭐ QUYỀN LỢI
+            ⭐ QUYỀN LỢI ỨNG VIÊN
         </h2>
+
+        <p>
+            Hỗ trợ ứng viên trong quá trình tìm việc
+        </p>
 
     </div>
 
@@ -2359,10 +1514,12 @@
         <div class="benefit">
 
             <strong>
-                💰 Thu nhập tốt
+                💰 Thu nhập ổn định
             </strong>
 
-            Lương + phụ cấp + thưởng
+            <p>
+                Nhiều đơn tuyển có mức thu nhập và phụ cấp hấp dẫn.
+            </p>
 
         </div>
 
@@ -2370,10 +1527,12 @@
         <div class="benefit">
 
             <strong>
-                🏠 Hỗ trợ
+                🏭 Nhiều lựa chọn
             </strong>
 
-            Tùy từng đơn tuyển dụng
+            <p>
+                Nhiều công ty và vị trí để ứng viên lựa chọn.
+            </p>
 
         </div>
 
@@ -2381,10 +1540,12 @@
         <div class="benefit">
 
             <strong>
-                📋 Công việc ổn định
+                📋 Hỗ trợ hồ sơ
             </strong>
 
-            Nhiều vị trí tại KCN
+            <p>
+                Hướng dẫn ứng viên chuẩn bị hồ sơ và thủ tục cần thiết.
+            </p>
 
         </div>
 
@@ -2395,7 +1556,9 @@
                 📞 Tư vấn miễn phí
             </strong>
 
-            Hỗ trợ tìm việc phù hợp
+            <p>
+                Đăng ký để được tư vấn công việc phù hợp.
+            </p>
 
         </div>
 
@@ -2404,281 +1567,386 @@
 </section>
 
 
+<!-- =====================================================
+     SỐ NGƯỜI QUAN TÂM
+     ===================================================== -->
+
 <div class="registration-counter">
 
-    👥 Hiện có
-
-    <strong id="registrationCount">
-        100
-    </strong>
-
-    ứng viên đang quan tâm tìm việc
-
-</div>
-
-
-<div
-    id="registrationToast"
-    class="registration-toast"
-    aria-live="polite"
->
-
-    <div class="registration-toast-icon">
-        🔔
-    </div>
-
-
-    <div class="registration-toast-content">
-
-        <div
-            id="registrationToastTitle"
-            class="registration-toast-title"
-        >
-            Nguyễn Văn A vừa đăng ký
-        </div>
-
-
-        <div
-            id="registrationToastPhone"
-            class="registration-toast-phone"
-        >
-            📱 098****123
-        </div>
-
-
-        <div
-            id="registrationToastLocation"
-            class="registration-toast-location"
-        >
-            📍 Bắc Ninh
-        </div>
-
-
-        <div
-            id="registrationToastTime"
-            class="registration-toast-time"
-        >
-            ⏱️ Vừa xong
-        </div>
-
-    </div>
+    🔥 Hiện có
+    <strong id="registrationCount">100</strong>
+    người đang quan tâm các đơn tuyển dụng
 
 </div>
 
 
 <!-- =====================================================
-     ĐÁNH GIÁ KHÁCH HÀNG
+     ĐĂNG KÝ
      ===================================================== -->
 
-<section id="danh-gia" class="reviews-section">
+<section id="dang-ky" class="container">
 
-    <div class="reviews-box">
+    <div class="register">
 
-        <div class="reviews-header">
+        <h2>
+            📩 ĐĂNG KÝ TÌM VIỆC
+        </h2>
 
-            <h2>
-                ⭐ ĐÁNH GIÁ TỪ NGƯỜI TÌM VIỆC
-            </h2>
+        <p class="subtitle">
+            Điền thông tin bên dưới, chúng tôi sẽ liên hệ tư vấn cho bạn.
+        </p>
+
+
+        <div
+            id="successMessage"
+            class="success-message"
+        ></div>
+
+
+        <form
+            id="jobForm"
+            action="https://formspree.io/f/xpqogqva"
+            method="POST"
+        >
+
+            <div class="form-group">
+
+                <label>
+                    Họ và tên
+                </label>
+
+                <input
+                    type="text"
+                    name="Họ và tên"
+                    id="fullName"
+                    placeholder="Nhập họ và tên"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Số điện thoại
+                </label>
+
+                <input
+                    type="tel"
+                    name="Số điện thoại"
+                    placeholder="Nhập số điện thoại"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Công việc quan tâm
+                </label>
+
+                <select
+                    name="Công việc quan tâm"
+                    required
+                >
+
+                    <option value="">
+                        -- Chọn công việc --
+                    </option>
+
+                    <option>
+                        Công nhân Canon
+                    </option>
+
+                    <option>
+                        Công nhân Foxconn
+                    </option>
+
+                    <option>
+                        Công nhân Fukang
+                    </option>
+
+                    <option>
+                        Công nhân Goertek
+                    </option>
+
+                    <option>
+                        Công nhân Kinh Đô
+                    </option>
+
+                    <option>
+                        Công nhân LENS
+                    </option>
+
+                    <option>
+                        Công nhân Luxshare
+                    </option>
+
+                    <option>
+                        Công nhân Newwing
+                    </option>
+
+                    <option>
+                        Công nhân Vietinak
+                    </option>
+
+                    <option>
+                        Công nhân Wistron
+                    </option>
+
+                    <option>
+                        Công việc khác
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Khu vực mong muốn
+                </label>
+
+                <select
+                    name="Khu vực mong muốn"
+                    required
+                >
+
+                    <option value="">
+                        -- Chọn khu vực --
+                    </option>
+
+                    <option>
+                        Bắc Ninh
+                    </option>
+
+                    <option>
+                        Bắc Giang
+                    </option>
+
+                    <option>
+                        Hưng Yên
+                    </option>
+
+                    <option>
+                        Quảng Ninh
+                    </option>
+
+                    <option>
+                        Hải Dương
+                    </option>
+
+                    <option>
+                        Hà Nội
+                    </option>
+
+                    <option>
+                        Hải Phòng
+                    </option>
+
+                    <option>
+                        Thái Nguyên
+                    </option>
+
+                    <option>
+                        Vĩnh Phúc
+                    </option>
+
+                    <option>
+                        Khu vực khác
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Ghi chú thêm
+                </label>
+
+                <textarea
+                    name="Ghi chú"
+                    placeholder="Ví dụ: Muốn làm ca ngày, cần việc gấp..."
+                ></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="btn"
+            >
+                📩 GỬI ĐĂNG KÝ
+            </button>
+
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ĐÁNH GIÁ
+     ===================================================== -->
+
+<section
+    id="danh-gia"
+    class="reviews-section"
+>
+
+    <div class="section-title">
+
+        <h2>
+            ⭐ ĐÁNH GIÁ ỨNG VIÊN
+        </h2>
+
+        <p>
+            Chia sẻ trải nghiệm của bạn
+        </p>
+
+    </div>
+
+
+    <div class="review-form">
+
+        <h3>
+            ✍️ Gửi đánh giá
+        </h3>
+
+
+        <input
+            type="text"
+            id="reviewName"
+            placeholder="Họ và tên"
+        >
+
+
+        <div class="rating">
+
+            <span
+                class="rating-star"
+                onclick="selectRating(1)"
+            >
+                ★
+            </span>
+
+            <span
+                class="rating-star"
+                onclick="selectRating(2)"
+            >
+                ★
+            </span>
+
+            <span
+                class="rating-star"
+                onclick="selectRating(3)"
+            >
+                ★
+            </span>
+
+            <span
+                class="rating-star"
+                onclick="selectRating(4)"
+            >
+                ★
+            </span>
+
+            <span
+                class="rating-star"
+                onclick="selectRating(5)"
+            >
+                ★
+            </span>
+
+        </div>
+
+
+        <textarea
+            id="reviewContent"
+            placeholder="Viết đánh giá của bạn..."
+        ></textarea>
+
+
+        <button
+            type="button"
+            class="btn"
+            onclick="submitReview()"
+        >
+            ⭐ GỬI ĐÁNH GIÁ
+        </button>
+
+    </div>
+
+
+    <div
+        id="reviewList"
+        class="review-list"
+    >
+
+        <div class="review-item">
+
+            <div class="review-top">
+
+                <div>
+
+                    <strong>
+                        Nguyễn Văn Minh
+                    </strong>
+
+                    <div class="review-stars">
+                        ★★★★★
+                    </div>
+
+                </div>
+
+                <span class="review-date">
+                    Gần đây
+                </span>
+
+            </div>
 
             <p>
-                Những chia sẻ từ ứng viên đã được tư vấn và hỗ trợ tìm việc
+                Tư vấn nhanh, thông tin công việc khá rõ ràng.
             </p>
 
         </div>
 
 
-        <div class="rating-summary">
+        <div class="review-item">
 
-            <div class="rating-number">
-                4.9
-            </div>
+            <div class="review-top">
 
-            <div>
+                <div>
 
-                <div class="rating-stars">
-                    ★★★★★
-                </div>
+                    <strong>
+                        Trần Thị Hương
+                    </strong>
 
-                <div class="rating-text">
-                    Đánh giá trung bình từ ứng viên
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="review-list">
-
-            <div class="review-card">
-
-                <div class="review-user">
-
-                    <div class="review-avatar">
-                        M
-                    </div>
-
-                    <div>
-
-                        <div class="review-name">
-                            Minh Anh
-                        </div>
-
-                        <div class="review-location">
-                            📍 Bắc Ninh
-                        </div>
-
+                    <div class="review-stars">
+                        ★★★★★
                     </div>
 
                 </div>
 
-                <div class="review-stars">
-                    ★★★★★
-                </div>
-
-                <div class="review-content">
-                    Tư vấn khá nhanh và nhiệt tình.
-                    Mình được giới thiệu đơn phù hợp với khu vực đang ở.
-                </div>
+                <span class="review-date">
+                    Gần đây
+                </span>
 
             </div>
 
-
-            <div class="review-card">
-
-                <div class="review-user">
-
-                    <div class="review-avatar">
-                        H
-                    </div>
-
-                    <div>
-
-                        <div class="review-name">
-                            Hoàng Nam
-                        </div>
-
-                        <div class="review-location">
-                            📍 Hưng Yên
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="review-stars">
-                    ★★★★★
-                </div>
-
-                <div class="review-content">
-                    Thông tin đơn tuyển được tư vấn khá rõ.
-                    Nhân viên hỗ trợ nhiệt tình trong quá trình đăng ký.
-                </div>
-
-            </div>
-
-
-            <div class="review-card">
-
-                <div class="review-user">
-
-                    <div class="review-avatar">
-                        T
-                    </div>
-
-                    <div>
-
-                        <div class="review-name">
-                            Thanh Tùng
-                        </div>
-
-                        <div class="review-location">
-                            📍 Hải Dương
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="review-stars">
-                    ★★★★★
-                </div>
-
-                <div class="review-content">
-                    Mình cần tìm việc gần nhà nên đăng ký thử.
-                    Được tư vấn nhiều lựa chọn và giải đáp khá nhanh.
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="review-form">
-
-            <h3>
-                ✍️ Chia sẻ đánh giá của bạn
-            </h3>
-
-            <div class="review-form-grid">
-
-                <input
-                    type="text"
-                    id="reviewName"
-                    placeholder="Họ và tên"
-                >
-
-                <input
-                    type="text"
-                    id="reviewLocation"
-                    placeholder="Khu vực"
-                >
-
-                <select id="reviewRating">
-
-                    <option value="5">
-                        ★★★★★ - Rất hài lòng
-                    </option>
-
-                    <option value="4">
-                        ★★★★☆ - Hài lòng
-                    </option>
-
-                    <option value="3">
-                        ★★★☆☆ - Bình thường
-                    </option>
-
-                    <option value="2">
-                        ★★☆☆☆ - Chưa hài lòng
-                    </option>
-
-                    <option value="1">
-                        ★☆☆☆☆ - Không hài lòng
-                    </option>
-
-                </select>
-
-                <textarea
-                    id="reviewContent"
-                    placeholder="Nhập nội dung đánh giá..."
-                ></textarea>
-
-            </div>
-
-            <button
-                type="button"
-                class="btn"
-                onclick="submitReview()"
-            >
-                ⭐ GỬI ĐÁNH GIÁ
-            </button>
-
-            <div
-                id="reviewSuccess"
-                class="review-success"
-            >
-                ✅ Cảm ơn bạn đã gửi đánh giá!
-            </div>
+            <p>
+                Được tư vấn công việc phù hợp với nhu cầu.
+            </p>
 
         </div>
 
@@ -2687,162 +1955,53 @@
 </section>
 
 
-<section id="dang-ky" class="register">
+<!-- =====================================================
+     CONTACT
+     ===================================================== -->
+
+<section
+    id="lien-he"
+    class="contact"
+>
 
     <h2>
-        📝 ĐĂNG KÝ TÌM VIỆC
-    </h2>
-
-
-    <p class="subtitle">
-        Điền thông tin bên dưới, bộ phận tuyển dụng sẽ liên hệ lại với bạn.
-    </p>
-
-
-    <div
-        id="successMessage"
-        class="success-message"
-    >
-
-        ✅ Đăng ký thành công!
-        Bộ phận tuyển dụng sẽ liên hệ với bạn sớm nhất.
-
-    </div>
-
-
-    <form
-        id="jobForm"
-        action="https://formspree.io/f/xpqogqva"
-        method="POST"
-    >
-
-        <div class="form-group">
-
-            <label>
-                Họ và tên *
-            </label>
-
-            <input
-                type="text"
-                name="Họ và tên"
-                placeholder="Nhập họ và tên"
-                required
-            >
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>
-                Số điện thoại *
-            </label>
-
-            <input
-                type="tel"
-                name="Số điện thoại"
-                placeholder="Nhập số điện thoại"
-                pattern="[0-9]{9,11}"
-                required
-            >
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>
-                Tỉnh/thành hiện tại *
-            </label>
-
-            <select
-                name="Tỉnh thành hiện tại"
-                required
-            >
-
-                <option value="">
-                    -- Chọn tỉnh/thành --
-                </option>
-
-                <option>Hà Nội</option>
-                <option>Bắc Ninh</option>
-                <option>Hưng Yên</option>
-                <option>Hải Phòng</option>
-                <option>Thái Nguyên</option>
-                <option>Vĩnh Phúc</option>
-                <option>Hải Dương</option>
-                <option>Bắc Giang</option>
-                <option>Quảng Ninh</option>
-                <option>Nam Định</option>
-                <option>Ninh Bình</option>
-                <option>Phú Thọ</option>
-                <option>Lạng Sơn</option>
-                <option>Cao Bằng</option>
-                <option>Bắc Kạn</option>
-                <option>Tuyên Quang</option>
-                <option>Yên Bái</option>
-                <option>Lào Cai</option>
-                <option>Thái Bình</option>
-                <option>Hà Nam</option>
-                <option>Khác</option>
-
-            </select>
-
-        </div>
-
-
-        <input
-            type="hidden"
-            name="_subject"
-            value="🔥 Có ứng viên mới đăng ký việc làm"
-        >
-
-
-        <button
-            type="submit"
-            class="btn"
-        >
-            📩 GỬI ĐĂNG KÝ
-        </button>
-
-    </form>
-
-</section>
-
-
-<section id="lien-he" class="contact">
-
-    <h2>
-        📞 LIÊN HỆ TUYỂN DỤNG
+        📞 LIÊN HỆ TƯ VẤN VIỆC LÀM
     </h2>
 
     <p>
-        Đức HR - Tư vấn việc làm miền Bắc
+        Cần tìm việc? Hãy liên hệ để được tư vấn đơn phù hợp.
     </p>
 
     <p>
-        ☎️ Hotline:
-        <a href="tel:0369759879">
-            0369 759 879
-        </a>
+        👤 HR: <strong>Đức HR</strong>
     </p>
 
     <p>
-        💬 Zalo:
-        <a href="https://zalo.me/0369759879">
-            0369 759 879
-        </a>
+        📱 Hotline/Zalo:
+        <strong>0369 759 879</strong>
     </p>
 
 
     <div class="contact-buttons">
 
-        <a href="tel:0369759879">
-            ☎️ GỌI NGAY
+        <a
+            href="tel:0369759879"
+        >
+            📞 GỌI NGAY
         </a>
 
-        <a href="https://zalo.me/0369759879">
+        <a
+            href="https://zalo.me/0369759879"
+            target="_blank"
+            rel="noopener"
+        >
             💬 NHẮN ZALO
+        </a>
+
+        <a
+            href="#dang-ky"
+        >
+            📩 ĐĂNG KÝ
         </a>
 
     </div>
@@ -2850,44 +2009,6 @@
 </section>
 
 
-<footer>
-
-    © 2026 Việc Làm Miền Bắc -
-    Thông tin tuyển dụng
-
-</footer>
-
-
-<!-- NÚT LIÊN HỆ NỔI -->
-
-<div class="floating-contact">
-
-    <a
-        href="tel:0369759879"
-        class="floating-call"
-        title="Gọi ngay"
-    >
-        ☎️
-    </a>
-
-    <a
-        href="https://zalo.me/0369759879"
-        class="floating-zalo"
-        title="Nhắn Zalo"
-    >
-        💬
-    </a>
-
-</div>
-
-
-<button
-    id="backToTop"
-    onclick="window.scrollTo({top:0,behavior:'smooth'})"
-    title="Về đầu trang"
->
-    ↑
-</button>
 <!-- =====================================================
      FOOTER
      ===================================================== -->
@@ -2898,6 +2019,59 @@
     Thông tin tuyển dụng
 
 </footer>
+
+
+<!-- =====================================================
+     THÔNG BÁO ĐĂNG KÝ
+     ===================================================== -->
+
+<div
+    id="registrationToast"
+    class="registration-toast"
+>
+
+    <div class="registration-toast-icon">
+        🔔
+    </div>
+
+    <div class="registration-toast-content">
+
+        <div
+            id="registrationToastTitle"
+            class="registration-toast-title"
+        ></div>
+
+        <div
+            id="registrationToastPhone"
+            class="registration-toast-phone"
+        ></div>
+
+        <div
+            id="registrationToastLocation"
+            class="registration-toast-location"
+        ></div>
+
+        <div
+            id="registrationToastTime"
+            class="registration-toast-time"
+        ></div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     NÚT CUỘN LÊN ĐẦU
+     ===================================================== -->
+
+<button
+    id="scrollTopButton"
+    class="scroll-top-button"
+    aria-label="Cuộn lên đầu trang"
+>
+    ↑
+</button>
 
 
 <script>
@@ -3838,19 +3012,6 @@ document.querySelectorAll(
 );
 
 </script>
-
-
-<!-- =====================================================
-     NÚT CUỘN LÊN ĐẦU
-     ===================================================== -->
-
-<button
-    id="scrollTopButton"
-    class="scroll-top-button"
-    aria-label="Cuộn lên đầu trang"
->
-    ↑
-</button>
 
 
 </body>
